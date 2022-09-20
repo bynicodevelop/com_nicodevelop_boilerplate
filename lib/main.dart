@@ -2,13 +2,35 @@ import 'package:com_nicodevelop_dotmessenger/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:json_theme/json_theme.dart';
 
-void main() {
-  runApp(const App());
+import 'package:flutter/services.dart';
+import 'dart:convert';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  /// Récupère le fichier de configuration theme
+  final themeStr = await rootBundle.loadString('assets/theme.json');
+
+  /// Conversion du fichier en objet
+  final themeJson = jsonDecode(themeStr);
+
+  /// Conversion en theme Flutter
+  final theme = ThemeDecoder.decodeThemeData(themeJson)!;
+
+  runApp(App(
+    theme: theme,
+  ));
 }
 
 class App extends StatelessWidget {
-  const App({super.key});
+  final ThemeData theme;
+
+  const App({
+    super.key,
+    required this.theme,
+  });
 
   @override
   Widget build(BuildContext context) {
