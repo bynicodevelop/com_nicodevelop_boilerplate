@@ -1,5 +1,8 @@
-import 'package:com_nicodevelop_dotmessenger/screens/home_screen.dart';
+import 'package:com_nicodevelop_dotmessenger/components/list_messages/bloc/get_list_message_bloc.dart';
+import 'package:com_nicodevelop_dotmessenger/repositories/messages_repository.dart';
+import 'package:com_nicodevelop_dotmessenger/screens/messages_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:json_theme/json_theme.dart';
@@ -34,20 +37,30 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Dot Messenger',
-      localizationsDelegates: [
-        AppLocalizations.delegate, // Add this line
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<GetListMessageBloc>(
+          lazy: false,
+          create: (context) => GetListMessageBloc(
+            messageRepository: MessagesRepository(),
+          )..add(OnGetListMessageEvent()),
+        ),
       ],
-      supportedLocales: [
-        Locale('en', ''),
-        Locale('fr', ''),
-      ],
-      home: HomeScreen(),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Dot Messenger',
+        localizationsDelegates: [
+          AppLocalizations.delegate, // Add this line
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: [
+          Locale('en', ''),
+          Locale('fr', ''),
+        ],
+        home: MessagesScreen(),
+      ),
     );
   }
 }
