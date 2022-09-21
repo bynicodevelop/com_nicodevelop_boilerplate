@@ -13,6 +13,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:json_theme/json_theme.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 import 'package:flutter/services.dart';
 import 'dart:convert';
@@ -29,6 +31,10 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final ThemeData? theme = await _loadThemeFromAsset('assets/theme.json');
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   if (kDebugMode) {
     final String host = Platform.isAndroid ? "10.0.2.2" : "localhost";
