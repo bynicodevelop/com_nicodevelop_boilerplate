@@ -10,17 +10,18 @@ import 'package:json_theme/json_theme.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 
+Future<ThemeData?> _loadThemeFromAsset(String assetPath) async {
+  final themeStr = await rootBundle.loadString(assetPath);
+
+  final themeJson = jsonDecode(themeStr);
+
+  return ThemeDecoder.decodeThemeData(themeJson)!;
+}
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  /// Récupère le fichier de configuration theme
-  final themeStr = await rootBundle.loadString('assets/theme.json');
-
-  /// Conversion du fichier en objet
-  final themeJson = jsonDecode(themeStr);
-
-  /// Conversion en theme Flutter
-  final theme = ThemeDecoder.decodeThemeData(themeJson)!;
+  final ThemeData? theme = await _loadThemeFromAsset('assets/theme.json');
 
   runApp(App(
     theme: theme,
@@ -28,7 +29,7 @@ Future<void> main() async {
 }
 
 class App extends StatelessWidget {
-  final ThemeData theme;
+  final ThemeData? theme;
 
   const App({
     super.key,
