@@ -621,12 +621,19 @@ PODS:
   - Firebase/Functions (9.5.0):
     - Firebase/CoreOnly
     - FirebaseFunctions (~> 9.5.0)
+  - Firebase/Storage (9.5.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (~> 9.5.0)
   - firebase_auth (3.9.0):
     - Firebase/Auth (= 9.5.0)
     - firebase_core
     - Flutter
   - firebase_core (1.22.0):
     - Firebase/CoreOnly (= 9.5.0)
+    - Flutter
+  - firebase_storage (10.3.8):
+    - Firebase/Storage (= 9.5.0)
+    - firebase_core
     - Flutter
   - FirebaseAppCheckInterop (9.5.0)
   - FirebaseAuth (9.5.0):
@@ -672,6 +679,15 @@ PODS:
     - GTMSessionFetcher/Core (< 3.0, >= 1.7)
   - FirebaseMessagingInterop (9.5.0)
   - FirebaseSharedSwift (9.5.0)
+  - FirebaseStorage (9.5.0):
+    - FirebaseAppCheckInterop (~> 9.0)
+    - FirebaseAuthInterop (~> 9.0)
+    - FirebaseCore (~> 9.0)
+    - FirebaseCoreExtension (~> 9.0)
+    - FirebaseStorageInternal (~> 9.0)
+  - FirebaseStorageInternal (9.4.0):
+    - FirebaseCore (~> 9.0)
+    - GTMSessionFetcher/Core (< 3.0, >= 1.7)
   - Flutter (1.0.0)
   - GoogleDataTransport (9.2.0):
     - GoogleUtilities/Environment (~> 7.7)
@@ -763,6 +779,7 @@ DEPENDENCIES:
   - cloud_functions (from `.symlinks/plugins/cloud_functions/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
+  - firebase_storage (from `.symlinks/plugins/firebase_storage/ios`)
   - Flutter (from `Flutter`)
 
 SPEC REPOS:
@@ -781,6 +798,8 @@ SPEC REPOS:
     - FirebaseFunctions
     - FirebaseMessagingInterop
     - FirebaseSharedSwift
+    - FirebaseStorage
+    - FirebaseStorageInternal
     - GoogleDataTransport
     - GoogleUtilities
     - "gRPC-C++"
@@ -800,6 +819,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
     :path: ".symlinks/plugins/firebase_core/ios"
+  firebase_storage:
+    :path: ".symlinks/plugins/firebase_storage/ios"
   Flutter:
     :path: Flutter
 
@@ -811,6 +832,7 @@ SPEC CHECKSUMS:
   Firebase: 800f16f07af493d98d017446a315c27af0552f41
   firebase_auth: c070c7e5b66037cddb73a68ca4bf4728b063680b
   firebase_core: 31872a49ffe0bf6f834e7044c7334e433536735a
+  firebase_storage: e81dc988f10c31c4ec1b1c79719ad679795b531d
   FirebaseAppCheckInterop: 8e95b4329809e3c06fb425acb3839dcadfe23673
   FirebaseAuth: 741918f1fa62ed23246a509279f91d42d79a713f
   FirebaseAuthInterop: c5aa97b55a87785e22c60c73996c1ad32e5f7ac9
@@ -822,6 +844,8 @@ SPEC CHECKSUMS:
   FirebaseFunctions: 9f6b1ae15651fff0107ef3abd2ee885b9c103236
   FirebaseMessagingInterop: 74001c949db794b1d29f94929fbc0b9e7f72a4b7
   FirebaseSharedSwift: c92b700eef937a9a9ad7962b991dcaac5aefe042
+  FirebaseStorage: a806d9f9eededf6fb1d906e79221b83ada1dbb4f
+  FirebaseStorageInternal: 425c7dc7de44d9b7e07a9f8d6515bab0f1266b87
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   GoogleDataTransport: 1c8145da7117bd68bbbed00cf304edb6a24de00f
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
