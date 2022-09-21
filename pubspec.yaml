@@ -43,6 +43,11 @@ dependencies:
   flutter_bloc: ^8.1.1
   equatable: ^2.0.5
   timeago: ^3.3.0
+  firebase_core: ^1.22.0
+  firebase_auth: ^3.9.0
+  cloud_firestore: ^3.4.8
+  cloud_functions: ^3.3.7
+  firebase_storage: ^10.3.8
 
 dev_dependencies:
   flutter_test:
