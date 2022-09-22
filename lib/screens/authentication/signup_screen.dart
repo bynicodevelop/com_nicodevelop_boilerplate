@@ -66,7 +66,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () async => Navigator.pop(context),
                   child: Text(t(context)!.got_to_signin_label_button),
                 ),
               ],

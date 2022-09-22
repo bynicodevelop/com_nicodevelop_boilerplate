@@ -1,6 +1,7 @@
 import "package:com_nicodevelop_dotmessenger/components/inputs/email/email_input_component.dart";
 import "package:com_nicodevelop_dotmessenger/components/inputs/password/password_input_component.dart";
 import "package:com_nicodevelop_dotmessenger/config/constants.dart";
+import "package:com_nicodevelop_dotmessenger/screens/authentication/signup_screen.dart";
 import "package:com_nicodevelop_dotmessenger/utils/translate.dart";
 import "package:flutter/material.dart";
 import "package:validators/validators.dart";
@@ -66,7 +67,13 @@ class _SignInState extends State<SignInScreen> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () async => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SignUpScreen(),
+                      fullscreenDialog: true,
+                    ),
+                  ),
                   child: Text(t(context)!.no_account_label_button),
                 ),
               ],
