@@ -5,14 +5,14 @@ import "package:com_nicodevelop_dotmessenger/utils/translate.dart";
 import "package:flutter/material.dart";
 import "package:validators/validators.dart";
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<SignInScreen> createState() => _SignInState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignInState extends State<SignInScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -67,7 +67,7 @@ class _SignInState extends State<SignInScreen> {
                 ),
                 TextButton(
                   onPressed: () {},
-                  child: Text(t(context)!.no_account_label_button),
+                  child: Text(t(context)!.got_to_signin_label_button),
                 ),
               ],
             ),

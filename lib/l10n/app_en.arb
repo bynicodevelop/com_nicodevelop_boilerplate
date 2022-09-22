@@ -18,5 +18,17 @@
     "signin_label_button": "Sign in",
     "@signin_label_button": {
       "description": "Label for the sign in button"
+    },
+    "signup_label_button": "Sign up",
+    "@signup_label_button": {
+      "description": "Label for the sign up button"
+    },
+    "no_account_label_button": "No account?",
+    "@no_account_label_button": {
+      "description": "Label for the no account button"
+    },
+    "got_to_signin_label_button": "Sign in",
+    "@got_to_signin_label_button": {
+      "description": "Label for the got to sign in button"
     }
 }
