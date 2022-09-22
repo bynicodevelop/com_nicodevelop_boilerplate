@@ -40,6 +40,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             child: Column(
               children: [
+                Text(
+                  t(context)!.sign_up_title,
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
                 EmailInputComponent(
                   controller: _emailController,
                   label: t(context)!.email_label_input,

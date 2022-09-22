@@ -41,6 +41,10 @@ class _SignInState extends State<SignInScreen> {
             ),
             child: Column(
               children: [
+                Text(
+                  t(context)!.sign_in_title,
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
                 EmailInputComponent(
                   controller: _emailController,
                   label: t(context)!.email_label_input,

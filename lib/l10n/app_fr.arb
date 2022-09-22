@@ -1,4 +1,12 @@
 {
+    "sign_up_title": "S'inscrire",
+    "@sign_up_title": {
+      "description": "Title for the sign up page"
+    },
+    "sign_in_title": "Se connecter",
+    "@sign_in_title": {
+      "description": "Title for the sign in page"
+    },
     "email_label_input": "E-mail",
     "@email_label_input": {
       "description": "Label for the email input field"
