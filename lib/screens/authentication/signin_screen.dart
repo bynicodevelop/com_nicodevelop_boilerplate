@@ -65,6 +65,10 @@ class _SignInState extends State<SignIn> {
                     child: Text(t(context)!.signin_label_button),
                   ),
                 ),
+                TextButton(
+                  onPressed: () {},
+                  child: const Text("Pas encore de compte ?"),
+                ),
               ],
             ),
           ),
