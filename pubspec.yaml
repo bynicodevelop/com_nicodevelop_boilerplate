@@ -49,6 +49,7 @@ dependencies:
   cloud_functions: ^3.3.7
   firebase_storage: ^10.3.8
   flutter_native_splash: ^2.2.9
+  validators: ^3.0.0
 
 dev_dependencies:
   flutter_test:

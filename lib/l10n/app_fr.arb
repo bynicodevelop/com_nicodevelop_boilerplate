@@ -1,3 +1,22 @@
 {
-    "helloWorld": "Bonjour le monde !"
+    "email_label_input": "E-mail",
+    "@email_label_input": {
+      "description": "Label for the email input field"
+    },
+    "email_error_text": "Merci d'entrer une adresse e-mail valide",
+    "@email_error_text": {
+      "description": "Error message for the email input field"
+    },
+    "password_label_input": "Mot de passe",
+    "@password_label_input": {
+      "description": "Label for the password input field"
+    },
+    "password_error_text": "Merci d'entrer un mot de passe avec au moins 6 caractères",
+    "@password_error_text": {
+      "description": "Error message for the password input field"
+    },
+    "signin_label_button": "Se connecter",
+    "@signin_label_button": {
+      "description": "Label for the sign in button"
+    }
 }
