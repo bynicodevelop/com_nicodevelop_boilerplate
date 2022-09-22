@@ -1,12 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
-import 'package:com_nicodevelop_dotmessenger/components/list_messages/bloc/get_list_message_bloc.dart';
-import 'package:com_nicodevelop_dotmessenger/repositories/messages_repository.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
+import "package:cloud_firestore/cloud_firestore.dart";
+import "package:cloud_functions/cloud_functions.dart";
+import "package:com_nicodevelop_dotmessenger/components/list_messages/bloc/get_list_message_bloc.dart";
+import "package:com_nicodevelop_dotmessenger/repositories/messages_repository.dart";
+import "package:com_nicodevelop_dotmessenger/services/bootstrap/bootstrap_bloc.dart";
+import "package:firebase_auth/firebase_auth.dart";
+import "package:firebase_storage/firebase_storage.dart";
+import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
 
 class ServiceFactory extends StatelessWidget {
   final FirebaseAuth firebaseAuth;
@@ -25,29 +25,20 @@ class ServiceFactory extends StatelessWidget {
     required this.firebaseFunctions,
   });
 
-  Future<void> _splashscreen() async {
-    await Future.delayed(const Duration(seconds: 3));
-
-    FlutterNativeSplash.remove();
-  }
-
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<BootstrapBloc>(
+          create: (_) => BootstrapBloc()..add(OnBootstrapEvent()),
+        ),
         BlocProvider<GetListMessageBloc>(
-          lazy: false,
           create: (context) => GetListMessageBloc(
             messageRepository: MessagesRepository(),
           )..add(OnGetListMessageEvent()),
         ),
       ],
-      child: FutureBuilder(
-        future: _splashscreen(),
-        builder: (context, snapshot) {
-          return child;
-        },
-      ),
+      child: child,
     );
   }
 }

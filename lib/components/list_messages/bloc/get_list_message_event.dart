@@ -1,4 +1,4 @@
-part of 'get_list_message_bloc.dart';
+part of "get_list_message_bloc.dart";
 
 abstract class GetListMessageEvent extends Equatable {
   const GetListMessageEvent();

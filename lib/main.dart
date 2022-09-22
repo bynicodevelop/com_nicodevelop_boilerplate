@@ -1,22 +1,23 @@
-import 'dart:io';
+import "dart:io";
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
-import 'package:com_nicodevelop_dotmessenger/screens/messages_screen.dart';
-import 'package:com_nicodevelop_dotmessenger/services/service_factory.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:json_theme/json_theme.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import "package:cloud_firestore/cloud_firestore.dart";
+import "package:cloud_functions/cloud_functions.dart";
+import "package:com_nicodevelop_dotmessenger/bootstrap.dart";
+import "package:com_nicodevelop_dotmessenger/screens/messages_screen.dart";
+import "package:com_nicodevelop_dotmessenger/services/service_factory.dart";
+import "package:firebase_storage/firebase_storage.dart";
+import "package:firebase_auth/firebase_auth.dart";
+import "package:flutter/foundation.dart";
+import "package:flutter/material.dart";
+import "package:flutter_localizations/flutter_localizations.dart";
+import "package:flutter_gen/gen_l10n/app_localizations.dart";
+import "package:flutter_native_splash/flutter_native_splash.dart";
+import "package:json_theme/json_theme.dart";
+import "package:firebase_core/firebase_core.dart";
+import "firebase_options.dart";
 
-import 'package:flutter/services.dart';
-import 'dart:convert';
+import "package:flutter/services.dart";
+import "dart:convert";
 
 Future<ThemeData?> _loadThemeFromAsset(String assetPath) async {
   final themeStr = await rootBundle.loadString(assetPath);
@@ -33,7 +34,7 @@ Future<void> main() async {
     widgetsBinding: widgetsBinding,
   );
 
-  final ThemeData? theme = await _loadThemeFromAsset('assets/theme.json');
+  final ThemeData? theme = await _loadThemeFromAsset("assets/theme.json");
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -101,7 +102,7 @@ class App extends StatelessWidget {
       firebaseFunctions: firebaseFunctions,
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Dot Messenger',
+        title: "Dot Messenger",
         localizationsDelegates: [
           AppLocalizations.delegate, // Add this line
           GlobalMaterialLocalizations.delegate,
@@ -109,10 +110,12 @@ class App extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: [
-          Locale('en', ''),
-          Locale('fr', ''),
+          Locale("en", ""),
+          Locale("fr", ""),
         ],
-        home: MessagesScreen(),
+        home: Bootstrap(
+          child: MessagesScreen(),
+        ),
       ),
     );
   }

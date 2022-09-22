@@ -1,10 +1,11 @@
-import 'package:bloc/bloc.dart';
-import 'package:com_nicodevelop_dotmessenger/models/item_message_model.dart';
-import 'package:com_nicodevelop_dotmessenger/repositories/messages_repository.dart';
-import 'package:equatable/equatable.dart';
+// ignore: depend_on_referenced_packages
+import "package:bloc/bloc.dart";
+import "package:com_nicodevelop_dotmessenger/models/item_message_model.dart";
+import "package:com_nicodevelop_dotmessenger/repositories/messages_repository.dart";
+import "package:equatable/equatable.dart";
 
-part 'get_list_message_event.dart';
-part 'get_list_message_state.dart';
+part "get_list_message_event.dart";
+part "get_list_message_state.dart";
 
 class GetListMessageBloc
     extends Bloc<GetListMessageEvent, GetListMessageState> {
