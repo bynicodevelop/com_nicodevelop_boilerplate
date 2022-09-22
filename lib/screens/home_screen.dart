@@ -1,4 +1,3 @@
-import "package:com_nicodevelop_dotmessenger/utils/translate.dart";
 import "package:flutter/material.dart";
 
 class HomeScreen extends StatelessWidget {
@@ -10,9 +9,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Dot Messenger"),
       ),
-      body: Center(
-        child: Text(t(context)!.helloWorld),
-      ),
+      body: const Center(),
     );
   }
 }

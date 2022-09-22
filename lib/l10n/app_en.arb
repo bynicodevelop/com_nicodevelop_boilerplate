@@ -1,6 +1,22 @@
 {
-    "helloWorld": "Hello World!",
-    "@helloWorld": {
-      "description": "The conventional newborn programmer greeting"
+    "email_label_input": "E-mail",
+    "@email_label_input": {
+      "description": "Label for the email input field"
+    },
+    "email_error_text": "Please enter a valid email address",
+    "@email_error_text": {
+      "description": "Error message for the email input field"
+    },
+    "password_label_input": "Password",
+    "@password_label_input": {
+      "description": "Label for the password input field"
+    },
+    "password_error_text": "Please enter a password with at least 6 characters",
+    "@password_error_text": {
+      "description": "Error message for the password input field"
+    },
+    "signin_label_button": "Sign in",
+    "@signin_label_button": {
+      "description": "Label for the sign in button"
     }
 }
