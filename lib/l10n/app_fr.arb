@@ -1,4 +1,12 @@
 {
+    "next_label": "Suivant",
+    "@next_label": {
+      "description": "Label for the next button"
+    },
+    "invitation_code_title": "Code d'invitation",
+    "@invitation_code_title": {
+      "description": "Title of the invitation code screen"
+    },
     "sign_up_title": "S'inscrire",
     "@sign_up_title": {
       "description": "Title for the sign up page"
