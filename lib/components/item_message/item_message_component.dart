@@ -1,6 +1,6 @@
-import 'package:com_nicodevelop_dotmessenger/models/item_message_model.dart';
-import 'package:timeago/timeago.dart' as timeago;
-import 'package:flutter/material.dart';
+import "package:com_nicodevelop_dotmessenger/models/item_message_model.dart";
+import "package:timeago/timeago.dart" as timeago;
+import "package:flutter/material.dart";
 
 class ItemMessageComponent extends StatelessWidget {
   final ItemMessageModel itemMessage;
