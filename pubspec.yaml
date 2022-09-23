@@ -52,6 +52,7 @@ dependencies:
   validators: ^3.0.0
   flutter_launcher_icons: ^0.10.0
   logger: ^1.1.0
+  another_flushbar: ^1.12.29
 
 dev_dependencies:
   flutter_test:

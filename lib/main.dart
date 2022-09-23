@@ -3,7 +3,7 @@ import "dart:io";
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:cloud_functions/cloud_functions.dart";
 import "package:com_nicodevelop_dotmessenger/bootstrap.dart";
-import "package:com_nicodevelop_dotmessenger/screens/authentication/signin_screen.dart";
+import "package:com_nicodevelop_dotmessenger/screens/authentication/code_screen.dart";
 import "package:com_nicodevelop_dotmessenger/services/service_factory.dart";
 import "package:firebase_storage/firebase_storage.dart";
 import "package:firebase_auth/firebase_auth.dart";
@@ -53,10 +53,10 @@ Future<void> main() async {
       8080,
     );
 
-    FirebaseStorage.instance.useStorageEmulator(
-      host,
-      9199,
-    );
+    // FirebaseStorage.instance.useStorageEmulator(
+    //   host,
+    //   9199,
+    // );
 
     FirebaseFunctions.instance.useFunctionsEmulator(
       host,
@@ -114,7 +114,7 @@ class App extends StatelessWidget {
           Locale("fr", ""),
         ],
         home: Bootstrap(
-          child: SignInScreen(),
+          child: CodeScreen(),
         ),
       ),
     );

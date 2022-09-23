@@ -1,4 +1,12 @@
 {
+    "next_label": "Suivant",
+    "@next_label": {
+      "description": "Label for the next button"
+    },
+    "invitation_code_title": "Code d'invitation",
+    "@invitation_code_title": {
+      "description": "Title of the invitation code screen"
+    },
     "sign_up_title": "S'inscrire",
     "@sign_up_title": {
       "description": "Title for the sign up page"
@@ -38,5 +46,21 @@
     "got_to_signin_label_button": "Se connecter",
     "@got_to_signin_label_button": {
       "description": "Label for the got to sign in button"
+    },
+    "affiliate_code_invalid_title": "Code d'invitation invalide",
+    "@affiliate_code_invalid_title": {
+      "description": "Error message for the invalid invitation code"
+    },
+    "affiliate_code_invalid_message": "Le code d'invitation que vous avez entré est invalide.",
+    "@affiliate_code_invalid_message": {
+      "description": "Error message for the invalid invitation code"
+    },
+    "affiliate_code_required_field_title": "Code d'invitation invalide",
+    "@affiliate_code_required_field_title": {
+      "description": "Error message for the invalid invitation code"
+    },
+    "affiliate_code_required_field_message": "Merci d'entrer un code d'invitation pour continuer.",
+    "@affiliate_code_required_field_message": {
+      "description": "Error message for the invalid invitation code"
     }
 }
