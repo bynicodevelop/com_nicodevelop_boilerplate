@@ -1,6 +1,6 @@
 import "package:com_nicodevelop_dotmessenger/components/inputs/text/text_input_component.dart";
 import "package:com_nicodevelop_dotmessenger/config/constants.dart";
-import "package:com_nicodevelop_dotmessenger/services/search_invitation_code/search_invitation_code_bloc.dart";
+import "package:com_nicodevelop_dotmessenger/services/search_affiliate_code/search_affiliate_code_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/utils/translate.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
@@ -49,9 +49,9 @@ class _CodeScreenState extends State<CodeScreen> {
                         return;
                       }
 
-                      context.read<SearchInvitationCodeBloc>().add(
-                            OnSearchInvitationCodeEvent(
-                              invitationCode: _codeController.text,
+                      context.read<SearchAffiliateCodeBloc>().add(
+                            OnSearchAffiliateCodeEvent(
+                              affiliateCode: _codeController.text,
                             ),
                           );
                     },
