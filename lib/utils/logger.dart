@@ -15,16 +15,16 @@ void info(
   String message, {
   Map<String, dynamic> data = const {},
 }) async =>
-    logger.i("$message: $data");
+    logger.i("Info: $message: $data");
 
 void warn(
   String message, {
   Map<String, dynamic> data = const {},
 }) async =>
-    logger.w("$message: $data");
+    logger.w("Warn: $message: $data");
 
 void error(
   String message, {
   Map<String, dynamic> data = const {},
 }) async =>
-    logger.e("$message: $data");
+    logger.e("Error: $message: $data");

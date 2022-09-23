@@ -1,4 +1,3 @@
-import "package:com_nicodevelop_dotmessenger/components/inputs/text/text_input_component.dart";
 import "package:com_nicodevelop_dotmessenger/config/constants.dart";
 import "package:com_nicodevelop_dotmessenger/screens/authentication/signup_screen.dart";
 import "package:com_nicodevelop_dotmessenger/services/search_affiliate_code/search_affiliate_code_bloc.dart";
@@ -15,80 +14,142 @@ class CodeScreen extends StatefulWidget {
 }
 
 class _CodeScreenState extends State<CodeScreen> {
-  final TextEditingController _codeController = TextEditingController();
-
-  void _unfocus() {
-    FocusScope.of(context).unfocus();
-  }
+  final List<String> codes = [];
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: _unfocus,
+    final width =
+        (MediaQuery.of(context).size.width - kDefaultPadding * 3 * (3 - 1)) / 3;
+
+    return BlocListener<SearchAffiliateCodeBloc, SearchAffiliateCodeState>(
+      listener: (context, state) async {
+        if (state is SearchAffiliateCodeSuccessState) {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => const SignUpScreen()),
+            (route) => false,
+          );
+
+          return;
+        }
+
+        if (state is SearchAffiliateCodeErrorState) {
+          setState(() => codes.clear());
+
+          sendNotificaton(
+            context,
+            t(context)!.affiliate_code_invalid_title,
+            t(context)!.affiliate_code_invalid_message,
+          );
+        }
+      },
       child: Scaffold(
-        body: Center(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(
-              kDefaultPadding,
-            ),
-            child: Column(
-              children: [
-                Text(
-                  t(context)!.invitation_code_title,
-                  style: Theme.of(context).textTheme.headlineLarge,
-                ),
-                TextInputComponent(
-                  controller: _codeController,
-                  isRequire: true,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  child: BlocListener<SearchAffiliateCodeBloc,
-                      SearchAffiliateCodeState>(
-                    listener: (context, affiliateState) async {
-                      if (affiliateState is SearchAffiliateCodeSuccessState) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SignUpScreen(),
-                            ));
-
-                        return;
-                      }
-
-                      if (affiliateState is SearchAffiliateCodeErrorState) {
-                        sendNotificaton(
-                          context,
-                          t(context)!.affiliate_code_invalid_title,
-                          t(context)!.affiliate_code_invalid_message,
-                        );
-                      }
-                    },
-                    child: ElevatedButton(
-                      onPressed: () {
-                        _unfocus();
-
-                        if (_codeController.text.isEmpty) {
-                          sendNotificaton(
-                            context,
-                            t(context)!.affiliate_code_required_field_title,
-                            t(context)!.affiliate_code_required_field_message,
-                          );
-
-                          return;
-                        }
-
-                        context.read<SearchAffiliateCodeBloc>().add(
-                              OnSearchAffiliateCodeEvent(
-                                affiliateCode: _codeController.text,
-                              ),
-                            );
-                      },
-                      child: Text(t(context)!.next_label),
-                    ),
+        body: Padding(
+          padding: const EdgeInsets.all(
+            kDefaultPadding,
+          ),
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Text(
+                    "Sponsor code",
+                    style: Theme.of(context).textTheme.headline4,
+                    textAlign: TextAlign.center,
                   ),
-                ),
-              ],
+                  const SizedBox(
+                    height: kDefaultPadding,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          codes.isNotEmpty ? codes[0] : "•",
+                          style: Theme.of(context).textTheme.headline2,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: kDefaultPadding,
+                      ),
+                      Flexible(
+                        child: Text(
+                          codes.length > 1 ? codes[1] : "•",
+                          style: Theme.of(context).textTheme.headline2,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: kDefaultPadding,
+                      ),
+                      Flexible(
+                        child: Text(
+                          codes.length > 2 ? codes[2] : "•",
+                          style: Theme.of(context).textTheme.headline2,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: kDefaultPadding,
+                      ),
+                      Flexible(
+                        child: Text(
+                          codes.length > 3 ? codes[3] : "•",
+                          style: Theme.of(context).textTheme.headline2,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: kDefaultPadding * 2,
+                  ),
+                  Wrap(
+                    runSpacing: kDefaultPadding,
+                    spacing: kDefaultPadding,
+                    alignment: WrapAlignment.center,
+                    children: List.generate(
+                      10,
+                      (index) => SizedBox(
+                        width: width,
+                        height: width,
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              kDefaultPadding,
+                            ),
+                          ),
+                          child: InkWell(
+                            onTap: () {
+                              setState(() {
+                                if (codes.length < 4) {
+                                  codes.add((index < 9 ? "${index + 1}" : "0")
+                                      .toString());
+                                }
+                              });
+
+                              if (codes.length == 4) {
+                                context.read<SearchAffiliateCodeBloc>().add(
+                                      OnSearchAffiliateCodeEvent(
+                                        affiliateCode: codes.join(),
+                                      ),
+                                    );
+                              }
+                            },
+                            borderRadius: BorderRadius.circular(
+                              kDefaultPadding,
+                            ),
+                            child: Center(
+                              child: Text(
+                                index < 9 ? "${index + 1}" : "0",
+                                style: Theme.of(context).textTheme.headline3,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
