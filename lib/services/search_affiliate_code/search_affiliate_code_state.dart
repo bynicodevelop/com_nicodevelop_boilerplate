@@ -25,14 +25,14 @@ class SearchAffiliateCodeSuccessState extends SearchAffiliateCodeState {
 }
 
 class SearchAffiliateCodeErrorState extends SearchAffiliateCodeState {
-  final String message;
+  final String code;
 
   const SearchAffiliateCodeErrorState({
-    required this.message,
+    required this.code,
   });
 
   @override
   List<Object> get props => [
-        message,
+        code,
       ];
 }

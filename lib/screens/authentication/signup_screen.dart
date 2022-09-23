@@ -66,7 +66,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         print("Password: ${_passwordController.text}");
                       }
                     },
-                    child: Text(t(context)!.signin_label_button),
+                    child: Text(t(context)!.sign_up_title),
                   ),
                 ),
                 TextButton(

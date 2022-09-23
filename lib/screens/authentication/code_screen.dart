@@ -1,6 +1,8 @@
 import "package:com_nicodevelop_dotmessenger/components/inputs/text/text_input_component.dart";
 import "package:com_nicodevelop_dotmessenger/config/constants.dart";
+import "package:com_nicodevelop_dotmessenger/screens/authentication/signup_screen.dart";
 import "package:com_nicodevelop_dotmessenger/services/search_affiliate_code/search_affiliate_code_bloc.dart";
+import "package:com_nicodevelop_dotmessenger/utils/notifications.dart";
 import "package:com_nicodevelop_dotmessenger/utils/translate.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
@@ -41,21 +43,49 @@ class _CodeScreenState extends State<CodeScreen> {
                 ),
                 SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      _unfocus();
+                  child: BlocListener<SearchAffiliateCodeBloc,
+                      SearchAffiliateCodeState>(
+                    listener: (context, affiliateState) async {
+                      if (affiliateState is SearchAffiliateCodeSuccessState) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SignUpScreen(),
+                            ));
 
-                      if (_codeController.text.isEmpty) {
                         return;
                       }
 
-                      context.read<SearchAffiliateCodeBloc>().add(
-                            OnSearchAffiliateCodeEvent(
-                              affiliateCode: _codeController.text,
-                            ),
-                          );
+                      if (affiliateState is SearchAffiliateCodeErrorState) {
+                        sendNotificaton(
+                          context,
+                          t(context)!.affiliate_code_invalid_title,
+                          t(context)!.affiliate_code_invalid_message,
+                        );
+                      }
                     },
-                    child: Text(t(context)!.next_label),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        _unfocus();
+
+                        if (_codeController.text.isEmpty) {
+                          sendNotificaton(
+                            context,
+                            t(context)!.affiliate_code_required_field_title,
+                            t(context)!.affiliate_code_required_field_message,
+                          );
+
+                          return;
+                        }
+
+                        context.read<SearchAffiliateCodeBloc>().add(
+                              OnSearchAffiliateCodeEvent(
+                                affiliateCode: _codeController.text,
+                              ),
+                            );
+                      },
+                      child: Text(t(context)!.next_label),
+                    ),
                   ),
                 ),
               ],

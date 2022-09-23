@@ -46,5 +46,21 @@
     "got_to_signin_label_button": "Sign in",
     "@got_to_signin_label_button": {
       "description": "Label for the got to sign in button"
+    },
+    "affiliate_code_invalid_title": "Invalid invitation code",
+    "@affiliate_code_invalid_title": {
+      "description": "Error message for the invalid invitation code"
+    },
+    "affiliate_code_invalid_message": "The invitation code you entered is invalid.",
+    "@affiliate_code_invalid_message": {
+      "description": "Error message for the invalid invitation code"
+    },
+    "affiliate_code_required_field_title": "Invalid invitation code",
+    "@affiliate_code_required_field_title": {
+      "description": "Error message for the invalid invitation code"
+    },
+    "affiliate_code_required_field_message": "Please enter an invitation code to continue.",
+    "@affiliate_code_required_field_message": {
+      "description": "Error message for the invalid invitation code"
     }
 }

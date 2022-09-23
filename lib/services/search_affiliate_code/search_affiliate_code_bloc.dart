@@ -1,6 +1,8 @@
 import "package:bloc/bloc.dart";
+import "package:com_nicodevelop_dotmessenger/exceptions/standard_exception.dart";
 import "package:com_nicodevelop_dotmessenger/models/profile_model.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/affiliate_repository.dart";
+import "package:com_nicodevelop_dotmessenger/utils/logger.dart";
 import "package:equatable/equatable.dart";
 
 part "search_affiliate_code_event.dart";
@@ -21,11 +23,22 @@ class SearchAffiliateCodeBloc
           "affiliateCode": event.affiliateCode,
         });
 
+        info(
+          "$runtimeType - OnSearchAffiliateCodeEvent",
+          data: profileModel.toMap(),
+        );
+
         emit(SearchAffiliateCodeSuccessState(
           profileModel: profileModel,
         ));
-      } catch (e) {
-        emit(SearchAffiliateCodeErrorState(message: e.toString()));
+      } on StandardException catch (e) {
+        error(
+          "$runtimeType - ${e.code} - ${e.message}",
+        );
+
+        emit(SearchAffiliateCodeErrorState(
+          code: e.code,
+        ));
       }
     });
   }
