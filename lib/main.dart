@@ -3,6 +3,7 @@ import "dart:io";
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:cloud_functions/cloud_functions.dart";
 import "package:com_nicodevelop_dotmessenger/bootstrap.dart";
+import "package:com_nicodevelop_dotmessenger/config/color_schemes.g.dart";
 import "package:com_nicodevelop_dotmessenger/screens/authentication/code_screen.dart";
 import "package:com_nicodevelop_dotmessenger/services/service_factory.dart";
 import "package:firebase_storage/firebase_storage.dart";
@@ -12,20 +13,8 @@ import "package:flutter/material.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
 import "package:flutter_native_splash/flutter_native_splash.dart";
-import "package:json_theme/json_theme.dart";
 import "package:firebase_core/firebase_core.dart";
 import "firebase_options.dart";
-
-import "package:flutter/services.dart";
-import "dart:convert";
-
-Future<ThemeData?> _loadThemeFromAsset(String assetPath) async {
-  final themeStr = await rootBundle.loadString(assetPath);
-
-  final themeJson = jsonDecode(themeStr);
-
-  return ThemeDecoder.decodeThemeData(themeJson)!;
-}
 
 Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -33,8 +22,6 @@ Future<void> main() async {
   FlutterNativeSplash.preserve(
     widgetsBinding: widgetsBinding,
   );
-
-  final ThemeData? theme = await _loadThemeFromAsset("assets/theme.json");
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -68,7 +55,6 @@ Future<void> main() async {
   await FirebaseFirestore.instance.clearPersistence();
 
   runApp(App(
-    theme: theme,
     firebaseAuth: FirebaseAuth.instance,
     firebaseFirestore: FirebaseFirestore.instance,
     firebaseStorage: FirebaseStorage.instance,
@@ -77,8 +63,6 @@ Future<void> main() async {
 }
 
 class App extends StatelessWidget {
-  final ThemeData? theme;
-
   final FirebaseAuth firebaseAuth;
   final FirebaseFirestore firebaseFirestore;
   final FirebaseStorage firebaseStorage;
@@ -86,7 +70,6 @@ class App extends StatelessWidget {
 
   const App({
     super.key,
-    required this.theme,
     required this.firebaseAuth,
     required this.firebaseFirestore,
     required this.firebaseStorage,
@@ -100,20 +83,28 @@ class App extends StatelessWidget {
       firebaseFirestore: firebaseFirestore,
       firebaseStorage: firebaseStorage,
       firebaseFunctions: firebaseFunctions,
-      child: const MaterialApp(
+      child: MaterialApp(
+        theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: lightColorScheme,
+        ),
+        darkTheme: ThemeData(
+          useMaterial3: true,
+          colorScheme: darkColorScheme,
+        ),
         debugShowCheckedModeBanner: false,
         title: "Dot Messenger",
-        localizationsDelegates: [
+        localizationsDelegates: const [
           AppLocalizations.delegate, // Add this line
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        supportedLocales: [
+        supportedLocales: const [
           Locale("en", ""),
           Locale("fr", ""),
         ],
-        home: Bootstrap(
+        home: const Bootstrap(
           child: CodeScreen(),
         ),
       ),
