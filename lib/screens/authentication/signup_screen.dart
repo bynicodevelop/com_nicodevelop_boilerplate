@@ -84,7 +84,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
             message = t(context)!.sign_up_operation_not_allowed;
           }
 
-          sendNotificaton(context, title, message);
+          sendNotificaton(
+            context,
+            title,
+            message,
+          );
         }
       },
       child: GestureDetector(
@@ -114,6 +118,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
+                      key: const Key("sign_up_button"),
                       onPressed: () {
                         _unfocus();
 

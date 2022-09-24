@@ -2,6 +2,7 @@
 import "package:bloc/bloc.dart";
 import "package:com_nicodevelop_dotmessenger/exceptions/standard_exception.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/account_repository.dart";
+import "package:com_nicodevelop_dotmessenger/utils/logger.dart";
 import "package:equatable/equatable.dart";
 
 part "create_account_event.dart";
@@ -22,6 +23,14 @@ class CreateAccountBloc extends Bloc<CreateAccountEvent, CreateAccountState> {
           "password": event.password,
           "affiliateCode": event.affiliateCode,
         });
+
+        info(
+          "$runtimeType - Account created",
+          data: {
+            "email": event.email,
+            "affiliateCode": event.affiliateCode,
+          },
+        );
 
         emit(CreateAccountSuccessState());
       } on StandardException catch (e) {
