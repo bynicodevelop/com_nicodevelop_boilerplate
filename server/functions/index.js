@@ -1,5 +1,6 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
+const { error, info } = require("firebase-functions/lib/logger");
 
 admin.initializeApp();
 
@@ -23,21 +24,47 @@ const updateNumberUsers = async () => {
 
 const generateAffiliateCode = (total) => total.toString().padStart(4, "0");
 
+const addNewUserInAffiliate = async (userRef, affiateCodeRef) => {
+    info("addNewUserInAffiliate", { userRef, affiateCodeRef });
 
-exports.onNewUser = functions.auth.user().onCreate(async (user) => {
-    const { uid: userId } = user;
+    await affiateCodeRef.update({
+        total: admin.firestore.FieldValue.increment(1),
+        users: admin.firestore.FieldValue.arrayUnion(userRef)
+    });
+}
 
-    await updateNumberUsers();
+exports.onNewUser = functions
+    .auth
+    .user()
+    .onCreate(async (user) => {
+        const { uid: userId } = user;
 
-    const settingsAffiliatesSnapshotResult = await getAffiliateSettings();
+        await updateNumberUsers();
 
-    const settingsAffiliates = settingsAffiliatesSnapshotResult.data();
+        const settingsAffiliatesSnapshotResult = await getAffiliateSettings();
 
-    const { total } = settingsAffiliates;
+        const settingsAffiliates = settingsAffiliatesSnapshotResult.data();
 
-    const affiliateCode = generateAffiliateCode(total);
+        const { total } = settingsAffiliates;
 
-    await admin.firestore().collection("affiliates").doc(affiliateCode).set({
-        userId,
-    })
-});
+        const affiliateCode = generateAffiliateCode(total);
+
+        await admin.firestore().collection("affiliates").doc(affiliateCode).set({
+            userId,
+        });
+    });
+
+exports.onNewUserInAffiliate = functions
+    .firestore
+    .document("users/{userId}")
+    .onCreate(async (snapshot, context) => {
+        const { userId } = context.params;
+        const { affiliateCodeRef } = snapshot.data();
+
+        info("onNewUserInAffiliate", { userId, affiliateCodeRef });
+
+        await addNewUserInAffiliate(
+            admin.firestore().collection("users").doc(userId),
+            affiliateCodeRef
+        );
+    });

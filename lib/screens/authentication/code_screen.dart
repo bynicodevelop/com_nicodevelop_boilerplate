@@ -26,7 +26,11 @@ class _CodeScreenState extends State<CodeScreen> {
         if (state is SearchAffiliateCodeSuccessState) {
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => const SignUpScreen()),
+            MaterialPageRoute(
+              builder: (context) => SignUpScreen(
+                affiliateCode: codes.join(""),
+              ),
+            ),
             (route) => false,
           );
 

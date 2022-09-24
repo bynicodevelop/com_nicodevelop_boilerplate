@@ -37,6 +37,7 @@ class _PasswordInputComponentState extends State<PasswordInputComponent> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      key: const Key("password"),
       focusNode: _focusNode,
       controller: widget.controller,
       decoration: InputDecoration(

@@ -35,6 +35,7 @@ class _EmailInputComponentState extends State<EmailInputComponent> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      key: const Key("email"),
       focusNode: _focusNode,
       controller: widget.controller,
       decoration: InputDecoration(

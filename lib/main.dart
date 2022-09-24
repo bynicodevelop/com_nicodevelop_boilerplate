@@ -1,52 +1,21 @@
 import "dart:io";
 
-<<<<<<< Updated upstream
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:cloud_functions/cloud_functions.dart";
 import "package:com_nicodevelop_dotmessenger/bootstrap.dart";
 import "package:com_nicodevelop_dotmessenger/config/color_schemes.g.dart";
-import "package:com_nicodevelop_dotmessenger/screens/authentication/code_screen.dart";
+import "package:com_nicodevelop_dotmessenger/screens/authentication/signup_screen.dart";
 import "package:com_nicodevelop_dotmessenger/services/service_factory.dart";
-import "package:firebase_storage/firebase_storage.dart";
 import "package:firebase_auth/firebase_auth.dart";
+import "package:firebase_core/firebase_core.dart";
+import "package:firebase_storage/firebase_storage.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
-import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
+import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_native_splash/flutter_native_splash.dart";
-import "package:firebase_core/firebase_core.dart";
+
 import "firebase_options.dart";
-
-Future<void> main() async {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-=======
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
-import 'package:com_nicodevelop_dotmessenger/components/list_messages/bloc/get_list_message_bloc.dart';
-import 'package:com_nicodevelop_dotmessenger/repositories/messages_repository.dart';
-import 'package:com_nicodevelop_dotmessenger/screens/messages_screen.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:json_theme/json_theme.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
-
-import 'package:flutter/services.dart';
-import 'dart:convert';
-
-Future<ThemeData?> _loadThemeFromAsset(String assetPath) async {
-  final themeStr = await rootBundle.loadString(assetPath);
-
-  final themeJson = jsonDecode(themeStr);
-
-  return ThemeDecoder.decodeThemeData(themeJson)!;
-}
 
 Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -54,9 +23,6 @@ Future<void> main() async {
   FlutterNativeSplash.preserve(
     widgetsBinding: widgetsBinding,
   );
-
-  // FlutterNativeSplash.remove();
->>>>>>> Stashed changes
 
   FlutterNativeSplash.preserve(
     widgetsBinding: widgetsBinding,
@@ -144,7 +110,9 @@ class App extends StatelessWidget {
           Locale("fr", ""),
         ],
         home: const Bootstrap(
-          child: CodeScreen(),
+          child: SignUpScreen(
+            affiliateCode: "0001",
+          ),
         ),
       ),
     );

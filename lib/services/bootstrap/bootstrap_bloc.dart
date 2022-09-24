@@ -8,10 +8,6 @@ part "bootstrap_state.dart";
 class BootstrapBloc extends Bloc<BootstrapEvent, BootstrapState> {
   BootstrapBloc() : super(BootstrapInitialState()) {
     on<OnBootstrapEvent>((event, emit) async {
-      await Future.delayed(const Duration(
-        seconds: 2,
-      ));
-
       emit(BootstrapReadyState());
     });
   }

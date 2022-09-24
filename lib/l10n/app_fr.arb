@@ -62,5 +62,25 @@
     "affiliate_code_required_field_message": "Merci d'entrer un code d'invitation pour continuer.",
     "@affiliate_code_required_field_message": {
       "description": "Error message for the invalid invitation code"
+    },
+    "sign_up_email_already_in_use": "Un compte avec cette adresse e-mail existe déjà.",
+    "@sign_up_email_already_in_use": {
+      "description": "Error message for the email already in use"
+    },
+    "sign_up_weak_password": "Le mot de passe que vous avez entré est trop faible. (6 caractères minimum)",
+    "@sign_up_weak_password": {
+      "description": "Error message for the weak password"
+    },
+    "sign_up_invalid_email": "Merci d'entrer une adresse e-mail valide",
+    "@sign_up_invalid_email": {
+      "description": "Error message for the invalid email"
+    },
+    "sign_up_operation_not_allowed": "L'inscription n'est pas autorisée pour le moment. Merci de réessayer plus tard.",
+    "@sign_up_operation_not_allowed": {
+      "description": "Error message for the operation not allowed"
+    },
+    "sign_up_failed_create_account": "Votre création de compte à échoué.",
+    "@sign_up_failed_create_account": {
+      "description": "Error message for the failed to create account"
     }
 }
