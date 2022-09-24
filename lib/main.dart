@@ -4,16 +4,17 @@ import "package:cloud_firestore/cloud_firestore.dart";
 import "package:cloud_functions/cloud_functions.dart";
 import "package:com_nicodevelop_dotmessenger/bootstrap.dart";
 import "package:com_nicodevelop_dotmessenger/config/color_schemes.g.dart";
-import "package:com_nicodevelop_dotmessenger/screens/authentication/signup_screen.dart";
+import "package:com_nicodevelop_dotmessenger/screens/authentication/signin_screen.dart";
 import "package:com_nicodevelop_dotmessenger/services/service_factory.dart";
-import "package:firebase_storage/firebase_storage.dart";
 import "package:firebase_auth/firebase_auth.dart";
+import "package:firebase_core/firebase_core.dart";
+import "package:firebase_storage/firebase_storage.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
-import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
+import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_native_splash/flutter_native_splash.dart";
-import "package:firebase_core/firebase_core.dart";
+
 import "firebase_options.dart";
 
 Future<void> main() async {
@@ -105,9 +106,7 @@ class App extends StatelessWidget {
           Locale("fr", ""),
         ],
         home: const Bootstrap(
-          child: SignUpScreen(
-            affiliateCode: "0001",
-          ),
+          child: SignInScreen(),
         ),
       ),
     );
