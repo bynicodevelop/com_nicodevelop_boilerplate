@@ -8,5 +8,9 @@ service cloud.firestore {
     match /affiliates/{affiliateId} {
       allow get: if true;
     }
+
+    match /users/{userId} {
+      allow get, create, update: if request.auth.uid == userId;
+    }
   }
 }

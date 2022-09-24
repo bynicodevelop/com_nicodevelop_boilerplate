@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import "package:bloc/bloc.dart";
 import "package:com_nicodevelop_dotmessenger/exceptions/standard_exception.dart";
 import "package:com_nicodevelop_dotmessenger/models/profile_model.dart";

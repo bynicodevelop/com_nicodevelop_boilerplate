@@ -1,9 +1,11 @@
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:cloud_functions/cloud_functions.dart";
 import "package:com_nicodevelop_dotmessenger/components/list_messages/bloc/get_list_message_bloc.dart";
+import "package:com_nicodevelop_dotmessenger/repositories/account_repository.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/messages_repository.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/affiliate_repository.dart";
 import "package:com_nicodevelop_dotmessenger/services/bootstrap/bootstrap_bloc.dart";
+import "package:com_nicodevelop_dotmessenger/services/create_account/create_account_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/search_affiliate_code/search_affiliate_code_bloc.dart";
 import "package:firebase_auth/firebase_auth.dart";
 import "package:firebase_storage/firebase_storage.dart";
@@ -33,6 +35,11 @@ class ServiceFactory extends StatelessWidget {
       firebaseFirestore: firebaseFirestore,
     );
 
+    final AccountRepository accountRepository = AccountRepository(
+      firebaseAuth: firebaseAuth,
+      firebaseFirestore: firebaseFirestore,
+    );
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<BootstrapBloc>(
@@ -46,6 +53,11 @@ class ServiceFactory extends StatelessWidget {
         BlocProvider<SearchAffiliateCodeBloc>(
           create: (context) => SearchAffiliateCodeBloc(
             parrainageRepository: parrainageRepository,
+          ),
+        ),
+        BlocProvider<CreateAccountBloc>(
+          create: (context) => CreateAccountBloc(
+            accountRepository: accountRepository,
           ),
         ),
       ],
