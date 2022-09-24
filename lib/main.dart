@@ -4,7 +4,7 @@ import "package:cloud_firestore/cloud_firestore.dart";
 import "package:cloud_functions/cloud_functions.dart";
 import "package:com_nicodevelop_dotmessenger/bootstrap.dart";
 import "package:com_nicodevelop_dotmessenger/config/color_schemes.g.dart";
-import "package:com_nicodevelop_dotmessenger/screens/authentication/signup_screen.dart";
+import "package:com_nicodevelop_dotmessenger/screens/authentication/signin_screen.dart";
 import "package:com_nicodevelop_dotmessenger/services/service_factory.dart";
 import "package:firebase_auth/firebase_auth.dart";
 import "package:firebase_core/firebase_core.dart";
@@ -19,10 +19,6 @@ import "firebase_options.dart";
 
 Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-
-  FlutterNativeSplash.preserve(
-    widgetsBinding: widgetsBinding,
-  );
 
   FlutterNativeSplash.preserve(
     widgetsBinding: widgetsBinding,
@@ -110,9 +106,7 @@ class App extends StatelessWidget {
           Locale("fr", ""),
         ],
         home: const Bootstrap(
-          child: SignUpScreen(
-            affiliateCode: "0001",
-          ),
+          child: SignInScreen(),
         ),
       ),
     );

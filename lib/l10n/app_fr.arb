@@ -82,5 +82,13 @@
     "sign_up_failed_create_account": "Votre création de compte à échoué.",
     "@sign_up_failed_create_account": {
       "description": "Error message for the failed to create account"
+    },
+    "sign_in_bad_credentials_title": "Mauvais identifiants",
+    "@sign_in_bad_credentials": {
+      "description": "Error message for the bad credentials"
+    },
+    "sign_in_bad_credentials_message": "Votre e-mail et mot de passe ne sont pas corrects.",
+    "@sign_in_bad_credentials_message": {
+      "description": "Error message for the bad credentials"
     }
 }

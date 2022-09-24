@@ -16,9 +16,9 @@ class LoginSuccessState extends LoginState {}
 class LoginFailureState extends LoginState {
   final String code;
 
-  const LoginFailureState(
-    this.code,
-  );
+  const LoginFailureState({
+    required this.code,
+  });
 
   @override
   List<Object> get props => [
