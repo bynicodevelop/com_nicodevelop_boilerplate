@@ -5,6 +5,7 @@ import "package:com_nicodevelop_dotmessenger/repositories/account_repository.dar
 import "package:com_nicodevelop_dotmessenger/repositories/authentication_repository.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/messages_repository.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/affiliate_repository.dart";
+import "package:com_nicodevelop_dotmessenger/services/authentication_status/authentication_status_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/bootstrap/bootstrap_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/create_account/create_account_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/login/login_bloc.dart";
@@ -37,6 +38,11 @@ class ServiceFactory extends StatelessWidget {
       firebaseFirestore: firebaseFirestore,
     );
 
+    final AuthenticationRepository authenticationRepository =
+        AuthenticationRepository(
+      firebaseAuth: firebaseAuth,
+    );
+
     final AccountRepository accountRepository = AccountRepository(
       firebaseAuth: firebaseAuth,
       firebaseFirestore: firebaseFirestore,
@@ -46,6 +52,12 @@ class ServiceFactory extends StatelessWidget {
       providers: [
         BlocProvider<BootstrapBloc>(
           create: (_) => BootstrapBloc()..add(OnBootstrapEvent()),
+        ),
+        BlocProvider(
+          lazy: false,
+          create: (_) => AuthenticationStatusBloc(
+            authenticationRepository: authenticationRepository,
+          ),
         ),
         BlocProvider<GetListMessageBloc>(
           create: (context) => GetListMessageBloc(
