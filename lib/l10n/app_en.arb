@@ -99,9 +99,17 @@
     "@profile_screen_save_button": {
       "description": "Label for the save button"
     },
+    "profile_screen_update_success_title": "Updated",
+    "@profile_screen_update_success_title": {
+      "description": "Title for the update success message"
+    },
     "profile_screen_update_error_title": "Error",
     "@profile_screen_update_error_title": {
       "description": "Title for the update error"
+    },
+    "profile_screen_update_success_description": "Your profile has been updated.",
+    "@profile_screen_update_success_description": {
+      "description": "Description for the update success message"
     },
     "profile_screen_update_email_invalid_description": "The email you entered is invalid.",
     "@profile_screen_update_email_invalid_description": {

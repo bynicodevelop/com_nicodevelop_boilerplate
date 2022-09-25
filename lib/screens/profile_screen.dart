@@ -1,4 +1,5 @@
 import "package:com_nicodevelop_dotmessenger/components/inputs/email/email_input_component.dart";
+import "package:com_nicodevelop_dotmessenger/components/inputs/password/password_input_component.dart";
 import "package:com_nicodevelop_dotmessenger/config/constants.dart";
 import "package:com_nicodevelop_dotmessenger/models/user_model.dart";
 import "package:com_nicodevelop_dotmessenger/services/update_account/update_account_bloc.dart";
@@ -22,6 +23,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -41,8 +43,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return BlocListener<UpdateAccountBloc, UpdateAccountState>(
       listener: (context, state) {
+        if (state is UpdateAccountLoadingState) return;
+
+        String title = t(context)!.profile_screen_update_success_title;
+        String message = t(context)!.profile_screen_update_success_description;
+
         if (state is UpdateAccountFailureState) {
-          print(state);
           final Map<String, dynamic> messages = {
             "email-already-in-use": t(context)!
                 .profile_screen_update_email_already_in_user_description,
@@ -56,12 +62,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 t(context)!.profile_screen_network_request_failed_description,
           };
 
-          sendNotificaton(
-            context,
-            t(context)!.profile_screen_update_error_title,
-            messages[state.code],
-          );
+          title = t(context)!.profile_screen_update_error_title;
+          message = messages[state.code];
         }
+
+        sendNotificaton(
+          context,
+          title,
+          message,
+        );
       },
       child: Scaffold(
         appBar: AppBar(
@@ -78,15 +87,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
               EmailInputComponent(
                 controller: _emailController,
               ),
+              PasswordInputComponent(
+                controller: _passwordController,
+              ),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
+                    if (!isEmail(_emailController.text) &&
+                        _passwordController.text.isEmpty) return;
+
                     if (!isEmail(_emailController.text)) {
                       sendNotificaton(
                         context,
-                        "t(context)!.profile_screen_invalid_email",
-                        "",
+                        t(context)!.profile_screen_update_error_title,
+                        t(context)!
+                            .profile_screen_update_email_invalid_description,
                       );
 
                       return;
@@ -96,6 +112,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           OnUpdateAccountEvent(
                             userModel: widget.userModel.copyWith(
                               email: _emailController.text,
+                              password: _passwordController.text,
                             ),
                           ),
                         );
