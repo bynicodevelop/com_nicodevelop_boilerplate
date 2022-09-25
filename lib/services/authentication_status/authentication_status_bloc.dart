@@ -24,9 +24,13 @@ class AuthenticationStatusBloc
 
     on<OnAuthenticationStatusEvent>((event, emit) {
       if (event.userModel.isEmpty()) {
-        emit(UnauthenticatedStatusState());
+        emit(UnauthenticatedStatusState(
+          userModel: event.userModel,
+        ));
       } else {
-        emit(AuthenticatedStatusState());
+        emit(AuthenticatedStatusState(
+          userModel: event.userModel,
+        ));
       }
     });
   }
