@@ -8,6 +8,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "48.0.0"
+  about_screen:
+    dependency: "direct main"
+    description:
+      name: about_screen
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.2"
   analyzer:
     dependency: transitive
     description:
@@ -574,6 +581,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.27.5"
+  settings_screen:
+    dependency: "direct main"
+    description:
+      name: settings_screen
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.5"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -635,6 +649,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.3.0"
+  transparent_image:
+    dependency: transitive
+    description:
+      name: transparent_image
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   typed_data:
     dependency: transitive
     description:
@@ -707,4 +728,4 @@ packages:
     version: "1.0.1+5"
 sdks:
   dart: ">=2.18.0 <3.0.0"
-  flutter: ">=1.20.0"
+  flutter: ">=2.5.0"
