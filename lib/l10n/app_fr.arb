@@ -90,5 +90,13 @@
     "sign_in_bad_credentials_message": "Votre e-mail et mot de passe ne sont pas corrects.",
     "@sign_in_bad_credentials_message": {
       "description": "Error message for the bad credentials"
+    },
+    "profile_screen_title": "Profil",
+    "@profile_screen_title": {
+      "description": "Title for the profile screen"
+    },
+    "profile_screen_save_button": "Enregistrer",
+    "@profile_screen_save_button": {
+      "description": "Label for the save button"
     }
 }

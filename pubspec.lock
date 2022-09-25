@@ -249,9 +249,11 @@ packages:
   firebase_auth_mocks:
     dependency: "direct dev"
     description:
-      name: firebase_auth_mocks
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: master
+      resolved-ref: "2abe676206e9e4c6b70e846da60154431a62f1a7"
+      url: "https://github.com/bynicodevelop/firebase_auth_mocks.git"
+    source: git
     version: "0.8.6"
   firebase_auth_platform_interface:
     dependency: transitive

@@ -73,7 +73,47 @@ class AccountRepository {
     }
   }
 
-  Future<void> update(Map<String, dynamic> data) async {}
+  Future<void> update(Map<String, dynamic> data) async {
+    assert(data["email"] != null);
+
+    final User? user = firebaseAuth.currentUser;
+
+    if (user == null) {
+      throw StandardException(
+        "User not found",
+        "unauthenticated",
+      );
+    }
+
+    info(
+      "$runtimeType - Updating account",
+      data: data,
+    );
+
+    try {
+      await user.updateEmail(data["email"]);
+
+      // if (data["password"] != null) {
+      //   await user.updatePassword(data["password"]);
+      // }
+    } on FirebaseAuthException catch (e) {
+      const String message = "Failed to update account";
+      String code = "unknown";
+
+      [
+        "email-already-in-use",
+        "invalid-email",
+        "requires-recent-login",
+      ].contains(e.code)
+          ? code = e.code
+          : code;
+
+      throw StandardException(
+        message,
+        code,
+      );
+    }
+  }
 
   Future<void> createOrUpdate(Map<String, dynamic> data) async {}
 
