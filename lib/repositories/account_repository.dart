@@ -95,7 +95,7 @@ class AccountRepository {
         await user.updateEmail(data["email"]);
       }
 
-      if ((data["password"] as String).isNotEmpty) {
+      if ((data["password"] ?? "").isNotEmpty) {
         await user.updatePassword(data["password"]);
       }
 
