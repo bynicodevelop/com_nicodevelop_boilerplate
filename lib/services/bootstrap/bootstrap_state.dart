@@ -7,6 +7,17 @@ abstract class BootstrapState extends Equatable {
   List<Object> get props => [];
 }
 
-class BootstrapInitialState extends BootstrapState {}
+class BootstrapInitialState extends BootstrapState {
+  final ReadyStartModel readyStartModel;
+
+  const BootstrapInitialState({
+    required this.readyStartModel,
+  });
+
+  @override
+  List<Object> get props => [
+        readyStartModel,
+      ];
+}
 
 class BootstrapReadyState extends BootstrapState {}

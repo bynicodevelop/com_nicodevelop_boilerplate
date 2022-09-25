@@ -1,6 +1,7 @@
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:cloud_functions/cloud_functions.dart";
 import "package:com_nicodevelop_dotmessenger/components/list_messages/bloc/get_list_message_bloc.dart";
+import "package:com_nicodevelop_dotmessenger/models/ready_start_model.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/account_repository.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/authentication_repository.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/messages_repository.dart";
@@ -51,7 +52,10 @@ class ServiceFactory extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<BootstrapBloc>(
-          create: (_) => BootstrapBloc()..add(OnBootstrapEvent()),
+          create: (_) => BootstrapBloc()
+            ..add(OnBootstrapEvent(
+              readyStartModel: ReadyStartModel(),
+            )),
         ),
         BlocProvider(
           lazy: false,

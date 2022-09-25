@@ -7,4 +7,15 @@ abstract class BootstrapEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class OnBootstrapEvent extends BootstrapEvent {}
+class OnBootstrapEvent extends BootstrapEvent {
+  final ReadyStartModel readyStartModel;
+
+  const OnBootstrapEvent({
+    required this.readyStartModel,
+  });
+
+  @override
+  List<Object> get props => [
+        readyStartModel,
+      ];
+}
