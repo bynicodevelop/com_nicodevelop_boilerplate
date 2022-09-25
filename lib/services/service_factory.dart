@@ -11,6 +11,7 @@ import "package:com_nicodevelop_dotmessenger/services/bootstrap/bootstrap_bloc.d
 import "package:com_nicodevelop_dotmessenger/services/create_account/create_account_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/login/login_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/search_affiliate_code/search_affiliate_code_bloc.dart";
+import "package:com_nicodevelop_dotmessenger/services/update_account/update_account_bloc.dart";
 import "package:firebase_auth/firebase_auth.dart";
 import "package:firebase_storage/firebase_storage.dart";
 import "package:flutter/material.dart";
@@ -83,6 +84,11 @@ class ServiceFactory extends StatelessWidget {
             authenticationRepository: AuthenticationRepository(
               firebaseAuth: firebaseAuth,
             ),
+          ),
+        ),
+        BlocProvider<UpdateAccountBloc>(
+          create: (context) => UpdateAccountBloc(
+            accountRepository: accountRepository,
           ),
         ),
       ],

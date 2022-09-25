@@ -91,19 +91,32 @@ class AccountRepository {
     );
 
     try {
-      await user.updateEmail(data["email"]);
+      if (data["email"] != user.email) {
+        await user.updateEmail(data["email"]);
+      }
 
-      // if (data["password"] != null) {
-      //   await user.updatePassword(data["password"]);
-      // }
+      if (data["password"] != null) {
+        await user.updatePassword(data["password"]);
+      }
+
+      info(
+        "$runtimeType - Account updated",
+        data: data,
+      );
     } on FirebaseAuthException catch (e) {
       const String message = "Failed to update account";
       String code = "unknown";
 
+      error(e.message ?? message, data: {
+        "code": e.code,
+      });
+
       [
         "email-already-in-use",
         "invalid-email",
-        "requires-recent-login",
+        "operation-not-allowed",
+        "weak-password",
+        "network-request-failed",
       ].contains(e.code)
           ? code = e.code
           : code;

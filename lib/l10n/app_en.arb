@@ -98,5 +98,29 @@
     "profile_screen_save_button": "Save",
     "@profile_screen_save_button": {
       "description": "Label for the save button"
+    },
+    "profile_screen_update_error_title": "Error",
+    "@profile_screen_update_error_title": {
+      "description": "Title for the update error"
+    },
+    "profile_screen_update_email_invalid_description": "The email you entered is invalid.",
+    "@profile_screen_update_email_invalid_description": {
+      "description": "Error message for the invalid email"
+    },
+    "profile_screen_update_email_already_in_user_description": "The email you entered is already in use.",
+    "@profile_screen_update_email_already_in_user_description": {
+      "description": "Error message for the invalid email"
+    },
+    "profile_screen_update_operation_not_allowed_description": "Operation not allowed. Please try again later.",
+    "@profile_screen_update_operation_not_allowed_description": {
+      "description": "Error message for the invalid email"
+    },
+    "profile_screen_update_weak_password_description": "Weak password (minimum 6 characters).",
+    "@profile_screen_update_weak_password_description": {
+      "description": "Error message for the invalid email"
+    },
+    "profile_screen_network_request_failed_description": "Network request failed.",
+    "@profile_screen_network_request_failed_description": {
+      "description": "Error message for the invalid email"
     }
 }

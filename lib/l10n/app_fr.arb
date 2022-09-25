@@ -98,5 +98,29 @@
     "profile_screen_save_button": "Enregistrer",
     "@profile_screen_save_button": {
       "description": "Label for the save button"
+    },
+    "profile_screen_update_error_title": "Erreur",
+    "@profile_screen_update_error_title": {
+      "description": "Title for the update error"
+    },
+    "profile_screen_update_email_invalid_description": "Merci d'entrer une adresse e-mail valide",
+    "@profile_screen_update_email_invalid_description": {
+      "description": "Error message for the invalid email"
+    },
+    "profile_screen_update_email_already_in_user_description": "Un compte avec cette adresse e-mail existe déjà.",
+    "@profile_screen_update_email_already_in_user_description": {
+      "description": "Error message for the invalid email"
+    },
+    "profile_screen_update_operation_not_allowed_description": "La mise à jour de votre profil n'est pas autorisée pour le moment. Merci de réeessayer plus tard.",
+    "@profile_screen_update_operation_not_allowed_description": {
+      "description": "Error message for the invalid email"
+    },
+    "profile_screen_update_weak_password_description": "Votre mot de passe n'est pas assez complexe (6 caractères minimum)",
+    "@profile_screen_update_weak_password_description": {
+      "description": "Error message for the invalid email"
+    },
+    "profile_screen_network_request_failed_description": "Problème de connexion. Merci de réeessayer plus tard.", 
+    "@profile_screen_network_request_failed_description": {
+      "description": "Error message for the invalid email"
     }
 }
