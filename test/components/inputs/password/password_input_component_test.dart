@@ -21,6 +21,33 @@ void main() {
     expect(textFinder, findsOneWidget);
   });
 
+  testWidgets("Should toggle obscure text", (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: PasswordInputComponent(
+            controller: TextEditingController(),
+          ),
+        ),
+      ),
+    );
+
+    final passwordFinder = find.byKey(const Key("password"));
+    final textField = tester.widget<TextField>(passwordFinder);
+
+    expect(textField.obscureText, true);
+
+    await tester.tap(find.byIcon(Icons.visibility));
+    await tester.pumpAndSettle();
+
+    final passwordFinderAfter = find.byKey(const Key("password"));
+    final textFieldAfter = tester.widget<TextField>(passwordFinderAfter);
+
+    expect(textFieldAfter.obscureText, false);
+  });
+
   testWidgets("Should expect an error when password is invalid (min 6)", (
     WidgetTester tester,
   ) async {
