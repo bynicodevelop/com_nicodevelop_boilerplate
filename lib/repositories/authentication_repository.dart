@@ -2,6 +2,7 @@ import "dart:async";
 
 import "package:com_nicodevelop_dotmessenger/exceptions/standard_exception.dart";
 import "package:com_nicodevelop_dotmessenger/models/user_model.dart";
+import "package:com_nicodevelop_dotmessenger/utils/logger.dart";
 import "package:firebase_auth/firebase_auth.dart";
 
 class AuthenticationRepository {
@@ -41,5 +42,13 @@ class AuthenticationRepository {
         e.code,
       );
     }
+  }
+
+  Future<void> logout() async {
+    info(
+      "$runtimeType - Logging out",
+    );
+
+    await firebaseAuth.signOut();
   }
 }

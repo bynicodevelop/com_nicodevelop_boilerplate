@@ -154,5 +154,29 @@
     "delete_account_button_confirm_deleted_description": "Your account has been deleted.",
     "@delete_account_button_confirm_deleted_description": {
       "description": "Description for the delete account confirmation modal"
+    },
+    "setting_item_profile_title": "Profile",
+    "@setting_item_profile_title": {
+      "description": "Title for the profile setting item"
+    },
+    "setting_item_profile_description": "Edit your profile",
+    "@setting_item_profile_description": {
+      "description": "Description for the profile setting item"
+    },
+    "setting_item_about_title": "About",
+    "@setting_item_about_title": {
+      "description": "Title for the about setting item"
+    },
+    "setting_item_about_description": "About this app",
+    "@setting_item_about_description": {
+      "description": "Description for the about setting item"
+    },
+    "setting_item_logout_title": "Logout",
+    "@setting_item_logout_title": {
+      "description": "Title for the logout setting item"
+    },
+    "setting_item_logout_description": "Logout from this app",
+    "@setting_item_logout_description": {
+      "description": "Description for the logout setting item"
     }
 }
