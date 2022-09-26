@@ -15,7 +15,7 @@ class Bootstrap extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<BootstrapBloc, BootstrapState>(
       listener: (context, state) {
-        if (state is BootstrapReadyState) {
+        if ((state as BootstrapInitialState).isReady) {
           FlutterNativeSplash.remove();
         }
       },
