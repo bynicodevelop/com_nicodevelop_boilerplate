@@ -21,6 +21,7 @@ class PasswordInputComponent extends StatefulWidget {
 class _PasswordInputComponentState extends State<PasswordInputComponent> {
   final FocusNode _focusNode = FocusNode();
   bool _hasError = false;
+  bool _obscureText = true;
 
   @override
   void initState() {
@@ -38,11 +39,22 @@ class _PasswordInputComponentState extends State<PasswordInputComponent> {
   Widget build(BuildContext context) {
     return TextField(
       key: const Key("password"),
+      obscureText: _obscureText,
       focusNode: _focusNode,
       controller: widget.controller,
       decoration: InputDecoration(
         hintText: widget.label,
         errorText: _hasError ? widget.errorText : null,
+        suffixIcon: IconButton(
+          icon: Icon(
+            _obscureText ? Icons.visibility : Icons.visibility_off,
+          ),
+          onPressed: () {
+            setState(() {
+              _obscureText = !_obscureText;
+            });
+          },
+        ),
       ),
     );
   }
