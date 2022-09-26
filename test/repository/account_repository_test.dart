@@ -135,4 +135,70 @@ void main() {
       );
     });
   });
+
+  group("Update", () {
+    late AccountRepository accountRepository;
+    late MockFirebaseAuth mockFirebaseAuth;
+    late FakeFirebaseFirestore mockFirebaseFirestore;
+
+    test("Should update email with success", () async {
+      // ARRANGE
+      mockFirebaseAuth = MockFirebaseAuth(
+        signedIn: true,
+        mockUser: MockUser(
+          email: "john@domain.tld",
+        ),
+      );
+      mockFirebaseFirestore = FakeFirebaseFirestore();
+
+      accountRepository = AccountRepository(
+        firebaseAuth: mockFirebaseAuth,
+        firebaseFirestore: mockFirebaseFirestore,
+      );
+
+      // ACT
+      await accountRepository.update({
+        "email": "johnny@domain.tld",
+      });
+
+      // ASSERT
+      expect(
+        mockFirebaseAuth.currentUser,
+        isNotNull,
+      );
+
+      expect(
+        mockFirebaseAuth.currentUser!.email,
+        "johnny@domain.tld",
+      );
+    });
+
+    test("should expect StandardException exception (unauthenticated)",
+        () async {
+      // ARRANGE
+      mockFirebaseAuth = MockFirebaseAuth(
+        signedIn: false,
+      );
+
+      mockFirebaseFirestore = FakeFirebaseFirestore();
+
+      accountRepository = AccountRepository(
+        firebaseAuth: mockFirebaseAuth,
+        firebaseFirestore: mockFirebaseFirestore,
+      );
+
+      // ACT
+      // ASSERT
+      expect(
+        () async => await accountRepository.update({
+          "email": "john@domain.tld",
+        }),
+        throwsA(
+          predicate(
+            (e) => e is StandardException && e.code == "unauthenticated",
+          ),
+        ),
+      );
+    });
+  });
 }

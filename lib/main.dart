@@ -57,6 +57,8 @@ Future<void> main() async {
   await FirebaseFirestore.instance.terminate();
   await FirebaseFirestore.instance.clearPersistence();
 
+  // await FirebaseAuth.instance.signOut();
+
   runApp(App(
     firebaseAuth: FirebaseAuth.instance,
     firebaseFirestore: FirebaseFirestore.instance,

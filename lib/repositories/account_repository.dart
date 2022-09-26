@@ -73,9 +73,104 @@ class AccountRepository {
     }
   }
 
-  Future<void> update(Map<String, dynamic> data) async {}
+  Future<void> update(Map<String, dynamic> data) async {
+    assert(data["email"] != null);
+
+    final User? user = firebaseAuth.currentUser;
+
+    if (user == null) {
+      throw StandardException(
+        "User not found",
+        "unauthenticated",
+      );
+    }
+
+    info(
+      "$runtimeType - Updating account",
+      data: data,
+    );
+
+    try {
+      if (data["email"] != user.email) {
+        await user.updateEmail(data["email"]);
+      }
+
+      if ((data["password"] ?? "").isNotEmpty) {
+        await user.updatePassword(data["password"]);
+      }
+
+      info(
+        "$runtimeType - Account updated",
+        data: data,
+      );
+    } on FirebaseAuthException catch (e) {
+      const String message = "Failed to update account";
+      String code = "unknown";
+
+      error(e.message ?? message, data: {
+        "code": e.code,
+      });
+
+      [
+        "email-already-in-use",
+        "invalid-email",
+        "operation-not-allowed",
+        "weak-password",
+        "network-request-failed",
+      ].contains(e.code)
+          ? code = e.code
+          : code;
+
+      throw StandardException(
+        message,
+        code,
+      );
+    }
+  }
 
   Future<void> createOrUpdate(Map<String, dynamic> data) async {}
 
-  Future<void> delete(Map<String, dynamic> data) async {}
+  Future<void> delete() async {
+    final User? user = firebaseAuth.currentUser;
+
+    if (user == null) {
+      throw StandardException(
+        "User not found",
+        "unauthenticated",
+      );
+    }
+
+    info(
+      "$runtimeType - Deleting account",
+    );
+
+    try {
+      await user.delete();
+
+      await firebaseAuth.signOut();
+
+      info(
+        "$runtimeType - Account deleted",
+      );
+    } on FirebaseAuthException catch (e) {
+      const String message = "Failed to delete account";
+      String code = "unknown";
+
+      error(e.message ?? message, data: {
+        "code": e.code,
+      });
+
+      [
+        "requires-recent-login",
+        "network-request-failed",
+      ].contains(e.code)
+          ? code = e.code
+          : code;
+
+      throw StandardException(
+        message,
+        code,
+      );
+    }
+  }
 }

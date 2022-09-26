@@ -90,5 +90,69 @@
     "sign_in_bad_credentials_message": "The email or password you entered is incorrect.",
     "@sign_in_bad_credentials_message": {
       "description": "Error message for the bad credentials"
+    },
+    "profile_screen_title": "Profile",
+    "@profile_screen_title": {
+      "description": "Title for the profile screen"
+    },
+    "profile_screen_save_button": "Save",
+    "@profile_screen_save_button": {
+      "description": "Label for the save button"
+    },
+    "profile_screen_update_success_title": "Updated",
+    "@profile_screen_update_success_title": {
+      "description": "Title for the update success message"
+    },
+    "profile_screen_update_error_title": "Error",
+    "@profile_screen_update_error_title": {
+      "description": "Title for the update error"
+    },
+    "profile_screen_update_success_description": "Your profile has been updated.",
+    "@profile_screen_update_success_description": {
+      "description": "Description for the update success message"
+    },
+    "profile_screen_update_email_invalid_description": "The email you entered is invalid.",
+    "@profile_screen_update_email_invalid_description": {
+      "description": "Error message for the invalid email"
+    },
+    "profile_screen_update_email_already_in_user_description": "The email you entered is already in use.",
+    "@profile_screen_update_email_already_in_user_description": {
+      "description": "Error message for the invalid email"
+    },
+    "profile_screen_update_operation_not_allowed_description": "Operation not allowed. Please try again later.",
+    "@profile_screen_update_operation_not_allowed_description": {
+      "description": "Error message for the invalid email"
+    },
+    "profile_screen_update_weak_password_description": "Weak password (minimum 6 characters).",
+    "@profile_screen_update_weak_password_description": {
+      "description": "Error message for the invalid email"
+    },
+    "profile_screen_network_request_failed_description": "Network request failed.",
+    "@profile_screen_network_request_failed_description": {
+      "description": "Error message for the invalid email"
+    },
+    "common_cancel": "Cancel",
+    "@common_cancel": {
+      "description": "Label for the cancel button"
+    },
+    "common_confirm": "Confirm",
+    "@common_confirm": {
+      "description": "Label for the confirm button"
+    },
+    "delete_account_button_confirm_modal_title": "Delete account",
+    "@delete_account_button_confirm_modal_title": {
+      "description": "Title for the delete account confirmation modal"
+    },
+    "delete_account_button_confirm_modal_description": "Are you sure you want to delete your account? This action cannot be undone.",
+    "@delete_account_button_confirm_modal_description": {
+      "description": "Description for the delete account confirmation modal"
+    },
+    "delete_account_button_confirm_deleted_title": "Deleted",
+    "@delete_account_button_confirm_deleted_title": {
+      "description": "Title for the delete account confirmation modal"
+    },
+    "delete_account_button_confirm_deleted_description": "Your account has been deleted.",
+    "@delete_account_button_confirm_deleted_description": {
+      "description": "Description for the delete account confirmation modal"
     }
 }
