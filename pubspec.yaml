@@ -55,6 +55,7 @@ dependencies:
   another_flushbar: ^1.12.29
   settings_screen: ^0.0.5
   about_screen: ^0.0.2
+  show_confirm_modal: ^1.0.2
   
 
 dev_dependencies:

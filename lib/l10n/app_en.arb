@@ -130,5 +130,29 @@
     "profile_screen_network_request_failed_description": "Network request failed.",
     "@profile_screen_network_request_failed_description": {
       "description": "Error message for the invalid email"
+    },
+    "common_cancel": "Cancel",
+    "@common_cancel": {
+      "description": "Label for the cancel button"
+    },
+    "common_confirm": "Confirm",
+    "@common_confirm": {
+      "description": "Label for the confirm button"
+    },
+    "delete_account_button_confirm_modal_title": "Delete account",
+    "@delete_account_button_confirm_modal_title": {
+      "description": "Title for the delete account confirmation modal"
+    },
+    "delete_account_button_confirm_modal_description": "Are you sure you want to delete your account? This action cannot be undone.",
+    "@delete_account_button_confirm_modal_description": {
+      "description": "Description for the delete account confirmation modal"
+    },
+    "delete_account_button_confirm_deleted_title": "Deleted",
+    "@delete_account_button_confirm_deleted_title": {
+      "description": "Title for the delete account confirmation modal"
+    },
+    "delete_account_button_confirm_deleted_description": "Your account has been deleted.",
+    "@delete_account_button_confirm_deleted_description": {
+      "description": "Description for the delete account confirmation modal"
     }
 }

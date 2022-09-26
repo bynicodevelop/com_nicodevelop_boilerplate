@@ -1,3 +1,4 @@
+import "package:com_nicodevelop_dotmessenger/components/account/account_delete_button_component.dart";
 import "package:com_nicodevelop_dotmessenger/components/inputs/email/email_input_component.dart";
 import "package:com_nicodevelop_dotmessenger/components/inputs/password/password_input_component.dart";
 import "package:com_nicodevelop_dotmessenger/config/constants.dart";
@@ -121,7 +122,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     t(context)!.profile_screen_save_button,
                   ),
                 ),
-              )
+              ),
+              const SizedBox(
+                width: double.infinity,
+                child: AccountDeleteButtonComponent(),
+              ),
             ],
           ),
         ),

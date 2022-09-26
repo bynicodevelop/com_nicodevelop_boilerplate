@@ -130,5 +130,47 @@ class AccountRepository {
 
   Future<void> createOrUpdate(Map<String, dynamic> data) async {}
 
-  Future<void> delete(Map<String, dynamic> data) async {}
+  Future<void> delete() async {
+    final User? user = firebaseAuth.currentUser;
+
+    if (user == null) {
+      throw StandardException(
+        "User not found",
+        "unauthenticated",
+      );
+    }
+
+    info(
+      "$runtimeType - Deleting account",
+    );
+
+    try {
+      await user.delete();
+
+      await firebaseAuth.signOut();
+
+      info(
+        "$runtimeType - Account deleted",
+      );
+    } on FirebaseAuthException catch (e) {
+      const String message = "Failed to delete account";
+      String code = "unknown";
+
+      error(e.message ?? message, data: {
+        "code": e.code,
+      });
+
+      [
+        "requires-recent-login",
+        "network-request-failed",
+      ].contains(e.code)
+          ? code = e.code
+          : code;
+
+      throw StandardException(
+        message,
+        code,
+      );
+    }
+  }
 }

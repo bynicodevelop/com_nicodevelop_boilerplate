@@ -130,5 +130,29 @@
     "profile_screen_network_request_failed_description": "Problème de connexion. Merci de réeessayer plus tard.", 
     "@profile_screen_network_request_failed_description": {
       "description": "Error message for the invalid email"
+    },
+    "common_cancel": "Annuler",
+    "@common_cancel": {
+      "description": "Label for the cancel button"
+    },
+    "common_confirm": "Confirmer",
+    "@common_confirm": {
+      "description": "Label for the confirm button"
+    },
+    "delete_account_button_confirm_modal_title": "Suppression de compte",
+    "@delete_account_button_confirm_modal_title": {
+      "description": "Title for the delete account confirmation modal"
+    },
+    "delete_account_button_confirm_modal_description": "Êtes-vous sûr de vouloir supprimer votre compte. Cette opération est irréversible.",
+    "@delete_account_button_confirm_modal_description": {
+      "description": "Description for the delete account confirmation modal"
+    },
+    "delete_account_button_confirm_deleted_title": "Deleted",
+    "@delete_account_button_confirm_deleted_title": {
+      "description": "Title for the delete account confirmation modal"
+    },
+    "delete_account_button_confirm_deleted_description": "Your account has been deleted.",
+    "@delete_account_button_confirm_deleted_description": {
+      "description": "Description for the delete account confirmation modal"
     }
 }

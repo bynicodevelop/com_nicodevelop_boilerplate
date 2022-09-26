@@ -9,6 +9,7 @@ import "package:com_nicodevelop_dotmessenger/repositories/affiliate_repository.d
 import "package:com_nicodevelop_dotmessenger/services/authentication_status/authentication_status_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/bootstrap/bootstrap_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/create_account/create_account_bloc.dart";
+import "package:com_nicodevelop_dotmessenger/services/delete_account/delete_account_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/login/login_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/search_affiliate_code/search_affiliate_code_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/update_account/update_account_bloc.dart";
@@ -88,6 +89,11 @@ class ServiceFactory extends StatelessWidget {
         ),
         BlocProvider<UpdateAccountBloc>(
           create: (context) => UpdateAccountBloc(
+            accountRepository: accountRepository,
+          ),
+        ),
+        BlocProvider<DeleteAccountBloc>(
+          create: (context) => DeleteAccountBloc(
             accountRepository: accountRepository,
           ),
         ),
