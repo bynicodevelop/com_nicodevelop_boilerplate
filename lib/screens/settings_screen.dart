@@ -1,5 +1,7 @@
 import "package:com_nicodevelop_dotmessenger/models/user_model.dart";
 import "package:com_nicodevelop_dotmessenger/services/authentication_status/authentication_status_bloc.dart";
+import "package:com_nicodevelop_dotmessenger/services/logout/logout_bloc.dart";
+import "package:com_nicodevelop_dotmessenger/utils/translate.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:settings_screen/settings_screen.dart";
@@ -19,8 +21,8 @@ class SettingsScreen extends StatelessWidget {
       ),
       body: settingsScreen([
         {
-          "title": "Profile",
-          "subtitle": "Edit your profile",
+          "title": t(context)!.setting_item_profile_title,
+          "subtitle": t(context)!.setting_item_profile_description,
           "onTap": () async {
             final UserModel userModel = (context
                     .read<AuthenticationStatusBloc>()
@@ -38,8 +40,8 @@ class SettingsScreen extends StatelessWidget {
           },
         },
         {
-          "title": "About",
-          "subtitle": "Version 1.0.0",
+          "title": t(context)!.setting_item_about_title,
+          "subtitle": t(context)!.setting_item_about_description,
           "onTap": () async => Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -47,6 +49,11 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
         },
+        {
+          "title": t(context)!.setting_item_logout_title,
+          "subtitle": t(context)!.setting_item_logout_description,
+          "onTap": () async => context.read<LogoutBloc>().add(OnLogoutEvent()),
+        }
       ]),
     );
   }
