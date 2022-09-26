@@ -14,10 +14,10 @@ class BootstrapInitialState extends BootstrapState {
     required this.readyStartModel,
   });
 
+  bool get isReady => readyStartModel.isReady();
+
   @override
   List<Object> get props => [
         readyStartModel,
       ];
 }
-
-class BootstrapReadyState extends BootstrapState {}

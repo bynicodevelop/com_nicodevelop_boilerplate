@@ -12,11 +12,6 @@ class BootstrapBloc extends Bloc<BootstrapEvent, BootstrapState> {
           readyStartModel: ReadyStartModel(),
         )) {
     on<OnBootstrapEvent>((event, emit) {
-      if (event.readyStartModel.isReady()) {
-        emit(BootstrapReadyState());
-        return;
-      }
-
       emit(BootstrapInitialState(
         readyStartModel: event.readyStartModel,
       ));
