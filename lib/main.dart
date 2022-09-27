@@ -43,10 +43,10 @@ Future<void> main() async {
       8080,
     );
 
-    // FirebaseStorage.instance.useStorageEmulator(
-    //   host,
-    //   9199,
-    // );
+    FirebaseStorage.instance.useStorageEmulator(
+      host,
+      9199,
+    );
 
     FirebaseFunctions.instance.useFunctionsEmulator(
       host,

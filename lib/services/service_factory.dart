@@ -6,6 +6,7 @@ import "package:com_nicodevelop_dotmessenger/repositories/account_repository.dar
 import "package:com_nicodevelop_dotmessenger/repositories/authentication_repository.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/messages_repository.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/affiliate_repository.dart";
+import "package:com_nicodevelop_dotmessenger/repositories/upload_repository.dart";
 import "package:com_nicodevelop_dotmessenger/services/authentication_status/authentication_status_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/bootstrap/bootstrap_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/create_account/create_account_bloc.dart";
@@ -14,6 +15,7 @@ import "package:com_nicodevelop_dotmessenger/services/login/login_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/logout/logout_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/search_affiliate_code/search_affiliate_code_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/update_account/update_account_bloc.dart";
+import "package:com_nicodevelop_dotmessenger/services/upload_file/upload_file_bloc.dart";
 import "package:firebase_auth/firebase_auth.dart";
 import "package:firebase_storage/firebase_storage.dart";
 import "package:flutter/material.dart";
@@ -50,6 +52,11 @@ class ServiceFactory extends StatelessWidget {
     final AccountRepository accountRepository = AccountRepository(
       firebaseAuth: firebaseAuth,
       firebaseFirestore: firebaseFirestore,
+    );
+
+    final UploadRepository uploadRepository = UploadRepository(
+      firebaseAuth: firebaseAuth,
+      firebaseStorage: firebaseStorage,
     );
 
     return MultiBlocProvider(
@@ -101,6 +108,11 @@ class ServiceFactory extends StatelessWidget {
         BlocProvider<LogoutBloc>(
           create: (context) => LogoutBloc(
             authenticationRepository: authenticationRepository,
+          ),
+        ),
+        BlocProvider(
+          create: (context) => UploadFileBloc(
+            uploadRepository: uploadRepository,
           ),
         ),
       ],

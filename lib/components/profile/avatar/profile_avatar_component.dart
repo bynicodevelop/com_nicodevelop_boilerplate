@@ -32,6 +32,7 @@ class ProfileAvatarComponent extends StatelessWidget {
 
     return CircleAvatar(
       radius: radius,
+      backgroundColor: Colors.grey[100],
       backgroundImage: url.isNotEmpty ? NetworkImage(url) : null,
       child: url.isNotEmpty
           ? null

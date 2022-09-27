@@ -57,6 +57,8 @@ dependencies:
   about_screen: ^0.0.2
   show_confirm_modal: ^1.0.2
   network_image_mock: ^2.1.1
+  image_picker: ^0.8.5+3
+  crypto: ^3.0.2
   
 
 dev_dependencies:
