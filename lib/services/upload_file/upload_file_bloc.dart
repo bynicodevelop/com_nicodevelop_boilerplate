@@ -18,12 +18,12 @@ class UploadFileBloc extends Bloc<UploadFileEvent, UploadFileState> {
       emit(UploadFileLoadingState());
 
       try {
-        final String filename = await uploadRepository.uploadFile({
+        final String photoURL = await uploadRepository.uploadFile({
           "file": event.file,
         });
 
         emit(UploadFileSuccessState(
-          filename: filename,
+          photoURL: photoURL,
         ));
       } on StandardException catch (e) {
         emit(UploadFileFailureState(

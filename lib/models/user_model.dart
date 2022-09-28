@@ -4,19 +4,19 @@ class UserModel extends Equatable {
   final String uid;
   final String email;
   final String password;
-  final String photoUrl;
+  final String photoURL;
 
   const UserModel({
     required this.uid,
     required this.email,
-    this.photoUrl = "",
+    this.photoURL = "",
     this.password = "",
   });
 
   static UserModel empty() => const UserModel(
         uid: "",
         email: "",
-        photoUrl: "",
+        photoURL: "",
         password: "",
       );
 
@@ -25,27 +25,27 @@ class UserModel extends Equatable {
   UserModel copyWith({
     String? uid,
     String? email,
-    String? photoUrl,
+    String? photoURL,
     String? password,
   }) =>
       UserModel(
         uid: uid ?? this.uid,
         email: email ?? this.email,
-        photoUrl: photoUrl ?? this.photoUrl,
+        photoURL: photoURL ?? this.photoURL,
         password: password ?? this.password,
       );
 
   factory UserModel.fromMap(Map<String, dynamic> data) => UserModel(
         uid: data["uid"],
         email: data["email"],
-        photoUrl: data["photoUrl"],
+        photoURL: data["photoURL"],
         password: data["password"],
       );
 
   Map<String, dynamic> toMap() => {
         "uid": uid,
         "email": email,
-        "photoUrl": photoUrl,
+        "photoURL": photoURL,
         "password": password,
       };
 
@@ -53,7 +53,7 @@ class UserModel extends Equatable {
   List<Object> get props => [
         uid,
         email,
-        photoUrl,
+        photoURL,
         password,
       ];
 }

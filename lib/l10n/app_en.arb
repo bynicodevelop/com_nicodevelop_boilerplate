@@ -178,5 +178,13 @@
     "setting_item_logout_description": "Logout from this app",
     "@setting_item_logout_description": {
       "description": "Description for the logout setting item"
+    },
+    "upload_file_error_title": "Error",
+    "@upload_file_error_title": {
+      "description": "Title for the upload file error"
+    },
+    "upload_file_error_description": "Failed to upload file",
+    "@upload_file_error_description": {
+      "description": "Description for the avatar upload file error"
     }
 }

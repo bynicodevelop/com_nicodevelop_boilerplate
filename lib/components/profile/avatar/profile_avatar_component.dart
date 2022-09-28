@@ -3,13 +3,13 @@ import "package:flutter/material.dart";
 class ProfileAvatarComponent extends StatelessWidget {
   final String username;
   final double radius;
-  final String url;
+  final String photoURL;
 
   const ProfileAvatarComponent({
     super.key,
     required this.username,
     this.radius = 50,
-    this.url = "",
+    this.photoURL = "",
   });
 
   String _generateInitials(String value) {
@@ -33,13 +33,13 @@ class ProfileAvatarComponent extends StatelessWidget {
     return CircleAvatar(
       radius: radius,
       backgroundColor: Colors.grey[100],
-      backgroundImage: url.isNotEmpty ? NetworkImage(url) : null,
-      child: url.isNotEmpty
+      backgroundImage: photoURL.isNotEmpty ? NetworkImage(photoURL) : null,
+      child: photoURL.isNotEmpty
           ? null
           : Text(
               initials,
               style: TextStyle(
-                fontSize: radius * (1.8 / initials.length),
+                fontSize: radius * (1.4 / initials.length),
               ),
             ),
     );

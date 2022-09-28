@@ -12,15 +12,15 @@ class UploadFileInitialState extends UploadFileState {}
 class UploadFileLoadingState extends UploadFileState {}
 
 class UploadFileSuccessState extends UploadFileState {
-  final String filename;
+  final String photoURL;
 
   const UploadFileSuccessState({
-    required this.filename,
+    required this.photoURL,
   });
 
   @override
   List<Object> get props => [
-        filename,
+        photoURL,
       ];
 }
 

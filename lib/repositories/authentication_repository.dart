@@ -20,6 +20,7 @@ class AuthenticationRepository {
             userModel = userModel.copyWith(
               uid: user.uid,
               email: user.email,
+              photoURL: user.photoURL ?? "",
             );
           }
 

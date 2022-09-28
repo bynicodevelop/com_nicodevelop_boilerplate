@@ -48,14 +48,29 @@ class UploadRepository {
       "path": path,
     });
 
-    Reference ref = firebaseStorage.ref(path);
+    try {
+      Reference ref = firebaseStorage.ref(path);
 
-    UploadTask uploadTask = ref.putFile(
-      File(data["file"].path),
-    );
+      UploadTask uploadTask = ref.putFile(
+        File(data["file"].path),
+      );
 
-    await uploadTask;
+      await uploadTask;
 
-    return filename;
+      return await ref.getDownloadURL();
+    } on FirebaseException catch (e) {
+      const String message = "Failed to upload file";
+      String code = e.code;
+
+      error(e.message ?? message, data: {
+        "message": e.message,
+        "code": code,
+      });
+
+      throw StandardException(
+        message,
+        code,
+      );
+    }
   }
 }

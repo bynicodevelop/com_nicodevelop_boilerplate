@@ -74,8 +74,6 @@ class AccountRepository {
   }
 
   Future<void> update(Map<String, dynamic> data) async {
-    assert(data["email"] != null);
-
     final User? user = firebaseAuth.currentUser;
 
     if (user == null) {
@@ -92,11 +90,18 @@ class AccountRepository {
 
     try {
       if (data["email"] != user.email) {
+        info("$runtimeType - Updating email");
         await user.updateEmail(data["email"]);
       }
 
       if ((data["password"] ?? "").isNotEmpty) {
+        info("$runtimeType - Updating password");
         await user.updatePassword(data["password"]);
+      }
+
+      if (data["photoURL"] != null) {
+        info("$runtimeType - Updating photoURL");
+        await user.updatePhotoURL(data["photoURL"]);
       }
 
       info(
