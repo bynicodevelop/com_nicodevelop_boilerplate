@@ -58,6 +58,9 @@ class ProfileUpdateAvatarButtonComponent extends StatelessWidget {
           child: IconButton(
             color: Colors.white,
             onPressed: () async {
+              final UploadFileBloc uploadFileBloc =
+                  context.read<UploadFileBloc>();
+
               final ImagePicker picker = ImagePicker();
 
               final XFile? image = await picker.pickImage(
@@ -66,9 +69,9 @@ class ProfileUpdateAvatarButtonComponent extends StatelessWidget {
 
               if (image == null) return;
 
-              context.read<UploadFileBloc>().add(OnUploadFileEvent(
-                    file: image,
-                  ));
+              uploadFileBloc.add(OnUploadFileEvent(
+                file: image,
+              ));
             },
             icon: const Icon(
               Icons.camera_alt,
