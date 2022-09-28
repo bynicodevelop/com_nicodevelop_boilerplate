@@ -73,6 +73,33 @@ class AccountRepository {
     }
   }
 
+  Future<void> _updateFirestoreUserProfile(Map<String, dynamic> data) async {
+    assert(data["uid"] != null);
+
+    info(
+      "$runtimeType - Updating Firestore user profile",
+      data: data,
+    );
+
+    final DocumentReference<Map<String, dynamic>> userReference =
+        firebaseFirestore.collection("users").doc(data["uid"]);
+
+    final DocumentSnapshot<Map<String, dynamic>> userSnapshot =
+        await userReference.get();
+
+    if (!userSnapshot.exists) {
+      await userReference.set({
+        "photoURL": data["photoURL"],
+      });
+
+      return;
+    }
+
+    await userReference.update({
+      "photoURL": data["photoURL"],
+    });
+  }
+
   Future<void> update(Map<String, dynamic> data) async {
     final User? user = firebaseAuth.currentUser;
 
@@ -102,6 +129,11 @@ class AccountRepository {
       if (data["photoURL"] != null) {
         info("$runtimeType - Updating photoURL");
         await user.updatePhotoURL(data["photoURL"]);
+
+        await _updateFirestoreUserProfile({
+          "uid": user.uid,
+          "photoURL": data["photoURL"],
+        });
       }
 
       info(

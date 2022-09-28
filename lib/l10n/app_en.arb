@@ -186,5 +186,13 @@
     "upload_file_error_description": "Failed to upload file",
     "@upload_file_error_description": {
       "description": "Description for the avatar upload file error"
+    },
+    "avatar_image_update_success_title": "Updated",
+    "@avatar_image_update_success_title": {
+      "description": "Title for the avatar update success message"
+    },
+    "avatar_image_update_success_description": "Your avatar has been updated.",
+    "@avatar_image_update_success_description": {
+      "description": "Description for the avatar update success message"
     }
 }

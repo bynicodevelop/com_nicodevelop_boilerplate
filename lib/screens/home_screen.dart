@@ -28,6 +28,11 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Center(
         child: ProfileAvatarUpdateWrapper(
+          onAvatarUpdated: () {
+            context
+                .read<AuthenticationStatusBloc>()
+                .add(OnRefreshAuthenticationStatusEvent());
+          },
           child:
               BlocBuilder<AuthenticationStatusBloc, AuthenticationStatusState>(
             builder: (context, state) {

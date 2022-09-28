@@ -33,5 +33,13 @@ class AuthenticationStatusBloc
         ));
       }
     });
+
+    on<OnRefreshAuthenticationStatusEvent>((event, emit) async {
+      final UserModel userModel = await authenticationRepository.refresh();
+
+      emit(AuthenticatedStatusState(
+        userModel: userModel,
+      ));
+    });
   }
 }

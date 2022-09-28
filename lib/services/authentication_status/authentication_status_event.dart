@@ -19,3 +19,5 @@ class OnAuthenticationStatusEvent extends AuthenticationStatusEvent {
         userModel,
       ];
 }
+
+class OnRefreshAuthenticationStatusEvent extends AuthenticationStatusEvent {}

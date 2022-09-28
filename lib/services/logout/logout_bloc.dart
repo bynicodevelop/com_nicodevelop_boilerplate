@@ -1,6 +1,5 @@
 // ignore: depend_on_referenced_packages
 import "package:bloc/bloc.dart";
-import "package:com_nicodevelop_dotmessenger/repositories/account_repository.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/authentication_repository.dart";
 import "package:equatable/equatable.dart";
 

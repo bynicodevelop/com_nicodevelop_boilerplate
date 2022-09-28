@@ -52,4 +52,9 @@ class AuthenticationRepository {
 
     await firebaseAuth.signOut();
   }
+
+  Future<UserModel> refresh() async {
+    info("$runtimeType - Refreshing user model");
+    return await user.first;
+  }
 }

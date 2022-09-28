@@ -186,5 +186,13 @@
     "upload_file_error_description": "Une erreur est survenue lors de l'envoi du fichier.",
     "@upload_file_error_description": {
       "description": "Description for the avatar upload file error"
+    },
+    "avatar_image_update_success_title": "Avatar mis à jour",
+    "@avatar_image_update_success_title": {
+      "description": "Title for the avatar update success message"
+    },
+    "avatar_image_update_success_description": "Votre avatar a été mis à jour avec succès.",
+    "@avatar_image_update_success_description": {
+      "description": "Description for the avatar update success message"
     }
 }

@@ -1,4 +1,4 @@
-import 'package:com_nicodevelop_dotmessenger/components/profile/avatar/profile_avatar_component.dart';
+import "package:com_nicodevelop_dotmessenger/components/profile/avatar/profile_avatar_component.dart";
 import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:network_image_mock/network_image_mock.dart";
@@ -26,7 +26,7 @@ void main() {
           home: Scaffold(
             body: ProfileAvatarComponent(
               username: "nico develop",
-              url: "https://avatars.githubusercontent.com/u/45257698?v=4",
+              photoURL: "https://avatars.githubusercontent.com/u/45257698?v=4",
             ),
           ),
         ),
