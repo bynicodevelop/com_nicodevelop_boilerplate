@@ -6,7 +6,12 @@ import "package:flutter/material.dart";
 import "package:url_launcher/url_launcher.dart";
 
 class ShareAffiliateCodeScreen extends StatelessWidget {
-  const ShareAffiliateCodeScreen({Key? key}) : super(key: key);
+  final String code;
+
+  const ShareAffiliateCodeScreen({
+    Key? key,
+    required this.code,
+  }) : super(key: key);
 
   Future<void> _copyCode(String code) async =>
       await FlutterClipboard.copy(code);
@@ -64,7 +69,7 @@ class ShareAffiliateCodeScreen extends StatelessWidget {
                   context,
                   Icons.copy,
                   t(context)!.share_label_button_copy,
-                  () async => _copyCode("1234").then(
+                  () async => _copyCode(code).then(
                     (value) => sendNotificaton(
                       context,
                       t(context)!.share_code_copied_title,
@@ -145,7 +150,7 @@ class ShareAffiliateCodeScreen extends StatelessWidget {
                   kDefaultPadding,
                 ),
                 onTap: () async =>
-                    _copyCode("1234").then((value) => sendNotificaton(
+                    _copyCode(code).then((value) => sendNotificaton(
                           context,
                           t(context)!.share_code_copied_title,
                           t(context)!.share_code_copied_description,
@@ -159,7 +164,7 @@ class ShareAffiliateCodeScreen extends StatelessWidget {
                         horizontal: kDefaultPadding * 3,
                       ),
                       child: Text(
-                        "1234",
+                        code,
                         style: Theme.of(context).textTheme.headline2,
                       ),
                     ),

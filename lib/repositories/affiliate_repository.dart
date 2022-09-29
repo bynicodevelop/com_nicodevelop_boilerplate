@@ -2,11 +2,14 @@ import "package:cloud_firestore/cloud_firestore.dart";
 import "package:com_nicodevelop_dotmessenger/exceptions/standard_exception.dart";
 import "package:com_nicodevelop_dotmessenger/models/profile_model.dart";
 import "package:com_nicodevelop_dotmessenger/utils/logger.dart";
+import "package:firebase_auth/firebase_auth.dart";
 
 class AffiliateRepository {
+  final FirebaseAuth firebaseAuth;
   final FirebaseFirestore firebaseFirestore;
 
   const AffiliateRepository({
+    required this.firebaseAuth,
     required this.firebaseFirestore,
   });
 
@@ -40,6 +43,44 @@ class AffiliateRepository {
       error(
         "$runtimeType - ${e.code} - ${e.message}",
       );
+      throw Exception(e.message);
+    }
+  }
+
+  Future<String> getAffiliateCodeByUserId() async {
+    info(
+      "$runtimeType - getAffiliateCodeByUserId",
+    );
+
+    final User? user = firebaseAuth.currentUser;
+
+    if (user == null) {
+      throw StandardException(
+        "User not found",
+        "USER_NOT_FOUND",
+      );
+    }
+
+    try {
+      final QuerySnapshot<Map<String, dynamic>> querySnapshot =
+          await firebaseFirestore
+              .collection("affiliates")
+              .where("userId", isEqualTo: user.uid)
+              .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        return querySnapshot.docs.first.id;
+      } else {
+        throw StandardException(
+          "Affiliate not found",
+          "AFFILIATE_NOT_FOUND",
+        );
+      }
+    } on FirebaseException catch (e) {
+      error(
+        "$runtimeType - ${e.code} - ${e.message}",
+      );
+
       throw Exception(e.message);
     }
   }
