@@ -1,5 +1,6 @@
 import "package:com_nicodevelop_dotmessenger/models/user_model.dart";
 import "package:com_nicodevelop_dotmessenger/screens/authentication/signin_screen.dart";
+import "package:com_nicodevelop_dotmessenger/screens/share_affiliate_code_screen.dart";
 import "package:com_nicodevelop_dotmessenger/services/authentication_status/authentication_status_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/logout/logout_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/utils/translate.dart";
@@ -31,6 +32,16 @@ class SettingsScreen extends StatelessWidget {
           ),
         ),
         body: settingsScreen([
+          {
+            "title": t(context)!.setting_item_code_title,
+            "subtitle": t(context)!.setting_item_code_description,
+            "onTap": () async => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ShareAffiliateCodeScreen(),
+                  ),
+                ),
+          },
           {
             "title": t(context)!.setting_item_profile_title,
             "subtitle": t(context)!.setting_item_profile_description,

@@ -179,6 +179,14 @@
     "@setting_item_logout_description": {
       "description": "Description for the logout setting item"
     },
+    "setting_item_code_title": "Invite",
+    "@setting_item_code_title": {
+      "description": "Title for the invite setting item"
+    },
+    "setting_item_code_description": "Invite your friends or contacts",
+    "@setting_item_code_description": {
+      "description": "Description for the logout setting item"
+    },
     "upload_file_error_title": "Error",
     "@upload_file_error_title": {
       "description": "Title for the upload file error"
@@ -194,5 +202,37 @@
     "avatar_image_update_success_description": "Your avatar has been updated.",
     "@avatar_image_update_success_description": {
       "description": "Description for the avatar update success message"
+    },
+    "share_text": "Share this code to invite your friends or contacts to join you on app.",
+    "@share_text": {
+      "description": "Text to share"
+    },
+    "share_text_title": "Share",
+    "@share_text_title": {
+      "description": "Title for the share text"
+    },
+    "share_text_button": "Share",
+    "@share_text": {
+      "description": "Text to share button"
+    },
+    "share_code_copied_title": "Code copied",
+    "@share_code_copied_title": {
+      "description": "Title for the share code copied message"
+    },
+    "share_code_copied_description": "You can share this code to invite your friends or contacts.",
+    "@share_code_copied_description": {
+      "description": "Description for the share code copied message"
+    },
+    "share_label_button_copy": "Copy",
+    "@share_label_button_copy": {
+      "description": "Label for the copy button"
+    },
+    "share_label_button_sms": "SMS",
+    "@share_label_button_sms": {
+      "description": "Label for the sms button"
+    },
+    "share_label_button_email": "E-mail",
+    "@share_label_button_email": {
+      "description": "Label for the e-mail button"
     }
 }

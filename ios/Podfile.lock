@@ -783,6 +783,8 @@ PODS:
     - Flutter
   - show_confirm_modal (0.0.1):
     - Flutter
+  - url_launcher_ios (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - about_screen (from `.symlinks/plugins/about_screen/ios`)
@@ -796,6 +798,7 @@ DEPENDENCIES:
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
   - settings_screen (from `.symlinks/plugins/settings_screen/ios`)
   - show_confirm_modal (from `.symlinks/plugins/show_confirm_modal/ios`)
+  - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 SPEC REPOS:
   trunk:
@@ -848,6 +851,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/settings_screen/ios"
   show_confirm_modal:
     :path: ".symlinks/plugins/show_confirm_modal/ios"
+  url_launcher_ios:
+    :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
   about_screen: 3b6015c72417c419560937a73f56b647305b6655
@@ -886,6 +891,7 @@ SPEC CHECKSUMS:
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   settings_screen: 1530d7384da5d5af03bc6c269b13fc81e5a39834
   show_confirm_modal: 84abd0051905c5131a55c5fab2a345a26923bfe8
+  url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
 
 PODFILE CHECKSUM: 7368163408c647b7eb699d0d788ba6718e18fb8d
 
