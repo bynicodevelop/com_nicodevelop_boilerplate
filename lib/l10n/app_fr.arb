@@ -194,5 +194,37 @@
     "avatar_image_update_success_description": "Votre avatar a été mis à jour avec succès.",
     "@avatar_image_update_success_description": {
       "description": "Description for the avatar update success message"
+    },
+    "share_text": "Partagez ce code pour inviter vos amis ou contacts à vous rejoindre sur application.",
+    "@share_text": {
+      "description": "Text to share"
+    },
+    "share_text_title": "Partager",
+    "@share_text_title": {
+      "description": "Title for the share text"
+    },
+    "share_text_button": "Partager",
+    "@share_text": {
+      "description": "Text to share button"
+    },
+    "share_code_copied_title": "Code copié",
+    "@share_code_copied_title": {
+      "description": "Title for the share code copied message"
+    },
+    "share_code_copied_description": "Vous pouvez partager ce code avec vos amis ou contacts.",
+    "@share_code_copied_description": {
+      "description": "Description for the share code copied message"
+    },
+    "share_label_button_copy": "Copier",
+    "@share_label_button_copy": {
+      "description": "Label for the copy button"
+    },
+    "share_label_button_sms": "SMS",
+    "@share_label_button_sms": {
+      "description": "Label for the sms button"
+    },
+    "share_label_button_email": "E-mail",
+    "@share_label_button_email": {
+      "description": "Label for the e-mail button"
     }
 }
