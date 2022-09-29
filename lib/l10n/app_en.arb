@@ -179,6 +179,14 @@
     "@setting_item_logout_description": {
       "description": "Description for the logout setting item"
     },
+    "setting_item_code_title": "Invite",
+    "@setting_item_code_title": {
+      "description": "Title for the invite setting item"
+    },
+    "setting_item_code_description": "Invite your friends or contacts",
+    "@setting_item_code_description": {
+      "description": "Description for the logout setting item"
+    },
     "upload_file_error_title": "Error",
     "@upload_file_error_title": {
       "description": "Title for the upload file error"
