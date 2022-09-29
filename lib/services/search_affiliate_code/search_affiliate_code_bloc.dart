@@ -11,16 +11,16 @@ part "search_affiliate_code_state.dart";
 
 class SearchAffiliateCodeBloc
     extends Bloc<SearchAffiliateCodeEvent, SearchAffiliateCodeState> {
-  final AffiliateRepository parrainageRepository;
+  final AffiliateRepository affiliateRepository;
 
   SearchAffiliateCodeBloc({
-    required this.parrainageRepository,
+    required this.affiliateRepository,
   }) : super(SearchAffiliateCodeInitialState()) {
     on<OnSearchAffiliateCodeEvent>((event, emit) async {
       emit(SearchAffiliateCodeLoadingState());
 
       try {
-        final ProfileModel profileModel = await parrainageRepository.get({
+        final ProfileModel profileModel = await affiliateRepository.get({
           "affiliateCode": event.affiliateCode,
         });
 

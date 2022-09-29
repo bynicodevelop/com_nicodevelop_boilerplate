@@ -11,6 +11,7 @@ import "package:com_nicodevelop_dotmessenger/services/authentication_status/auth
 import "package:com_nicodevelop_dotmessenger/services/bootstrap/bootstrap_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/create_account/create_account_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/delete_account/delete_account_bloc.dart";
+import "package:com_nicodevelop_dotmessenger/services/get_affiliate_code/get_affiliate_code_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/login/login_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/logout/logout_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/search_affiliate_code/search_affiliate_code_bloc.dart";
@@ -40,7 +41,8 @@ class ServiceFactory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AffiliateRepository parrainageRepository = AffiliateRepository(
+    final AffiliateRepository affiliateRepository = AffiliateRepository(
+      firebaseAuth: firebaseAuth,
       firebaseFirestore: firebaseFirestore,
     );
 
@@ -80,7 +82,12 @@ class ServiceFactory extends StatelessWidget {
         ),
         BlocProvider<SearchAffiliateCodeBloc>(
           create: (context) => SearchAffiliateCodeBloc(
-            parrainageRepository: parrainageRepository,
+            affiliateRepository: affiliateRepository,
+          ),
+        ),
+        BlocProvider<GetAffiliateCodeBloc>(
+          create: (context) => GetAffiliateCodeBloc(
+            affiliateRepository: affiliateRepository,
           ),
         ),
         BlocProvider<CreateAccountBloc>(
