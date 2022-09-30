@@ -13,8 +13,6 @@ class AffiliateRepository {
     required this.firebaseFirestore,
   });
 
-  // Recherche un afflié par son id dans la collection 'affiliates'
-  // De Firestore
   Future<ProfileModel> get(Map<String, dynamic> data) async {
     info(
       "$runtimeType - get",
@@ -23,7 +21,9 @@ class AffiliateRepository {
 
     try {
       final DocumentReference<Map<String, dynamic>> documentReference =
-          firebaseFirestore.collection("affiliates").doc(data["affiliateCode"]);
+          firebaseFirestore.collection("affiliates").doc(
+                data["affiliateCode"],
+              );
 
       final DocumentSnapshot<Map<String, dynamic>> documentSnapshot =
           await documentReference.get();
@@ -43,7 +43,10 @@ class AffiliateRepository {
       error(
         "$runtimeType - ${e.code} - ${e.message}",
       );
-      throw Exception(e.message);
+      throw StandardException(
+        e.message ?? "unexpected-error",
+        e.code,
+      );
     }
   }
 
