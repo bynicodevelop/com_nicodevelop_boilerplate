@@ -22,7 +22,6 @@ const userFactory = async (number) => {
 
       usersRecords.push(userRecord);
 
-      // Create user collection to firebase
       await admin.firestore().collection('users').doc(uid).set({
         uid,
       });
