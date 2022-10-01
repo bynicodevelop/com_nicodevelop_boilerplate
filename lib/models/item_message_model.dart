@@ -1,26 +1,33 @@
+import "package:cloud_firestore/cloud_firestore.dart";
 import "package:equatable/equatable.dart";
 
-class ItemMessageModel extends Equatable {
+class ItemDiscussionModel extends Equatable {
   final String id;
-  final String message;
-  final String sender;
-  final DateTime createdAt;
-  final DateTime updatedAt;
+  final String lastMessage;
+  final DocumentReference from;
+  final DateTime lastMessageDate;
 
-  const ItemMessageModel({
+  const ItemDiscussionModel({
     required this.id,
-    required this.message,
-    required this.sender,
-    required this.createdAt,
-    required this.updatedAt,
+    required this.lastMessage,
+    required this.from,
+    required this.lastMessageDate,
   });
+
+  factory ItemDiscussionModel.fromMap(Map<String, dynamic> map) {
+    return ItemDiscussionModel(
+      id: map["id"],
+      lastMessage: map["lastMessage"],
+      from: map["from"],
+      lastMessageDate: map["lastMessageDate"].toDate(),
+    );
+  }
 
   @override
   List<Object> get props => [
         id,
-        message,
-        sender,
-        createdAt,
-        updatedAt,
+        lastMessage,
+        from,
+        lastMessageDate,
       ];
 }

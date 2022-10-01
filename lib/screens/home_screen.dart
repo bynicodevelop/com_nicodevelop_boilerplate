@@ -1,3 +1,4 @@
+import "package:com_nicodevelop_dotmessenger/components/discussions/list/list_discussion_component.dart";
 import "package:com_nicodevelop_dotmessenger/screens/settings_screen.dart";
 import "package:flutter/material.dart";
 
@@ -22,7 +23,7 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: const Center(
-        child: Text("Coucou"),
+        child: ListDiscussionComponent(),
       ),
     );
   }
