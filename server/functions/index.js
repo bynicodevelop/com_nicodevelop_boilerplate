@@ -14,7 +14,7 @@ const isDevelopmentMode = process.env.FUNCTIONS_EMULATOR;
 exports.onCreateNewUser = functions
     .auth
     .user()
-    .onCreate(async (user) => await userController.onCreateNewUser(user));
+    .onCreate(async (user) => userController.onCreateNewUser(user));
 
 exports.onNewUserInAffiliate = functions
     .firestore
@@ -28,7 +28,6 @@ if (isDevelopmentMode) {
 
     const listChatPromise = [];
 
-    // Generate chat between 2 users
     for (const element of usersRecords) {
       const user = element;
 

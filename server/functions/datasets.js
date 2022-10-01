@@ -10,6 +10,7 @@ const userFactory = async (number) => {
   for (let i = 0; i < number; i++) {
     const affiliateCode = `000${i}`;
     const uid = `123456789${i}`;
+    const displayName = faker.name.firstName();
     const email = `john${i}@domain.tld`;
     const password = '123456';
     const photoURL = `https://picsum.photos/200/300?random=${Math.random()}`;
@@ -18,6 +19,7 @@ const userFactory = async (number) => {
       const userRecord = await admin.auth().createUser({
         uid,
         email,
+        displayName,
         password,
         photoURL,
       });
@@ -26,6 +28,8 @@ const userFactory = async (number) => {
 
       await admin.firestore().collection('users').doc(uid).set({
         uid,
+        displayName,
+        photoURL,
       });
 
       console.log('setAffiliateCodeForUserId');
