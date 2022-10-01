@@ -14,6 +14,10 @@ service cloud.firestore {
       }
     }
 
+    match /affiliates/{affiliateId} {
+      allow list: if request.auth != null;
+    }
+
     match /chats/{chatId} {
       allow create, get, list, update: if request.auth != null;
 

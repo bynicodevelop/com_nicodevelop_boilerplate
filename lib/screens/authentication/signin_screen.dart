@@ -31,7 +31,7 @@ class _SignInState extends State<SignInScreen> {
     super.initState();
 
     if (kDebugMode) {
-      _emailController.text = "john@domain.tld";
+      _emailController.text = "john0@domain.tld";
       _passwordController.text = "123456";
     }
   }
