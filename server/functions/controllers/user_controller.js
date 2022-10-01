@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const admin = require('firebase-admin');
-const {info} = require('firebase-functions/logger');
+const {info, error} = require('firebase-functions/logger');
 const {formatAffiliateCode} = require('../utils/affiliate');
 
 /**
@@ -72,9 +72,7 @@ class UserController {
 
     const affiliateCode = formatAffiliateCode(total);
 
-    await admin.firestore().collection('affiliates').doc(affiliateCode).set({
-      userId,
-    });
+    await setAffiliateCodeForUserId(affiliateCode, userId);
   }
 
   /**
@@ -84,6 +82,8 @@ class UserController {
   async onNewUserInAffiliate(snapshot, context) {
     const {userId} = context.params;
     const {affiliateCodeRef} = snapshot.data();
+
+    if (_.isUndefined(affiliateCodeRef)) return;
 
     info('onNewUserInAffiliate', {userId, affiliateCodeRef});
 

@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const {info} = require('firebase-functions/lib/logger');

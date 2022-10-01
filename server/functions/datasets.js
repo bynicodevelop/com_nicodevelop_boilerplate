@@ -2,11 +2,13 @@ const admin = require('firebase-admin');
 const {info, error} = require('firebase-functions/logger');
 const {faker} = require('@faker-js/faker');
 const dayjs = require('dayjs');
+const {setAffiliateCodeForUserId} = require('./utils/firestore_request');
 
 const userFactory = async (number) => {
   const usersRecords = [];
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < number; i++) {
+    const affiliateCode = `000${i}`;
     const uid = `123456789${i}`;
     const email = `john${i}@domain.tld`;
     const password = '123456';
@@ -26,6 +28,9 @@ const userFactory = async (number) => {
         uid,
       });
 
+      console.log('setAffiliateCodeForUserId');
+      await setAffiliateCodeForUserId(affiliateCode, uid);
+
       info('Successfully created new user:', userRecord.uid);
     } catch (error) {
       info('Error creating new user:', error);
@@ -36,7 +41,6 @@ const userFactory = async (number) => {
 };
 
 const createMessages = async (chat, users, max) => {
-  info('createMessages', {chat, users, max});
   const messages = [];
 
   const messagesNumber = Math.floor(Math.random() * max) + 1;
