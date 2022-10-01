@@ -3,12 +3,14 @@ import "package:equatable/equatable.dart";
 class UserModel extends Equatable {
   final String uid;
   final String email;
+  final String displayName;
   final String password;
   final String photoURL;
 
   const UserModel({
     required this.uid,
     required this.email,
+    required this.displayName,
     this.photoURL = "",
     this.password = "",
   });
@@ -16,6 +18,7 @@ class UserModel extends Equatable {
   static UserModel empty() => const UserModel(
         uid: "",
         email: "",
+        displayName: "",
         photoURL: "",
         password: "",
       );
@@ -25,12 +28,14 @@ class UserModel extends Equatable {
   UserModel copyWith({
     String? uid,
     String? email,
+    String? displayName,
     String? photoURL,
     String? password,
   }) =>
       UserModel(
         uid: uid ?? this.uid,
         email: email ?? this.email,
+        displayName: displayName ?? this.displayName,
         photoURL: photoURL ?? this.photoURL,
         password: password ?? this.password,
       );
@@ -38,6 +43,7 @@ class UserModel extends Equatable {
   factory UserModel.fromMap(Map<String, dynamic> data) => UserModel(
         uid: data["uid"],
         email: data["email"],
+        displayName: data["displayName"],
         photoURL: data["photoURL"],
         password: data["password"],
       );
@@ -45,6 +51,7 @@ class UserModel extends Equatable {
   Map<String, dynamic> toMap() => {
         "uid": uid,
         "email": email,
+        "displayName": displayName,
         "photoURL": photoURL,
         "password": password,
       };
@@ -53,6 +60,7 @@ class UserModel extends Equatable {
   List<Object> get props => [
         uid,
         email,
+        displayName,
         photoURL,
         password,
       ];

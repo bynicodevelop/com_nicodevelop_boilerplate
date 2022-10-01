@@ -1,6 +1,7 @@
 import "package:com_nicodevelop_dotmessenger/components/account/account_delete_button_component.dart";
 import "package:com_nicodevelop_dotmessenger/components/inputs/email/email_input_component.dart";
 import "package:com_nicodevelop_dotmessenger/components/inputs/password/password_input_component.dart";
+import "package:com_nicodevelop_dotmessenger/components/inputs/text/text_input_component.dart";
 import "package:com_nicodevelop_dotmessenger/components/profile/avatar/profile_avatar_component.dart";
 import "package:com_nicodevelop_dotmessenger/components/profile/avatar/update/profile_avatar_update_wrapper.dart";
 import "package:com_nicodevelop_dotmessenger/config/constants.dart";
@@ -26,6 +27,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  final TextEditingController _displayNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -34,6 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     super.initState();
 
     _emailController.text = widget.userModel.email;
+    _displayNameController.text = widget.userModel.displayName;
   }
 
   @override
@@ -101,11 +104,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         (state as AuthenticatedStatusState).userModel;
 
                     return ProfileAvatarComponent(
-                      username: userModel.email,
+                      displayName: userModel.email,
                       photoURL: userModel.photoURL,
                     );
                   },
                 ),
+              ),
+              TextInputComponent(
+                controller: _displayNameController,
+                label: t(context)!.username_label_input,
+                errorText: t(context)!.username_error_text,
+                isRequire: true,
+                minCharacters: 3,
               ),
               EmailInputComponent(
                 controller: _emailController,
@@ -118,7 +128,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (!isEmail(_emailController.text) &&
-                        _passwordController.text.isEmpty) return;
+                        _passwordController.text.isEmpty &&
+                        _displayNameController.text.isEmpty) return;
 
                     if (!isEmail(_emailController.text)) {
                       sendNotificaton(
@@ -131,10 +142,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       return;
                     }
 
+                    if (_displayNameController.text.isEmpty ||
+                        _displayNameController.text.length < 3) {
+                      sendNotificaton(
+                        context,
+                        t(context)!.profile_screen_update_error_title,
+                        t(context)!
+                            .profile_screen_update_username_invalid_description,
+                      );
+
+                      return;
+                    }
+
                     context.read<UpdateAccountBloc>().add(
                           OnUpdateAccountEvent(
                             userModel: widget.userModel.copyWith(
                               email: _emailController.text,
+                              displayName: _displayNameController.text,
                               password: _passwordController.text,
                             ),
                           ),

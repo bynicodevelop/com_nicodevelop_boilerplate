@@ -4,6 +4,7 @@ class TextInputComponent extends StatefulWidget {
   final String label;
   final String errorText;
   final bool isRequire;
+  final int minCharacters;
   final TextEditingController controller;
 
   const TextInputComponent({
@@ -12,6 +13,7 @@ class TextInputComponent extends StatefulWidget {
     this.label = "Text field",
     this.errorText = "Required field",
     this.isRequire = false,
+    this.minCharacters = 0,
   }) : super(key: key);
 
   @override
@@ -28,8 +30,10 @@ class _TextInputComponentState extends State<TextInputComponent> {
 
     _focusNode.addListener(() {
       if (!_focusNode.hasFocus) {
-        setState(() =>
-            _isError = widget.isRequire && widget.controller.text.isEmpty);
+        setState(
+          () => _isError = widget.isRequire && widget.controller.text.isEmpty ||
+              widget.controller.text.length < widget.minCharacters,
+        );
       }
     });
   }

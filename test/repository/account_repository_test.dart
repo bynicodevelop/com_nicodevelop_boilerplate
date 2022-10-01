@@ -1,3 +1,4 @@
+import "package:cloud_firestore/cloud_firestore.dart";
 import "package:com_nicodevelop_dotmessenger/exceptions/standard_exception.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/account_repository.dart";
 import "package:fake_cloud_firestore/fake_cloud_firestore.dart";
@@ -26,6 +27,7 @@ void main() {
 
       // ACT
       await accountRepository.create({
+        "displayName": "john",
         "email": "john@domain.tld",
         "password": "password",
         "affiliateCode": "0001",
@@ -35,6 +37,33 @@ void main() {
       expect(
         mockFirebaseAuth.currentUser,
         isNotNull,
+      );
+
+      expect(
+        mockFirebaseAuth.currentUser!.displayName,
+        "john",
+      );
+
+      expect(
+        mockFirebaseAuth.currentUser!.email,
+        "john@domain.tld",
+      );
+
+      QuerySnapshot<Map<String, dynamic>> userQuerySnapshot =
+          await mockFirebaseFirestore.collection("users").get();
+
+      expect(
+        userQuerySnapshot.docs.length,
+        1,
+      );
+
+      expect(
+        userQuerySnapshot.docs.first.data(),
+        {
+          "affiliateCodeRef":
+              mockFirebaseFirestore.collection("affiliates").doc("0001"),
+          "displayName": "john",
+        },
       );
     });
 
@@ -59,6 +88,7 @@ void main() {
       // ASSERT
       expect(
         () => accountRepository.create({
+          "displayName": "john",
           "email": "john@domain.tld",
           "password": "123456",
           "affiliateCode": "0001",
@@ -91,6 +121,7 @@ void main() {
       // ASSERT
       expect(
         () => accountRepository.create({
+          "displayName": "john",
           "email": "john@domain.tld",
           "password": "123456",
           "affiliateCode": "0001",
@@ -123,6 +154,7 @@ void main() {
       // ASSERT
       expect(
         () => accountRepository.create({
+          "displayName": "john",
           "email": "john@domain.tld",
           "password": "123",
           "affiliateCode": "0001",
@@ -141,11 +173,12 @@ void main() {
     late MockFirebaseAuth mockFirebaseAuth;
     late FakeFirebaseFirestore mockFirebaseFirestore;
 
-    test("Should update email with success", () async {
+    test("Should update email and displayName with success", () async {
       // ARRANGE
       mockFirebaseAuth = MockFirebaseAuth(
         signedIn: true,
         mockUser: MockUser(
+          uid: "123",
           email: "john@domain.tld",
         ),
       );
@@ -156,9 +189,14 @@ void main() {
         firebaseFirestore: mockFirebaseFirestore,
       );
 
+      await mockFirebaseFirestore.collection("users").doc("123").set({
+        "displayName": "john",
+      });
+
       // ACT
       await accountRepository.update({
         "email": "johnny@domain.tld",
+        "displayName": "johnny",
       });
 
       // ASSERT
@@ -170,6 +208,26 @@ void main() {
       expect(
         mockFirebaseAuth.currentUser!.email,
         "johnny@domain.tld",
+      );
+
+      expect(
+        mockFirebaseAuth.currentUser!.displayName,
+        "johnny",
+      );
+
+      QuerySnapshot<Map<String, dynamic>> userQuerySnapshot =
+          await mockFirebaseFirestore.collection("users").get();
+
+      expect(
+        userQuerySnapshot.docs.length,
+        1,
+      );
+
+      expect(
+        userQuerySnapshot.docs.first.data(),
+        {
+          "displayName": "johnny",
+        },
       );
     });
 

@@ -15,7 +15,15 @@
     "@sign_in_title": {
       "description": "Title for the sign in page"
     },
-    "email_label_input": "E_mail",
+    "username_label_input": "Username",
+    "@username_label_input": {
+      "description": "Label for the username input"
+    },
+    "username_error_text": "Username is required (min 3 characters)",
+    "@username_error_text": {
+      "description": "Error text for the username input"
+    },
+    "email_label_input": "E-mail",
     "@email_label_input": {
       "description": "Label for the email input field"
     },
@@ -114,6 +122,10 @@
     "profile_screen_update_email_invalid_description": "The email you entered is invalid.",
     "@profile_screen_update_email_invalid_description": {
       "description": "Error message for the invalid email"
+    },
+    "profile_screen_update_username_invalid_description": "The username you entered is invalid (min 3 characters).",
+    "@profile_screen_update_username_invalid_description": {
+      "description": "Error message for the invalid username"
     },
     "profile_screen_update_email_already_in_user_description": "The email you entered is already in use.",
     "@profile_screen_update_email_already_in_user_description": {

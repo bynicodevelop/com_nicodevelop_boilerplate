@@ -8,11 +8,13 @@ abstract class CreateAccountEvent extends Equatable {
 }
 
 class OnCreateAccountEvent extends CreateAccountEvent {
+  final String displayName;
   final String email;
   final String password;
   final String affiliateCode;
 
   const OnCreateAccountEvent({
+    required this.displayName,
     required this.email,
     required this.password,
     required this.affiliateCode,
@@ -20,6 +22,7 @@ class OnCreateAccountEvent extends CreateAccountEvent {
 
   @override
   List<Object> get props => [
+        displayName,
         email,
         password,
         affiliateCode,

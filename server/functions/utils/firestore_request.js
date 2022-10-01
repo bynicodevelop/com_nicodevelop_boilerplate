@@ -1,6 +1,6 @@
 const admin = require('firebase-admin');
 
-exports.setAffiliateCodeForUserId = async (affiliateCode, userId) => await admin
+exports.setAffiliateCodeForUserId = async (affiliateCode, userId) => admin
     .firestore()
     .collection('affiliates')
     .doc(affiliateCode)

@@ -2,6 +2,7 @@ const _ = require('lodash');
 const admin = require('firebase-admin');
 const {info, error} = require('firebase-functions/logger');
 const {formatAffiliateCode} = require('../utils/affiliate');
+const {setAffiliateCodeForUserId} = require('../utils/firestore_request');
 
 /**
  * UserController
@@ -11,7 +12,7 @@ class UserController {
    *
    */
   async _getAffiliateSettings() {
-    return await admin.firestore()
+    return admin.firestore()
         .collection('settings')
         .doc('affiliates')
         .get();

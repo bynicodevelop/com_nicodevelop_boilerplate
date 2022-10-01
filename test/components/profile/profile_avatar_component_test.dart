@@ -9,7 +9,7 @@ void main() {
       const MaterialApp(
         home: Scaffold(
           body: ProfileAvatarComponent(
-            username: "nico develop",
+            displayName: "nico develop",
           ),
         ),
       ),
@@ -25,7 +25,7 @@ void main() {
         const MaterialApp(
           home: Scaffold(
             body: ProfileAvatarComponent(
-              username: "nico develop",
+              displayName: "nico develop",
               photoURL: "https://avatars.githubusercontent.com/u/45257698?v=4",
             ),
           ),

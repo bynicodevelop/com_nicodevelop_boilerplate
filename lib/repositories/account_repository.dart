@@ -17,6 +17,7 @@ class AccountRepository {
   Future<void> list() async {}
 
   Future<void> create(Map<String, dynamic> data) async {
+    assert(data["displayName"] != null);
     assert(data["email"] != null);
     assert(data["password"] != null);
     assert(data["affiliateCode"] != null);
@@ -43,11 +44,18 @@ class AccountRepository {
         "affiliateCodeRef": firebaseFirestore
             .collection("affiliates")
             .doc(data["affiliateCode"]),
-        "email": data["email"],
+        "displayName": data["displayName"],
       };
+
+      userCredential.user!.updateDisplayName(data["displayName"]);
 
       if (userAccount.exists) {
         await userAccount.reference.update(accountData);
+
+        info(
+          "$runtimeType - Account updated",
+          data: accountData,
+        );
 
         return;
       }
@@ -87,17 +95,15 @@ class AccountRepository {
     final DocumentSnapshot<Map<String, dynamic>> userSnapshot =
         await userReference.get();
 
+    data.remove("uid");
+
     if (!userSnapshot.exists) {
-      await userReference.set({
-        "photoURL": data["photoURL"],
-      });
+      await userReference.set(data);
 
       return;
     }
 
-    await userReference.update({
-      "photoURL": data["photoURL"],
-    });
+    await userReference.update(data);
   }
 
   Future<void> update(Map<String, dynamic> data) async {
@@ -116,9 +122,18 @@ class AccountRepository {
     );
 
     try {
+      final Map<String, dynamic> accountData = {};
+
       if (data["email"] != user.email) {
         info("$runtimeType - Updating email");
         await user.updateEmail(data["email"]);
+      }
+
+      if (data["displayName"] != user.displayName) {
+        info("$runtimeType - Updating display name");
+        await user.updateDisplayName(data["displayName"]);
+
+        accountData["displayName"] = data["displayName"];
       }
 
       if ((data["password"] ?? "").isNotEmpty) {
@@ -130,9 +145,13 @@ class AccountRepository {
         info("$runtimeType - Updating photoURL");
         await user.updatePhotoURL(data["photoURL"]);
 
+        accountData["photoURL"] = data["photoURL"];
+      }
+
+      if (accountData.isNotEmpty) {
         await _updateFirestoreUserProfile({
           "uid": user.uid,
-          "photoURL": data["photoURL"],
+          ...accountData,
         });
       }
 
