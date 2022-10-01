@@ -13,12 +13,20 @@ class ListDiscussionBloc
   ListDiscussionBloc({
     required this.discussionRepository,
   }) : super(const ListDiscussionInitialState()) {
-    discussionRepository.discussions.listen((event) {
-      print(event);
-    });
+    discussionRepository.discussions.listen(
+      (event) => add(OnListLoadedDiscussionEvent(
+        discussions: event,
+      )),
+    );
 
     on<OnListDiscussionEvent>((event, emit) async {
       await discussionRepository.list();
+    });
+
+    on<OnListLoadedDiscussionEvent>((event, emit) {
+      emit(ListDiscussionInitialState(
+        discussions: event.discussions,
+      ));
     });
   }
 }
