@@ -19,6 +19,7 @@ class CreateAccountBloc extends Bloc<CreateAccountEvent, CreateAccountState> {
 
       try {
         await accountRepository.create({
+          "displayName": event.displayName,
           "email": event.email,
           "password": event.password,
           "affiliateCode": event.affiliateCode,
@@ -27,6 +28,7 @@ class CreateAccountBloc extends Bloc<CreateAccountEvent, CreateAccountState> {
         info(
           "$runtimeType - Account created",
           data: {
+            "displayName": event.displayName,
             "email": event.email,
             "affiliateCode": event.affiliateCode,
           },

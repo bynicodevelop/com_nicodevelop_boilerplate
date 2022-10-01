@@ -1,13 +1,13 @@
 import "package:flutter/material.dart";
 
 class ProfileAvatarComponent extends StatelessWidget {
-  final String username;
+  final String displayName;
   final double radius;
   final String photoURL;
 
   const ProfileAvatarComponent({
     super.key,
-    required this.username,
+    required this.displayName,
     this.radius = 50,
     this.photoURL = "",
   });
@@ -28,7 +28,7 @@ class ProfileAvatarComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String initials = _generateInitials(username);
+    final String initials = _generateInitials(displayName);
 
     return CircleAvatar(
       radius: radius,

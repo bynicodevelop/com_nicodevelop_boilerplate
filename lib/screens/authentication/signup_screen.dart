@@ -1,5 +1,6 @@
 import "package:com_nicodevelop_dotmessenger/components/inputs/email/email_input_component.dart";
 import "package:com_nicodevelop_dotmessenger/components/inputs/password/password_input_component.dart";
+import "package:com_nicodevelop_dotmessenger/components/inputs/text/text_input_component.dart";
 import "package:com_nicodevelop_dotmessenger/config/constants.dart";
 import "package:com_nicodevelop_dotmessenger/screens/home_screen.dart";
 import "package:com_nicodevelop_dotmessenger/services/create_account/create_account_bloc.dart";
@@ -23,6 +24,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  final TextEditingController _displayNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -35,13 +37,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.initState();
 
     if (kDebugMode) {
-      _emailController.text = "john@domain.tld";
+      _emailController.text = "john10@domain.tld";
       _passwordController.text = "123456";
     }
   }
 
   @override
   void dispose() {
+    _displayNameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
 
@@ -105,6 +108,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     t(context)!.sign_up_title,
                     style: Theme.of(context).textTheme.headlineLarge,
                   ),
+                  TextInputComponent(
+                    isRequire: true,
+                    minCharacters: 3,
+                    controller: _displayNameController,
+                    label: t(context)!.username_label_input,
+                    errorText: t(context)!.username_error_text,
+                  ),
                   EmailInputComponent(
                     controller: _emailController,
                     label: t(context)!.email_label_input,
@@ -123,9 +133,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         _unfocus();
 
                         if (isEmail(_emailController.text) &&
-                            _passwordController.text.length >= 6) {
+                            _passwordController.text.length >= 6 &&
+                            _displayNameController.text.length >= 3) {
                           context.read<CreateAccountBloc>().add(
                                 OnCreateAccountEvent(
+                                  displayName: _displayNameController.text,
                                   email: _emailController.text,
                                   password: _passwordController.text,
                                   affiliateCode: widget.affiliateCode,
