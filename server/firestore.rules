@@ -5,12 +5,21 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
-    match /affiliates/{affiliateId} {
-      allow get, list: if true;
+    match /users/{userId} {
+      allow update: if request.auth.uid == userId;
+      allow get: if request.auth != null;
+
+      match /contacts/{contactId} {
+        allow create, get, list: if request.auth != null;
+      }
     }
 
-    match /users/{userId} {
-      allow get, create, update: if request.auth.uid == userId;
+    match /chats/{chatId} {
+      allow create, get, list, update: if request.auth != null;
+
+      match /messages/{messageId} {
+        allow create, get, list: if request.auth != null;
+      }
     }
   }
 }
