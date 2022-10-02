@@ -62,8 +62,10 @@ class DiscussionRepository {
         DocumentSnapshot<Map<String, dynamic>> userDocumentSnapshot =
             await firebaseFirestore.collection("users").doc(profileUid).get();
 
-        ProfileModel profileModel = ProfileModel.fromMap(
-            {"id": userDocumentSnapshot.id, ...userDocumentSnapshot.data()!});
+        ProfileModel profileModel = ProfileModel.fromMap({
+          "id": userDocumentSnapshot.id,
+          ...userDocumentSnapshot.data()!,
+        });
 
         discussions.add(
           ItemDiscussionModel.fromMap({

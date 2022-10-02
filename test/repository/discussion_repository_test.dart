@@ -27,6 +27,18 @@ void main() {
       final DocumentReference documentReference =
           mockFirebaseFirestore.collection("users").doc("123456789");
 
+      mockFirebaseFirestore.collection("users").doc("000000001").set({
+        "uid": "000000001",
+        "displayName": "John Doe",
+        "photoURL": "https://www.google.com",
+      });
+
+      mockFirebaseFirestore.collection("users").doc("987654321").set({
+        "uid": "987654321",
+        "displayName": "Jane Doe",
+        "photoURL": "https://www.google.com",
+      });
+
       mockFirebaseFirestore
           .collection("discussions")
           .doc("123456789_987654321")
@@ -76,8 +88,8 @@ void main() {
       );
 
       expect(
-        itemDiscussionModels.first.from,
-        documentReference,
+        itemDiscussionModels.first.from.displayName,
+        "John Doe",
       );
 
       expect(itemDiscussionModels[0].id, "123456789_000000001");
