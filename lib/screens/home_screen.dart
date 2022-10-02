@@ -22,9 +22,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(
-        child: ListDiscussionComponent(),
-      ),
+      body: const ListDiscussionComponent(),
     );
   }
 }

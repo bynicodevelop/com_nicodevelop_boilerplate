@@ -1,10 +1,10 @@
-import "package:cloud_firestore/cloud_firestore.dart";
+import "package:com_nicodevelop_dotmessenger/models/profile_model.dart";
 import "package:equatable/equatable.dart";
 
 class ItemDiscussionModel extends Equatable {
   final String id;
   final String lastMessage;
-  final DocumentReference from;
+  final ProfileModel from;
   final DateTime lastMessageDate;
 
   const ItemDiscussionModel({

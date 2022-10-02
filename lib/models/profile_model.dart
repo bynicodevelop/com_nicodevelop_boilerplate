@@ -1,27 +1,36 @@
 import "package:equatable/equatable.dart";
 
 class ProfileModel extends Equatable {
-  final String userId;
-  final String code;
+  final String id;
+  final String displayName;
+  final String photoURL;
 
   const ProfileModel({
-    required this.userId,
-    required this.code,
+    required this.id,
+    required this.displayName,
+    required this.photoURL,
   });
-
-  factory ProfileModel.fromMap(Map<String, dynamic> data) => ProfileModel(
-        userId: data["userId"],
-        code: data["code"],
-      );
-
-  Map<String, dynamic> toMap() => {
-        "userId": userId,
-        "code": code,
-      };
 
   @override
   List<Object?> get props => [
-        userId,
-        code,
+        id,
+        displayName,
+        photoURL,
       ];
+
+  factory ProfileModel.fromMap(Map<String, dynamic> map) => ProfileModel(
+        id: map["id"],
+        displayName: map["displayName"],
+        photoURL: map["photoURL"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "id": id,
+        "displayName": displayName,
+        "photoURL": photoURL,
+      };
+
+  @override
+  String toString() =>
+      "ProfileModel(id: $id, displayName: $displayName, photoURL: $photoURL)";
 }
