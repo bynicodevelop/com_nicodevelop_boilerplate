@@ -8,10 +8,6 @@ service cloud.firestore {
     match /users/{userId} {
       allow update, create: if request.auth.uid == userId;
       allow get: if request.auth != null;
-
-      match /contacts/{contactId} {
-        allow create, get, list: if request.auth != null;
-      }
     }
 
     match /affiliates/{affiliateId} {
@@ -19,12 +15,8 @@ service cloud.firestore {
       allow get: if true;
     }
 
-    match /chats/{chatId} {
-      allow create, get, list, update: if request.auth != null;
-
-      match /messages/{messageId} {
-        allow create, get, list: if request.auth != null;
-      }
+    match /discussions/{chatId} {
+      allow list: if request.auth != null;
     }
   }
 }

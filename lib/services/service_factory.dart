@@ -1,13 +1,13 @@
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:cloud_functions/cloud_functions.dart";
-import "package:com_nicodevelop_dotmessenger/components/list_messages/bloc/get_list_message_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/models/ready_start_model.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/account_repository.dart";
-import "package:com_nicodevelop_dotmessenger/repositories/authentication_repository.dart";
-import "package:com_nicodevelop_dotmessenger/repositories/messages_repository.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/affiliate_repository.dart";
+import "package:com_nicodevelop_dotmessenger/repositories/authentication_repository.dart";
+import "package:com_nicodevelop_dotmessenger/repositories/discussion_repository.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/upload_repository.dart";
 import "package:com_nicodevelop_dotmessenger/services/authentication_status/authentication_status_bloc.dart";
+import "package:com_nicodevelop_dotmessenger/services/bloc/list_discussion_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/bootstrap/bootstrap_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/create_account/create_account_bloc.dart";
 import "package:com_nicodevelop_dotmessenger/services/delete_account/delete_account_bloc.dart";
@@ -61,6 +61,11 @@ class ServiceFactory extends StatelessWidget {
       firebaseStorage: firebaseStorage,
     );
 
+    final DiscussionRepository discussionRepository = DiscussionRepository(
+      firebaseAuth: firebaseAuth,
+      firebaseFirestore: firebaseFirestore,
+    );
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<BootstrapBloc>(
@@ -74,11 +79,6 @@ class ServiceFactory extends StatelessWidget {
           create: (_) => AuthenticationStatusBloc(
             authenticationRepository: authenticationRepository,
           ),
-        ),
-        BlocProvider<GetListMessageBloc>(
-          create: (context) => GetListMessageBloc(
-            messageRepository: MessagesRepository(),
-          )..add(OnGetListMessageEvent()),
         ),
         BlocProvider<SearchAffiliateCodeBloc>(
           create: (context) => SearchAffiliateCodeBloc(
@@ -117,9 +117,15 @@ class ServiceFactory extends StatelessWidget {
             authenticationRepository: authenticationRepository,
           ),
         ),
-        BlocProvider(
+        BlocProvider<UploadFileBloc>(
           create: (context) => UploadFileBloc(
             uploadRepository: uploadRepository,
+          ),
+        ),
+        BlocProvider<ListDiscussionBloc>(
+          lazy: false,
+          create: (context) => ListDiscussionBloc(
+            discussionRepository: discussionRepository,
           ),
         ),
       ],

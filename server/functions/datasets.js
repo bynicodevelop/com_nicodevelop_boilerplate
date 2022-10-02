@@ -76,7 +76,7 @@ const createMessages = async (chat, users, max) => {
     try {
       await admin
           .firestore()
-          .collection('chats')
+          .collection('discussions')
           .doc(chat.uid)
           .collection('messages')
           .add(messageRecord);
@@ -93,20 +93,21 @@ const createChat = async (users) => {
     uid: users.map((user) => user.uid).sort().join('_'),
     users: users.map((user) => user.uid),
     lastMessage: '',
+    from: null,
     lastMessageDate: new Date(),
   };
 
   try {
-    await admin.firestore().collection('chats').doc(chat.uid).set(chat);
+    await admin.firestore().collection('discussions').doc(chat.uid).set(chat);
 
     const message = await createMessages(chat, users, 100);
 
-    // Get last message from createdAt date
     const lastMessage = message.sort((a, b) => b.createdAt - a.createdAt)[0];
 
     // Update last message and last message date
-    await admin.firestore().collection('chats').doc(chat.uid).update({
+    await admin.firestore().collection('discussions').doc(chat.uid).update({
       lastMessage: lastMessage.message,
+      from: lastMessage.from,
       lastMessageDate: lastMessage.createdAt,
     });
 

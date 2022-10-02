@@ -12,15 +12,15 @@ class SearchAffiliateCodeInitialState extends SearchAffiliateCodeState {}
 class SearchAffiliateCodeLoadingState extends SearchAffiliateCodeState {}
 
 class SearchAffiliateCodeSuccessState extends SearchAffiliateCodeState {
-  final ProfileModel profileModel;
+  final AffiliateModel affiliateModel;
 
   const SearchAffiliateCodeSuccessState({
-    required this.profileModel,
+    required this.affiliateModel,
   });
 
   @override
   List<Object> get props => [
-        profileModel,
+        affiliateModel,
       ];
 }
 
