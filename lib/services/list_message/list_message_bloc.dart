@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import "package:bloc/bloc.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/item_message_model.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/message_repository.dart";

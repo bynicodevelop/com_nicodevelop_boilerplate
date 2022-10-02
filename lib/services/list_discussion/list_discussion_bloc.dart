@@ -1,5 +1,6 @@
+// ignore: depend_on_referenced_packages
 import "package:bloc/bloc.dart";
-import 'package:com_nicodevelop_dotmessenger/models/item_discussion_model.dart';
+import "package:com_nicodevelop_dotmessenger/models/item_discussion_model.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/discussion_repository.dart";
 import "package:equatable/equatable.dart";
 
