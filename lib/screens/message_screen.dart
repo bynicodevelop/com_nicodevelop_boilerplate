@@ -1,13 +1,16 @@
 import "package:com_nicodevelop_dotmessenger/components/messages/list/list_message_component.dart";
 import "package:com_nicodevelop_dotmessenger/models/item_discussion_model.dart";
+import "package:com_nicodevelop_dotmessenger/models/user_model.dart";
 import "package:flutter/material.dart";
 
 class MessageScreen extends StatelessWidget {
   final ItemDiscussionModel itemDiscussionModel;
+  final UserModel userModel;
 
   const MessageScreen({
     super.key,
     required this.itemDiscussionModel,
+    required this.userModel,
   });
 
   @override
@@ -19,6 +22,7 @@ class MessageScreen extends StatelessWidget {
       ),
       body: ListMessageComponent(
         itemDiscussionModel: itemDiscussionModel,
+        userModel: userModel,
       ),
     );
   }

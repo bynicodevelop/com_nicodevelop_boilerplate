@@ -1,15 +1,18 @@
 import "package:com_nicodevelop_dotmessenger/components/profile/avatar/profile_avatar_component.dart";
 import "package:com_nicodevelop_dotmessenger/models/item_discussion_model.dart";
+import "package:com_nicodevelop_dotmessenger/models/user_model.dart";
 import "package:com_nicodevelop_dotmessenger/screens/message_screen.dart";
 import "package:timeago/timeago.dart" as timeago;
 import "package:flutter/material.dart";
 
 class ItemDiscussionComponent extends StatelessWidget {
   final ItemDiscussionModel itemDiscussionModel;
+  final UserModel userModel;
 
   const ItemDiscussionComponent({
     super.key,
     required this.itemDiscussionModel,
+    required this.userModel,
   });
 
   @override
@@ -20,6 +23,7 @@ class ItemDiscussionComponent extends StatelessWidget {
         MaterialPageRoute(builder: (context) {
           return MessageScreen(
             itemDiscussionModel: itemDiscussionModel,
+            userModel: userModel,
           );
         }),
       ),
