@@ -17,6 +17,10 @@ service cloud.firestore {
 
     match /discussions/{chatId} {
       allow list: if request.auth != null;
+
+      match /messages/{messageId} {
+        allow list: if request.auth != null;
+      }
     }
   }
 }

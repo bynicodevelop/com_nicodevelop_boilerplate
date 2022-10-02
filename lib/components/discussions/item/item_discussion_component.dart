@@ -1,5 +1,6 @@
 import "package:com_nicodevelop_dotmessenger/components/profile/avatar/profile_avatar_component.dart";
-import "package:com_nicodevelop_dotmessenger/models/item_message_model.dart";
+import "package:com_nicodevelop_dotmessenger/models/item_discussion_model.dart";
+import "package:com_nicodevelop_dotmessenger/screens/message_screen.dart";
 import "package:timeago/timeago.dart" as timeago;
 import "package:flutter/material.dart";
 
@@ -14,7 +15,14 @@ class ItemDiscussionComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {},
+      onTap: () async => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) {
+          return MessageScreen(
+            itemDiscussionModel: itemDiscussionModel,
+          );
+        }),
+      ),
       contentPadding: const EdgeInsets.symmetric(
         horizontal: 16,
         vertical: 8,
