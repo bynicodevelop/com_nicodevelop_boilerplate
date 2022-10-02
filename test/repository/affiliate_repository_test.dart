@@ -1,6 +1,6 @@
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:com_nicodevelop_dotmessenger/exceptions/standard_exception.dart";
-import "package:com_nicodevelop_dotmessenger/models/profile_model.dart";
+import "package:com_nicodevelop_dotmessenger/models/affiliate_model.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/affiliate_repository.dart";
 import "package:fake_cloud_firestore/fake_cloud_firestore.dart";
 import "package:firebase_auth/firebase_auth.dart";
@@ -29,13 +29,13 @@ void main() {
       );
 
       // act
-      final ProfileModel profileModel = await affiliateRepository.get({
+      final AffiliateModel affiliateModel = await affiliateRepository.get({
         "affiliateCode": "0001",
       });
 
       // assert
-      expect(profileModel.code, "0001");
-      expect(profileModel.userId, "123456");
+      expect(affiliateModel.code, "0001");
+      expect(affiliateModel.userId, "123456");
     });
 
     test("Should exepect an exception when code not exists", () async {

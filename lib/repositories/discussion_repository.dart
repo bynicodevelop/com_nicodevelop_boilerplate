@@ -3,6 +3,7 @@ import "dart:async";
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:com_nicodevelop_dotmessenger/exceptions/standard_exception.dart";
 import "package:com_nicodevelop_dotmessenger/models/item_message_model.dart";
+import "package:com_nicodevelop_dotmessenger/models/profile_model.dart";
 import "package:firebase_auth/firebase_auth.dart";
 
 class DiscussionRepository {
@@ -47,14 +48,30 @@ class DiscussionRepository {
             .snapshots();
 
     discussionsQuerySnapshot
-        .listen((QuerySnapshot<Map<String, dynamic>> event) {
+        .listen((QuerySnapshot<Map<String, dynamic>> event) async {
       discussions.clear();
 
       for (QueryDocumentSnapshot<Map<String, dynamic>> doc in event.docs) {
+        // Peut posser problème si la discussion est un groupe
+        final List<String> users = List<String>.from(doc.data()["users"])
+            .where((element) => element != user.uid)
+            .toList();
+
+        String profileUid = users.first;
+
+        DocumentSnapshot<Map<String, dynamic>> userDocumentSnapshot =
+            await firebaseFirestore.collection("users").doc(profileUid).get();
+
+        ProfileModel profileModel = ProfileModel.fromMap({
+          "id": userDocumentSnapshot.id,
+          ...userDocumentSnapshot.data()!,
+        });
+
         discussions.add(
           ItemDiscussionModel.fromMap({
-            "id": doc.id,
             ...doc.data(),
+            "id": doc.id,
+            "from": profileModel,
           }),
         );
       }

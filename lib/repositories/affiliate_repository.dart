@@ -1,6 +1,6 @@
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:com_nicodevelop_dotmessenger/exceptions/standard_exception.dart";
-import "package:com_nicodevelop_dotmessenger/models/profile_model.dart";
+import "package:com_nicodevelop_dotmessenger/models/affiliate_model.dart";
 import "package:com_nicodevelop_dotmessenger/utils/logger.dart";
 import "package:firebase_auth/firebase_auth.dart";
 
@@ -13,7 +13,7 @@ class AffiliateRepository {
     required this.firebaseFirestore,
   });
 
-  Future<ProfileModel> get(Map<String, dynamic> data) async {
+  Future<AffiliateModel> get(Map<String, dynamic> data) async {
     info(
       "$runtimeType - get",
       data: data,
@@ -29,7 +29,7 @@ class AffiliateRepository {
           await documentReference.get();
 
       if (documentSnapshot.exists) {
-        return ProfileModel.fromMap({
+        return AffiliateModel.fromMap({
           "code": documentSnapshot.id,
           ...documentSnapshot.data()!,
         });
