@@ -9,13 +9,16 @@ abstract class ListMessageState extends Equatable {
 
 class ListMessageInitialState extends ListMessageState {
   final List<ItemMessageModel> messages;
+  final int refresh;
 
   const ListMessageInitialState({
     this.messages = const [],
+    this.refresh = 0,
   });
 
   @override
   List<Object> get props => [
         messages,
+        refresh,
       ];
 }
