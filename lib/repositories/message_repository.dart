@@ -1,6 +1,7 @@
 import "dart:async";
 
 import "package:cloud_firestore/cloud_firestore.dart";
+import "package:com_nicodevelop_dotmessenger/config/constants.dart";
 import "package:com_nicodevelop_dotmessenger/exceptions/standard_exception.dart";
 import "package:com_nicodevelop_dotmessenger/models/profile_model.dart";
 import "package:com_nicodevelop_dotmessenger/repositories/item_message_model.dart";
@@ -20,6 +21,9 @@ class MessageRepository {
 
   Stream<List<ItemMessageModel>> get messages => _streamController.stream;
 
+  final List<DocumentSnapshot> _documentSnapshot = [];
+  final List<ItemMessageModel> _messages = [];
+
   Future<void> get() async {}
 
   Future<void> list(Map<String, dynamic> data) async {
@@ -32,42 +36,56 @@ class MessageRepository {
       );
     }
 
-    List<ItemMessageModel> messages = [];
+    late Stream<QuerySnapshot<Map<String, dynamic>>> messagesQuerySnapshot;
 
-    Stream<QuerySnapshot<Map<String, dynamic>>> messagesQuerySnapshot =
-        firebaseFirestore
-            .collection("discussions")
-            .doc(data["discussionId"])
-            .collection("messages")
-            .orderBy(
-              "createdAt",
-              descending: true,
-            )
-            .snapshots();
+    if (_documentSnapshot.isEmpty) {
+      messagesQuerySnapshot = firebaseFirestore
+          .collection("discussions")
+          .doc(data["discussionId"])
+          .collection("messages")
+          .orderBy(
+            "createdAt",
+            descending: true,
+          )
+          .limit(kMaxMessageLoad)
+          .snapshots();
+    } else {
+      messagesQuerySnapshot = firebaseFirestore
+          .collection("discussions")
+          .doc(data["discussionId"])
+          .collection("messages")
+          .orderBy(
+            "createdAt",
+            descending: true,
+          )
+          .limit(kMaxMessageLoad)
+          .startAfterDocument(
+            _documentSnapshot[_documentSnapshot.length - 1],
+          )
+          .snapshots();
+    }
 
     messagesQuerySnapshot
         .listen((QuerySnapshot<Map<String, dynamic>> event) async {
-      messages.clear();
-
       for (QueryDocumentSnapshot<Map<String, dynamic>> doc in event.docs) {
         final Map<String, dynamic> message = doc.data();
 
         final DocumentSnapshot<Map<String, dynamic>> userDocumentSnapshot =
             await message["from"].get();
 
-        messages.add(
-          ItemMessageModel.fromJson({
-            ...message,
-            "id": doc.id,
-            "from": ProfileModel.fromMap({
-              "id": userDocumentSnapshot.id,
-              ...userDocumentSnapshot.data()!
-            }),
+        _messages.add(ItemMessageModel.fromJson({
+          ...message,
+          "id": doc.id,
+          "from": ProfileModel.fromMap({
+            "id": userDocumentSnapshot.id,
+            ...userDocumentSnapshot.data()!,
           }),
-        );
+        }));
+
+        _documentSnapshot.add(doc);
       }
 
-      _streamController.add(messages);
+      _streamController.add(_messages);
     });
   }
 

@@ -26,6 +26,7 @@ class ListMessageBloc extends Bloc<ListMessageEvent, ListMessageState> {
     on<OnListMessageLoadingEvent>((event, emit) {
       emit(ListMessageInitialState(
         messages: event.messages,
+        refresh: DateTime.now().millisecondsSinceEpoch,
       ));
     });
   }
