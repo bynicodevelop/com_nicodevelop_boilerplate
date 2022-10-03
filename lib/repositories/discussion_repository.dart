@@ -2,7 +2,7 @@ import "dart:async";
 
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:com_nicodevelop_dotmessenger/exceptions/standard_exception.dart";
-import "package:com_nicodevelop_dotmessenger/models/item_message_model.dart";
+import "package:com_nicodevelop_dotmessenger/models/item_discussion_model.dart";
 import "package:com_nicodevelop_dotmessenger/models/profile_model.dart";
 import "package:firebase_auth/firebase_auth.dart";
 
