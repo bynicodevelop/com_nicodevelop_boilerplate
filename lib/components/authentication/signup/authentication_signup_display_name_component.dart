@@ -2,7 +2,7 @@ import "package:com_nicodevelop_boilerplate/components/inputs/text/text_input_co
 import "package:com_nicodevelop_boilerplate/utils/translate.dart";
 import "package:flutter/material.dart";
 
-class AuthenticationSignupDisplayNameComponent extends StatefulWidget {
+class AuthenticationSignupDisplayNameComponent extends StatelessWidget {
   final TextEditingController controller;
   final Function() onNext;
 
@@ -11,20 +11,6 @@ class AuthenticationSignupDisplayNameComponent extends StatefulWidget {
     required this.controller,
     required this.onNext,
   });
-
-  @override
-  State<AuthenticationSignupDisplayNameComponent> createState() =>
-      _AuthenticationSignupDisplayNameComponentState();
-}
-
-class _AuthenticationSignupDisplayNameComponentState
-    extends State<AuthenticationSignupDisplayNameComponent> {
-  @override
-  void dispose() {
-    widget.controller.dispose();
-
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +25,7 @@ class _AuthenticationSignupDisplayNameComponentState
             TextInputComponent(
               isRequire: true,
               minCharacters: 3,
-              controller: widget.controller,
+              controller: controller,
               label: t(context)!.username_label_input,
               errorText: t(context)!.username_error_text,
             ),
@@ -47,7 +33,7 @@ class _AuthenticationSignupDisplayNameComponentState
               width: double.infinity,
               child: ElevatedButton(
                 key: const Key("display_name_button"),
-                onPressed: widget.onNext,
+                onPressed: onNext,
                 child: Text(
                   t(context)!.sign_up_continue_title,
                 ),
