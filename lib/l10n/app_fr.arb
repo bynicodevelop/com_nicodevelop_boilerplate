@@ -11,6 +11,10 @@
     "@sign_up_continue_title": {
       "description": "Title of the continue button"
     },
+    "sign_up_set_username": "Entrez un nom d'utilisateur",
+    "@sign_up_set_username": {
+      "description": "Title of the set username screen"
+    },
     "sign_up_title": "S'inscrire",
     "@sign_up_title": {
       "description": "Title for the sign up page"

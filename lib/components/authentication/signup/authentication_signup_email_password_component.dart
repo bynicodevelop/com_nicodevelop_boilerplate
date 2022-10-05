@@ -24,6 +24,7 @@ class AuthenticationSignupEmailPasswordComponent extends StatelessWidget {
             Text(
               t(context)!.sign_up_title,
               style: Theme.of(context).textTheme.headlineLarge,
+              textAlign: TextAlign.center,
             ),
             EmailInputComponent(
               controller: emailController,
