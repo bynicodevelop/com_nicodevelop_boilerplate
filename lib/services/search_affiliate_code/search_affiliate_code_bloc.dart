@@ -1,9 +1,9 @@
 // ignore: depend_on_referenced_packages
 import "package:bloc/bloc.dart";
-import "package:com_nicodevelop_dotmessenger/exceptions/standard_exception.dart";
-import "package:com_nicodevelop_dotmessenger/models/affiliate_model.dart";
-import "package:com_nicodevelop_dotmessenger/repositories/affiliate_repository.dart";
-import "package:com_nicodevelop_dotmessenger/utils/logger.dart";
+import "package:com_nicodevelop_boilerplate/exceptions/standard_exception.dart";
+import "package:com_nicodevelop_boilerplate/models/affiliate_model.dart";
+import "package:com_nicodevelop_boilerplate/repositories/affiliate_repository.dart";
+import "package:com_nicodevelop_boilerplate/utils/logger.dart";
 import "package:equatable/equatable.dart";
 
 part "search_affiliate_code_event.dart";

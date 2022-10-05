@@ -1,5 +1,5 @@
-import "package:com_nicodevelop_dotmessenger/exceptions/standard_exception.dart";
-import "package:com_nicodevelop_dotmessenger/repositories/authentication_repository.dart";
+import "package:com_nicodevelop_boilerplate/exceptions/standard_exception.dart";
+import "package:com_nicodevelop_boilerplate/repositories/authentication_repository.dart";
 import "package:firebase_auth/firebase_auth.dart";
 import "package:firebase_auth_mocks/firebase_auth_mocks.dart";
 import "package:flutter_test/flutter_test.dart";

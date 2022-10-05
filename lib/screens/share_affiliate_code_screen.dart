@@ -1,7 +1,7 @@
 import "package:clipboard/clipboard.dart";
-import "package:com_nicodevelop_dotmessenger/config/constants.dart";
-import "package:com_nicodevelop_dotmessenger/utils/notifications.dart";
-import "package:com_nicodevelop_dotmessenger/utils/translate.dart";
+import "package:com_nicodevelop_boilerplate/config/constants.dart";
+import "package:com_nicodevelop_boilerplate/utils/notifications.dart";
+import "package:com_nicodevelop_boilerplate/utils/translate.dart";
 import "package:flutter/material.dart";
 import "package:url_launcher/url_launcher.dart";
 

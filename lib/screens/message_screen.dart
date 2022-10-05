@@ -1,6 +1,6 @@
-import "package:com_nicodevelop_dotmessenger/components/messages/list/list_message_component.dart";
-import "package:com_nicodevelop_dotmessenger/models/item_discussion_model.dart";
-import "package:com_nicodevelop_dotmessenger/models/user_model.dart";
+import "package:com_nicodevelop_boilerplate/components/messages/list/list_message_component.dart";
+import "package:com_nicodevelop_boilerplate/models/item_discussion_model.dart";
+import "package:com_nicodevelop_boilerplate/models/user_model.dart";
 import "package:flutter/material.dart";
 
 class MessageScreen extends StatelessWidget {

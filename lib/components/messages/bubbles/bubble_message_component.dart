@@ -1,6 +1,6 @@
-import "package:com_nicodevelop_dotmessenger/components/messages/contextual/menu/menu_contextual_message_component.dart";
-import "package:com_nicodevelop_dotmessenger/config/constants.dart";
-import "package:com_nicodevelop_dotmessenger/repositories/item_message_model.dart";
+import "package:com_nicodevelop_boilerplate/components/messages/contextual/menu/menu_contextual_message_component.dart";
+import "package:com_nicodevelop_boilerplate/config/constants.dart";
+import "package:com_nicodevelop_boilerplate/repositories/item_message_model.dart";
 import "package:flutter/material.dart";
 
 class BubbleMessageComponent extends StatefulWidget {

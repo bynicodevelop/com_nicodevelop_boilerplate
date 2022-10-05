@@ -1,4 +1,4 @@
-import "package:com_nicodevelop_dotmessenger/components/inputs/password/password_input_component.dart";
+import "package:com_nicodevelop_boilerplate/components/inputs/password/password_input_component.dart";
 import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 

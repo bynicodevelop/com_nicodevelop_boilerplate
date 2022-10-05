@@ -1,7 +1,7 @@
-import "package:com_nicodevelop_dotmessenger/models/user_model.dart";
-import "package:com_nicodevelop_dotmessenger/services/authentication_status/authentication_status_bloc.dart";
-import "package:com_nicodevelop_dotmessenger/services/update_account/update_account_bloc.dart";
-import "package:com_nicodevelop_dotmessenger/services/upload_file/upload_file_bloc.dart";
+import "package:com_nicodevelop_boilerplate/models/user_model.dart";
+import "package:com_nicodevelop_boilerplate/services/authentication_status/authentication_status_bloc.dart";
+import "package:com_nicodevelop_boilerplate/services/update_account/update_account_bloc.dart";
+import "package:com_nicodevelop_boilerplate/services/upload_file/upload_file_bloc.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:image_picker/image_picker.dart";

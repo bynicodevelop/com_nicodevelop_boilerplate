@@ -1,11 +1,11 @@
 import "dart:async";
 
-import "package:com_nicodevelop_dotmessenger/components/messages/bubbles/bubble_message_component.dart";
-import "package:com_nicodevelop_dotmessenger/config/constants.dart";
-import "package:com_nicodevelop_dotmessenger/models/item_discussion_model.dart";
-import "package:com_nicodevelop_dotmessenger/models/user_model.dart";
-import "package:com_nicodevelop_dotmessenger/repositories/item_message_model.dart";
-import "package:com_nicodevelop_dotmessenger/services/list_message/list_message_bloc.dart";
+import "package:com_nicodevelop_boilerplate/components/messages/bubbles/bubble_message_component.dart";
+import "package:com_nicodevelop_boilerplate/config/constants.dart";
+import "package:com_nicodevelop_boilerplate/models/item_discussion_model.dart";
+import "package:com_nicodevelop_boilerplate/models/user_model.dart";
+import "package:com_nicodevelop_boilerplate/repositories/item_message_model.dart";
+import "package:com_nicodevelop_boilerplate/services/list_message/list_message_bloc.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 

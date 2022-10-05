@@ -1,6 +1,6 @@
 import "package:cloud_firestore/cloud_firestore.dart";
-import "package:com_nicodevelop_dotmessenger/exceptions/standard_exception.dart";
-import "package:com_nicodevelop_dotmessenger/repositories/account_repository.dart";
+import "package:com_nicodevelop_boilerplate/exceptions/standard_exception.dart";
+import "package:com_nicodevelop_boilerplate/repositories/account_repository.dart";
 import "package:fake_cloud_firestore/fake_cloud_firestore.dart";
 import "package:firebase_auth/firebase_auth.dart";
 import "package:firebase_auth_mocks/firebase_auth_mocks.dart";

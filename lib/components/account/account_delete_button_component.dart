@@ -1,6 +1,6 @@
-import "package:com_nicodevelop_dotmessenger/services/delete_account/delete_account_bloc.dart";
-import "package:com_nicodevelop_dotmessenger/utils/notifications.dart";
-import "package:com_nicodevelop_dotmessenger/utils/translate.dart";
+import "package:com_nicodevelop_boilerplate/services/delete_account/delete_account_bloc.dart";
+import "package:com_nicodevelop_boilerplate/utils/notifications.dart";
+import "package:com_nicodevelop_boilerplate/utils/translate.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:show_confirm_modal/show_confirm_modal.dart";

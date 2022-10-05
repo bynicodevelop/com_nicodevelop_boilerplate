@@ -1,6 +1,6 @@
 // ignore: depend_on_referenced_packages
 import "package:bloc/bloc.dart";
-import "package:com_nicodevelop_dotmessenger/repositories/affiliate_repository.dart";
+import "package:com_nicodevelop_boilerplate/repositories/affiliate_repository.dart";
 import "package:equatable/equatable.dart";
 
 part "get_affiliate_code_event.dart";

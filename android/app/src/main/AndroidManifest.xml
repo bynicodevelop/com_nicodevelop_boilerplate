@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.nicodevelop.dotmessenger">
+    package="com.nicodevelop.boilerplate">
     <queries>
         <!-- If your app checks for SMS support -->
         <intent>
@@ -13,7 +13,7 @@
         </intent>
     </queries>
     <application
-        android:label="com_nicodevelop_dotmessenger"
+        android:label="com_nicodevelop_boilerplate"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

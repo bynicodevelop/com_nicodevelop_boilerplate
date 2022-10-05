@@ -1,7 +1,7 @@
 // ignore: depend_on_referenced_packages
 import "package:bloc/bloc.dart";
-import "package:com_nicodevelop_dotmessenger/exceptions/standard_exception.dart";
-import "package:com_nicodevelop_dotmessenger/repositories/account_repository.dart";
+import "package:com_nicodevelop_boilerplate/exceptions/standard_exception.dart";
+import "package:com_nicodevelop_boilerplate/repositories/account_repository.dart";
 import "package:equatable/equatable.dart";
 
 part "delete_account_event.dart";

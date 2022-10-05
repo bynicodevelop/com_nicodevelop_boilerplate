@@ -1,6 +1,6 @@
-import "package:com_nicodevelop_dotmessenger/components/profile/avatar/update/profile_update_avatar_button_component.dart";
-import "package:com_nicodevelop_dotmessenger/utils/notifications.dart";
-import "package:com_nicodevelop_dotmessenger/utils/translate.dart";
+import "package:com_nicodevelop_boilerplate/components/profile/avatar/update/profile_update_avatar_button_component.dart";
+import "package:com_nicodevelop_boilerplate/utils/notifications.dart";
+import "package:com_nicodevelop_boilerplate/utils/translate.dart";
 import "package:flutter/material.dart";
 
 class ProfileAvatarUpdateWrapper extends StatelessWidget {

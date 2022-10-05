@@ -1,8 +1,8 @@
 import "dart:convert";
 import "dart:io";
 
-import "package:com_nicodevelop_dotmessenger/exceptions/standard_exception.dart";
-import "package:com_nicodevelop_dotmessenger/utils/logger.dart";
+import "package:com_nicodevelop_boilerplate/exceptions/standard_exception.dart";
+import "package:com_nicodevelop_boilerplate/utils/logger.dart";
 import "package:firebase_auth/firebase_auth.dart";
 import "package:firebase_storage/firebase_storage.dart";
 import "package:crypto/crypto.dart" as crypto;

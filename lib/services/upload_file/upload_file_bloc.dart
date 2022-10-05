@@ -1,7 +1,7 @@
 // ignore: depend_on_referenced_packages
 import "package:bloc/bloc.dart";
-import "package:com_nicodevelop_dotmessenger/exceptions/standard_exception.dart";
-import "package:com_nicodevelop_dotmessenger/repositories/upload_repository.dart";
+import "package:com_nicodevelop_boilerplate/exceptions/standard_exception.dart";
+import "package:com_nicodevelop_boilerplate/repositories/upload_repository.dart";
 import "package:equatable/equatable.dart";
 import "package:image_picker/image_picker.dart";
 

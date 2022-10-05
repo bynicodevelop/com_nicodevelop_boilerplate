@@ -1,16 +1,19 @@
-# com_nicodevelop_dotmessenger
+# com_nicodevelop_boilerplate
 
-A new Flutter project.
+Projet de base de création d'application avec Flutter
 
-## Getting Started
+## Installation
 
-This project is a starting point for a Flutter application.
+Installation de Flutter Fire CLI.
 
-A few resources to get you started if this is your first Flutter project:
+```bash
+dart pub global activate flutterfire_cli
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+flutterfire configure
+```
+
+Remplacer toutes le références de `com_nicodevelop_boilerplate` par votre nom de projet.
+
+Remplacer toutes le références de `com.nicodevelop.boilerplate` par votre nom de package du projet.

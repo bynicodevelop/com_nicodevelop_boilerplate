@@ -1,8 +1,8 @@
-import "package:com_nicodevelop_dotmessenger/config/constants.dart";
-import "package:com_nicodevelop_dotmessenger/screens/authentication/signup_screen.dart";
-import "package:com_nicodevelop_dotmessenger/services/search_affiliate_code/search_affiliate_code_bloc.dart";
-import "package:com_nicodevelop_dotmessenger/utils/notifications.dart";
-import "package:com_nicodevelop_dotmessenger/utils/translate.dart";
+import "package:com_nicodevelop_boilerplate/config/constants.dart";
+import "package:com_nicodevelop_boilerplate/screens/authentication/signup_screen.dart";
+import "package:com_nicodevelop_boilerplate/services/search_affiliate_code/search_affiliate_code_bloc.dart";
+import "package:com_nicodevelop_boilerplate/utils/notifications.dart";
+import "package:com_nicodevelop_boilerplate/utils/translate.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 

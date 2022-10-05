@@ -1,6 +1,6 @@
 // ignore: depend_on_referenced_packages
 import "package:bloc/bloc.dart";
-import "package:com_nicodevelop_dotmessenger/models/ready_start_model.dart";
+import "package:com_nicodevelop_boilerplate/models/ready_start_model.dart";
 import "package:equatable/equatable.dart";
 
 part "bootstrap_event.dart";

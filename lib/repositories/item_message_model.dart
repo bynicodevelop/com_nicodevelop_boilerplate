@@ -1,4 +1,4 @@
-import "package:com_nicodevelop_dotmessenger/models/profile_model.dart";
+import "package:com_nicodevelop_boilerplate/models/profile_model.dart";
 import "package:equatable/equatable.dart";
 
 class ItemMessageModel extends Equatable {

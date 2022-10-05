@@ -1,6 +1,6 @@
 import "package:cloud_firestore/cloud_firestore.dart";
-import "package:com_nicodevelop_dotmessenger/models/item_discussion_model.dart";
-import "package:com_nicodevelop_dotmessenger/repositories/discussion_repository.dart";
+import "package:com_nicodevelop_boilerplate/models/item_discussion_model.dart";
+import "package:com_nicodevelop_boilerplate/repositories/discussion_repository.dart";
 import "package:fake_cloud_firestore/fake_cloud_firestore.dart";
 import "package:firebase_auth_mocks/firebase_auth_mocks.dart";
 import "package:flutter_test/flutter_test.dart";

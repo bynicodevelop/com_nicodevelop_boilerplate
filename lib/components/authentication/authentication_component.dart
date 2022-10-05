@@ -1,7 +1,7 @@
-import "package:com_nicodevelop_dotmessenger/models/ready_start_model.dart";
-import "package:com_nicodevelop_dotmessenger/services/authentication_status/authentication_status_bloc.dart";
-import "package:com_nicodevelop_dotmessenger/services/bootstrap/bootstrap_bloc.dart";
-import "package:com_nicodevelop_dotmessenger/utils/logger.dart";
+import "package:com_nicodevelop_boilerplate/models/ready_start_model.dart";
+import "package:com_nicodevelop_boilerplate/services/authentication_status/authentication_status_bloc.dart";
+import "package:com_nicodevelop_boilerplate/services/bootstrap/bootstrap_bloc.dart";
+import "package:com_nicodevelop_boilerplate/utils/logger.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 

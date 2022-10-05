@@ -1,4 +1,4 @@
-import "package:com_nicodevelop_dotmessenger/services/bootstrap/bootstrap_bloc.dart";
+import "package:com_nicodevelop_boilerplate/services/bootstrap/bootstrap_bloc.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter_native_splash/flutter_native_splash.dart";

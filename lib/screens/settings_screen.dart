@@ -1,10 +1,10 @@
-import "package:com_nicodevelop_dotmessenger/models/user_model.dart";
-import "package:com_nicodevelop_dotmessenger/screens/authentication/signin_screen.dart";
-import "package:com_nicodevelop_dotmessenger/screens/share_affiliate_code_screen.dart";
-import "package:com_nicodevelop_dotmessenger/services/authentication_status/authentication_status_bloc.dart";
-import "package:com_nicodevelop_dotmessenger/services/get_affiliate_code/get_affiliate_code_bloc.dart";
-import "package:com_nicodevelop_dotmessenger/services/logout/logout_bloc.dart";
-import "package:com_nicodevelop_dotmessenger/utils/translate.dart";
+import "package:com_nicodevelop_boilerplate/models/user_model.dart";
+import "package:com_nicodevelop_boilerplate/screens/authentication/signin_screen.dart";
+import "package:com_nicodevelop_boilerplate/screens/share_affiliate_code_screen.dart";
+import "package:com_nicodevelop_boilerplate/services/authentication_status/authentication_status_bloc.dart";
+import "package:com_nicodevelop_boilerplate/services/get_affiliate_code/get_affiliate_code_bloc.dart";
+import "package:com_nicodevelop_boilerplate/services/logout/logout_bloc.dart";
+import "package:com_nicodevelop_boilerplate/utils/translate.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:settings_screen/settings_screen.dart";
