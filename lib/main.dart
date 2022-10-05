@@ -5,7 +5,7 @@ import "package:cloud_functions/cloud_functions.dart";
 import "package:com_nicodevelop_boilerplate/bootstrap.dart";
 import "package:com_nicodevelop_boilerplate/components/authentication/authentication_component.dart";
 import "package:com_nicodevelop_boilerplate/config/color_schemes.g.dart";
-import "package:com_nicodevelop_boilerplate/screens/authentication/signup_screen.dart";
+import "package:com_nicodevelop_boilerplate/screens/authentication/signin_screen.dart";
 import "package:com_nicodevelop_boilerplate/screens/home_screen.dart";
 import "package:com_nicodevelop_boilerplate/services/service_factory.dart";
 import "package:firebase_auth/firebase_auth.dart";
@@ -111,9 +111,9 @@ class App extends StatelessWidget {
         ],
         home: const Bootstrap(
           child: AuthenticationComponent(
-              authenticatedView: HomeScreen(),
-              unauthenticatedView: SignUpScreen() //SignInScreen(),
-              ),
+            authenticatedView: HomeScreen(),
+            unauthenticatedView: SignInScreen(),
+          ),
         ),
       ),
     );
