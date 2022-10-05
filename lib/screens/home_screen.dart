@@ -1,4 +1,3 @@
-import "package:com_nicodevelop_boilerplate/components/discussions/list/list_discussion_component.dart";
 import "package:com_nicodevelop_boilerplate/screens/settings_screen.dart";
 import "package:flutter/material.dart";
 
@@ -22,7 +21,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const ListDiscussionComponent(),
+      body: Container(),
     );
   }
 }
