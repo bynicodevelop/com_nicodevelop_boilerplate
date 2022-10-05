@@ -4,16 +4,12 @@ import "package:com_nicodevelop_boilerplate/models/ready_start_model.dart";
 import "package:com_nicodevelop_boilerplate/repositories/account_repository.dart";
 import "package:com_nicodevelop_boilerplate/repositories/affiliate_repository.dart";
 import "package:com_nicodevelop_boilerplate/repositories/authentication_repository.dart";
-import "package:com_nicodevelop_boilerplate/repositories/discussion_repository.dart";
-import "package:com_nicodevelop_boilerplate/repositories/message_repository.dart";
 import "package:com_nicodevelop_boilerplate/repositories/upload_repository.dart";
 import "package:com_nicodevelop_boilerplate/services/authentication_status/authentication_status_bloc.dart";
 import "package:com_nicodevelop_boilerplate/services/bootstrap/bootstrap_bloc.dart";
 import "package:com_nicodevelop_boilerplate/services/create_account/create_account_bloc.dart";
 import "package:com_nicodevelop_boilerplate/services/delete_account/delete_account_bloc.dart";
 import "package:com_nicodevelop_boilerplate/services/get_affiliate_code/get_affiliate_code_bloc.dart";
-import "package:com_nicodevelop_boilerplate/services/list_discussion/list_discussion_bloc.dart";
-import "package:com_nicodevelop_boilerplate/services/list_message/list_message_bloc.dart";
 import "package:com_nicodevelop_boilerplate/services/login/login_bloc.dart";
 import "package:com_nicodevelop_boilerplate/services/logout/logout_bloc.dart";
 import "package:com_nicodevelop_boilerplate/services/search_affiliate_code/search_affiliate_code_bloc.dart";
@@ -61,16 +57,6 @@ class ServiceFactory extends StatelessWidget {
     final UploadRepository uploadRepository = UploadRepository(
       firebaseAuth: firebaseAuth,
       firebaseStorage: firebaseStorage,
-    );
-
-    final DiscussionRepository discussionRepository = DiscussionRepository(
-      firebaseAuth: firebaseAuth,
-      firebaseFirestore: firebaseFirestore,
-    );
-
-    final MessageRepository messageRepository = MessageRepository(
-      firebaseAuth: firebaseAuth,
-      firebaseFirestore: firebaseFirestore,
     );
 
     return MultiBlocProvider(
@@ -127,17 +113,6 @@ class ServiceFactory extends StatelessWidget {
         BlocProvider<UploadFileBloc>(
           create: (context) => UploadFileBloc(
             uploadRepository: uploadRepository,
-          ),
-        ),
-        BlocProvider<ListDiscussionBloc>(
-          lazy: false,
-          create: (context) => ListDiscussionBloc(
-            discussionRepository: discussionRepository,
-          ),
-        ),
-        BlocProvider<ListMessageBloc>(
-          create: (_) => ListMessageBloc(
-            messageRepository: messageRepository,
           ),
         ),
       ],

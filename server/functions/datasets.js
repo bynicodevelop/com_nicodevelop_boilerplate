@@ -1,7 +1,6 @@
 const admin = require('firebase-admin');
-const {info, error} = require('firebase-functions/logger');
+const {info} = require('firebase-functions/logger');
 const {faker} = require('@faker-js/faker');
-const dayjs = require('dayjs');
 const {setAffiliateCodeForUserId} = require('./utils/firestore_request');
 
 const userFactory = async (number) => {
@@ -42,81 +41,6 @@ const userFactory = async (number) => {
   }
 
   return usersRecords;
-};
-
-const createMessages = async (chat, users, max) => {
-  const messages = [];
-
-  const messagesNumber = Math.floor(Math.random() * max) + 1;
-
-  for (let i = 0; i < messagesNumber; i++) {
-    const from = admin
-        .firestore()
-        .collection('users')
-        .doc(users[Math.floor(Math.random() * users.length)].uid);
-
-    const message = faker.lorem.sentences(Math.floor(Math.random() * 3) + 1);
-
-    const date = dayjs()
-        .subtract(Math.floor(Math.random() * 30) + 1, 'day')
-        .toDate();
-
-    const createdAt = date;
-    const updatedAt = date;
-
-    const messageRecord = {
-      from,
-      message,
-      createdAt,
-      updatedAt,
-    };
-
-    messages.push(messageRecord);
-
-    try {
-      await admin
-          .firestore()
-          .collection('discussions')
-          .doc(chat.uid)
-          .collection('messages')
-          .add(messageRecord);
-    } catch (err) {
-      error('Error creating message: ', err);
-    }
-  }
-
-  return messages;
-};
-
-const createChat = async (users) => {
-  const chat = {
-    uid: users.map((user) => user.uid).sort().join('_'),
-    users: users.map((user) => user.uid),
-    lastMessage: '',
-    from: null,
-    lastMessageDate: new Date(),
-  };
-
-  try {
-    await admin.firestore().collection('discussions').doc(chat.uid).set(chat);
-
-    const message = await createMessages(chat, users, 100);
-
-    const lastMessage = message.sort((a, b) => b.createdAt - a.createdAt)[0];
-
-    // Update last message and last message date
-    await admin.firestore().collection('discussions').doc(chat.uid).update({
-      lastMessage: lastMessage.message,
-      from: lastMessage.from,
-      lastMessageDate: lastMessage.createdAt,
-    });
-
-    info('Successfully created new chat:', chat.uid);
-  } catch (err) {
-    error('Error creating new chat:', err);
-  }
-
-  return chat;
 };
 
 exports.createChat = createChat;

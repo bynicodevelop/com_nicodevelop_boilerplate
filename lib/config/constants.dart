@@ -1,3 +1,5 @@
+// Padding par defaut
 const double kDefaultPadding = 16.0;
 
-const int kMaxMessageLoad = 10;
+// Crédit utilisé dans les paramètres de about_screen.dart
+const String kCredits = "© 2021 Nico Develop";

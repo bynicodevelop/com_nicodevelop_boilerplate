@@ -55,3 +55,7 @@ Installation des données de tests
 ```bash
 curl http://localhost:5001/<project_id>/us-central1/createUsers
 ```
+
+## Informations
+
+Un fichier `constants.dart` est présent dans le dossier `lib/config` pour centraliser les paramètres de l'application.
