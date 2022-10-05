@@ -1,7 +1,7 @@
 import "package:com_nicodevelop_boilerplate/components/inputs/email/email_input_component.dart";
 import "package:com_nicodevelop_boilerplate/components/inputs/password/password_input_component.dart";
 import "package:com_nicodevelop_boilerplate/config/constants.dart";
-import "package:com_nicodevelop_boilerplate/screens/authentication/code_screen.dart";
+import "package:com_nicodevelop_boilerplate/screens/authentication/signup_screen.dart";
 import "package:com_nicodevelop_boilerplate/screens/home_screen.dart";
 import "package:com_nicodevelop_boilerplate/services/login/login_bloc.dart";
 import "package:com_nicodevelop_boilerplate/utils/notifications.dart";
@@ -115,7 +115,7 @@ class _SignInState extends State<SignInScreen> {
                     onPressed: () async => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const CodeScreen(),
+                        builder: (context) => const SignUpScreen(),
                         fullscreenDialog: true,
                       ),
                     ),

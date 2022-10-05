@@ -30,7 +30,6 @@ void main() {
         "displayName": "john",
         "email": "john@domain.tld",
         "password": "password",
-        "affiliateCode": "0001",
       });
 
       // ASSERT
@@ -60,8 +59,6 @@ void main() {
       expect(
         userQuerySnapshot.docs.first.data(),
         {
-          "affiliateCodeRef":
-              mockFirebaseFirestore.collection("affiliates").doc("0001"),
           "displayName": "john",
         },
       );
@@ -91,7 +88,6 @@ void main() {
           "displayName": "john",
           "email": "john@domain.tld",
           "password": "123456",
-          "affiliateCode": "0001",
         }),
         throwsA(
           predicate(
@@ -124,7 +120,6 @@ void main() {
           "displayName": "john",
           "email": "john@domain.tld",
           "password": "123456",
-          "affiliateCode": "0001",
         }),
         throwsA(
           predicate(
@@ -157,7 +152,6 @@ void main() {
           "displayName": "john",
           "email": "john@domain.tld",
           "password": "123",
-          "affiliateCode": "0001",
         }),
         throwsA(
           predicate(

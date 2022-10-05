@@ -15,12 +15,6 @@ exports.onCreateNewUser = functions
     .user()
     .onCreate(async (user) => userController.onCreateNewUser(user));
 
-exports.onNewUserInAffiliate = functions
-    .firestore
-    .document('users/{userId}')
-    .onCreate(async (snapshot, context) =>
-      userController.onNewUserInAffiliate(snapshot, context));
-
 if (isDevelopmentMode) {
   exports.createUsers = functions.https.onRequest(async (req, res) => {
     const usersRecords = await userFactory(10);

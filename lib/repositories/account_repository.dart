@@ -20,7 +20,6 @@ class AccountRepository {
     assert(data["displayName"] != null);
     assert(data["email"] != null);
     assert(data["password"] != null);
-    assert(data["affiliateCode"] != null);
 
     info(
       "$runtimeType - Creating account",
@@ -41,9 +40,6 @@ class AccountRepository {
               .get();
 
       final Map<String, dynamic> accountData = {
-        "affiliateCodeRef": firebaseFirestore
-            .collection("affiliates")
-            .doc(data["affiliateCode"]),
         "displayName": data["displayName"],
       };
 
