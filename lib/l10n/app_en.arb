@@ -7,6 +7,10 @@
     "@invitation_code_title": {
       "description": "Title of the invitation code screen"
     },
+    "sign_up_continue_title": "Continue",
+    "@sign_up_continue_title": {
+      "description": "Title of the continue button"
+    },
     "sign_up_title": "Sign Up",
     "@sign_up_title": {
       "description": "Title for the sign up page"

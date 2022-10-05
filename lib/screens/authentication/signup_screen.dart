@@ -1,6 +1,5 @@
-import "package:com_nicodevelop_boilerplate/components/inputs/email/email_input_component.dart";
-import "package:com_nicodevelop_boilerplate/components/inputs/password/password_input_component.dart";
-import "package:com_nicodevelop_boilerplate/components/inputs/text/text_input_component.dart";
+import "package:com_nicodevelop_boilerplate/components/authentication/signup/authentication_signup_display_name_component.dart";
+import "package:com_nicodevelop_boilerplate/components/authentication/signup/authentication_signup_email_password_component.dart";
 import "package:com_nicodevelop_boilerplate/config/constants.dart";
 import "package:com_nicodevelop_boilerplate/screens/home_screen.dart";
 import "package:com_nicodevelop_boilerplate/services/create_account/create_account_bloc.dart";
@@ -9,7 +8,6 @@ import "package:com_nicodevelop_boilerplate/utils/translate.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:validators/validators.dart";
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({
@@ -24,6 +22,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _displayNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  final PageController _pageController = PageController();
 
   void _unfocus() {
     FocusScope.of(context).unfocus();
@@ -94,62 +94,48 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: GestureDetector(
         onTap: _unfocus,
         child: Scaffold(
-          body: Center(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(
-                kDefaultPadding,
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    t(context)!.sign_up_title,
-                    style: Theme.of(context).textTheme.headlineLarge,
-                  ),
-                  TextInputComponent(
-                    isRequire: true,
-                    minCharacters: 3,
-                    controller: _displayNameController,
-                    label: t(context)!.username_label_input,
-                    errorText: t(context)!.username_error_text,
-                  ),
-                  EmailInputComponent(
-                    controller: _emailController,
-                    label: t(context)!.email_label_input,
-                    errorText: t(context)!.email_error_text,
-                  ),
-                  PasswordInputComponent(
-                    controller: _passwordController,
-                    label: t(context)!.password_label_input,
-                    errorText: t(context)!.password_error_text,
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      key: const Key("sign_up_button"),
-                      onPressed: () {
-                        _unfocus();
+          body: Padding(
+            padding: const EdgeInsets.all(
+              kDefaultPadding,
+            ),
+            child: PageView(
+              controller: _pageController,
+              physics: const NeverScrollableScrollPhysics(),
+              children: [
+                AuthenticationSignupDisplayNameComponent(
+                  controller: _displayNameController,
+                  onNext: () async {
+                    _unfocus();
 
-                        if (isEmail(_emailController.text) &&
-                            _passwordController.text.length >= 6 &&
-                            _displayNameController.text.length >= 3) {
-                          context.read<CreateAccountBloc>().add(
-                                OnCreateAccountEvent(
-                                  displayName: _displayNameController.text,
-                                  email: _emailController.text,
-                                  password: _passwordController.text,
-                                ),
-                              );
-                        }
-                      },
-                      child: Text(t(context)!.sign_up_title),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () async => Navigator.pop(context),
-                    child: Text(t(context)!.got_to_signin_label_button),
-                  ),
-                ],
-              ),
+                    if (_displayNameController.text.length > 2) {
+                      _pageController.nextPage(
+                        duration: const Duration(
+                          milliseconds: 1,
+                        ),
+                        curve: Curves.easeInOut,
+                      );
+                    }
+                  },
+                ),
+                AuthenticationSignupEmailPasswordComponent(
+                  emailController: _emailController,
+                  passwordController: _passwordController,
+                  onNext: () {
+                    _unfocus();
+
+                    if (_emailController.text.isNotEmpty &&
+                        _passwordController.text.isNotEmpty) {
+                      context.read<CreateAccountBloc>().add(
+                            OnCreateAccountEvent(
+                              displayName: _displayNameController.text,
+                              email: _emailController.text,
+                              password: _passwordController.text,
+                            ),
+                          );
+                    }
+                  },
+                ),
+              ],
             ),
           ),
         ),
