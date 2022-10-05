@@ -1,115 +1,121 @@
-import 'package:flutter/material.dart';
+import "dart:io";
 
-void main() {
-  runApp(const MyApp());
-}
+import "package:cloud_firestore/cloud_firestore.dart";
+import "package:cloud_functions/cloud_functions.dart";
+import "package:com_nicodevelop_boilerplate/bootstrap.dart";
+import "package:com_nicodevelop_boilerplate/components/authentication/authentication_component.dart";
+import "package:com_nicodevelop_boilerplate/config/color_schemes.g.dart";
+import "package:com_nicodevelop_boilerplate/screens/authentication/signin_screen.dart";
+import "package:com_nicodevelop_boilerplate/screens/home_screen.dart";
+import "package:com_nicodevelop_boilerplate/services/service_factory.dart";
+import "package:firebase_auth/firebase_auth.dart";
+import "package:firebase_core/firebase_core.dart";
+import "package:firebase_storage/firebase_storage.dart";
+import "package:flutter/foundation.dart";
+import "package:flutter/material.dart";
+import "package:flutter_gen/gen_l10n/app_localizations.dart";
+import "package:flutter_localizations/flutter_localizations.dart";
+import "package:flutter_native_splash/flutter_native_splash.dart";
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+import "firebase_options.dart";
 
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+Future<void> main() async {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  FlutterNativeSplash.preserve(
+    widgetsBinding: widgetsBinding,
+  );
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  if (kDebugMode) {
+    final String host = Platform.isAndroid ? "10.0.2.2" : "localhost";
+
+    await FirebaseAuth.instance.useAuthEmulator(
+      host,
+      9099,
+    );
+
+    FirebaseFirestore.instance.useFirestoreEmulator(
+      host,
+      8080,
+    );
+
+    FirebaseStorage.instance.useStorageEmulator(
+      host,
+      9199,
+    );
+
+    FirebaseFunctions.instance.useFunctionsEmulator(
+      host,
+      5001,
     );
   }
+
+  await FirebaseFirestore.instance.terminate();
+  await FirebaseFirestore.instance.clearPersistence();
+
+  // await FirebaseAuth.instance.signOut();
+
+  runApp(App(
+    firebaseAuth: FirebaseAuth.instance,
+    firebaseFirestore: FirebaseFirestore.instance,
+    firebaseStorage: FirebaseStorage.instance,
+    firebaseFunctions: FirebaseFunctions.instance,
+  ));
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class App extends StatelessWidget {
+  final FirebaseAuth firebaseAuth;
+  final FirebaseFirestore firebaseFirestore;
+  final FirebaseStorage firebaseStorage;
+  final FirebaseFunctions firebaseFunctions;
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+  const App({
+    super.key,
+    required this.firebaseAuth,
+    required this.firebaseFirestore,
+    required this.firebaseStorage,
+    required this.firebaseFunctions,
+  });
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+    return ServiceFactory(
+      firebaseAuth: firebaseAuth,
+      firebaseFirestore: firebaseFirestore,
+      firebaseStorage: firebaseStorage,
+      firebaseFunctions: firebaseFunctions,
+      child: MaterialApp(
+        theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: lightColorScheme,
+        ),
+        darkTheme: ThemeData(
+          useMaterial3: true,
+          colorScheme: darkColorScheme,
+        ),
+        debugShowCheckedModeBanner: false,
+        title: "Dot Messenger",
+        localizationsDelegates: const [
+          AppLocalizations.delegate, // Add this line
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale("en", ""),
+          Locale("fr", ""),
+        ],
+        home: const Bootstrap(
+          child: AuthenticationComponent(
+            authenticatedView: HomeScreen(),
+            unauthenticatedView: SignInScreen(),
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

@@ -1,0 +1,250 @@
+{
+    "next_label": "Next",
+    "@next_label": {
+      "description": "Label for the next button"
+    },
+    "invitation_code_title": "Invitation Code",
+    "@invitation_code_title": {
+      "description": "Title of the invitation code screen"
+    },
+    "sign_up_title": "Sign Up",
+    "@sign_up_title": {
+      "description": "Title for the sign up page"
+    },
+    "sign_in_title": "Sign In",
+    "@sign_in_title": {
+      "description": "Title for the sign in page"
+    },
+    "username_label_input": "Username",
+    "@username_label_input": {
+      "description": "Label for the username input"
+    },
+    "username_error_text": "Username is required (min 3 characters)",
+    "@username_error_text": {
+      "description": "Error text for the username input"
+    },
+    "email_label_input": "E-mail",
+    "@email_label_input": {
+      "description": "Label for the email input field"
+    },
+    "email_error_text": "Please enter a valid email address",
+    "@email_error_text": {
+      "description": "Error message for the email input field"
+    },
+    "password_label_input": "Password",
+    "@password_label_input": {
+      "description": "Label for the password input field"
+    },
+    "password_error_text": "Please enter a password with at least 6 characters",
+    "@password_error_text": {
+      "description": "Error message for the password input field"
+    },
+    "signin_label_button": "Sign in",
+    "@signin_label_button": {
+      "description": "Label for the sign in button"
+    },
+    "signup_label_button": "Sign up",
+    "@signup_label_button": {
+      "description": "Label for the sign up button"
+    },
+    "no_account_label_button": "No account?",
+    "@no_account_label_button": {
+      "description": "Label for the no account button"
+    },
+    "got_to_signin_label_button": "Sign in",
+    "@got_to_signin_label_button": {
+      "description": "Label for the got to sign in button"
+    },
+    "affiliate_code_invalid_title": "Invalid invitation code",
+    "@affiliate_code_invalid_title": {
+      "description": "Error message for the invalid invitation code"
+    },
+    "affiliate_code_invalid_message": "The invitation code you entered is invalid.",
+    "@affiliate_code_invalid_message": {
+      "description": "Error message for the invalid invitation code"
+    },
+    "affiliate_code_required_field_title": "Invalid invitation code",
+    "@affiliate_code_required_field_title": {
+      "description": "Error message for the invalid invitation code"
+    },
+    "affiliate_code_required_field_message": "Please enter an invitation code to continue.",
+    "@affiliate_code_required_field_message": {
+      "description": "Error message for the invalid invitation code"
+    },
+    "sign_up_email_already_in_use": "Email already in use",
+    "@sign_up_email_already_in_use": {
+      "description": "Error message for the email already in use"
+    },
+    "sign_up_weak_password": "Weak password (minimum 6 characters)",
+    "@sign_up_weak_password": {
+      "description": "Error message for the weak password"
+    },
+    "sign_up_invalid_email": "Invalid email",
+    "@sign_up_invalid_email": {
+      "description": "Error message for the invalid email"
+    },
+    "sign_up_operation_not_allowed": "Operation not allowed",
+    "@sign_up_operation_not_allowed": {
+      "description": "Error message for the operation not allowed"
+    },
+    "sign_up_failed_create_account": "Failed to create account",
+    "@sign_up_failed_create_account": {
+      "description": "Error message for the failed to create account"
+    },
+    "sign_in_bad_credentials_title": "Bad credentials",
+    "@sign_in_bad_credentials_title": {
+      "description": "Error message for the bad credentials"
+    },
+    "sign_in_bad_credentials_message": "The email or password you entered is incorrect.",
+    "@sign_in_bad_credentials_message": {
+      "description": "Error message for the bad credentials"
+    },
+    "profile_screen_title": "Profile",
+    "@profile_screen_title": {
+      "description": "Title for the profile screen"
+    },
+    "profile_screen_save_button": "Save",
+    "@profile_screen_save_button": {
+      "description": "Label for the save button"
+    },
+    "profile_screen_update_success_title": "Updated",
+    "@profile_screen_update_success_title": {
+      "description": "Title for the update success message"
+    },
+    "profile_screen_update_error_title": "Error",
+    "@profile_screen_update_error_title": {
+      "description": "Title for the update error"
+    },
+    "profile_screen_update_success_description": "Your profile has been updated.",
+    "@profile_screen_update_success_description": {
+      "description": "Description for the update success message"
+    },
+    "profile_screen_update_email_invalid_description": "The email you entered is invalid.",
+    "@profile_screen_update_email_invalid_description": {
+      "description": "Error message for the invalid email"
+    },
+    "profile_screen_update_username_invalid_description": "The username you entered is invalid (min 3 characters).",
+    "@profile_screen_update_username_invalid_description": {
+      "description": "Error message for the invalid username"
+    },
+    "profile_screen_update_email_already_in_user_description": "The email you entered is already in use.",
+    "@profile_screen_update_email_already_in_user_description": {
+      "description": "Error message for the invalid email"
+    },
+    "profile_screen_update_operation_not_allowed_description": "Operation not allowed. Please try again later.",
+    "@profile_screen_update_operation_not_allowed_description": {
+      "description": "Error message for the invalid email"
+    },
+    "profile_screen_update_weak_password_description": "Weak password (minimum 6 characters).",
+    "@profile_screen_update_weak_password_description": {
+      "description": "Error message for the invalid email"
+    },
+    "profile_screen_network_request_failed_description": "Network request failed.",
+    "@profile_screen_network_request_failed_description": {
+      "description": "Error message for the invalid email"
+    },
+    "common_cancel": "Cancel",
+    "@common_cancel": {
+      "description": "Label for the cancel button"
+    },
+    "common_confirm": "Confirm",
+    "@common_confirm": {
+      "description": "Label for the confirm button"
+    },
+    "delete_account_button_confirm_modal_title": "Delete account",
+    "@delete_account_button_confirm_modal_title": {
+      "description": "Title for the delete account confirmation modal"
+    },
+    "delete_account_button_confirm_modal_description": "Are you sure you want to delete your account? This action cannot be undone.",
+    "@delete_account_button_confirm_modal_description": {
+      "description": "Description for the delete account confirmation modal"
+    },
+    "delete_account_button_confirm_deleted_title": "Deleted",
+    "@delete_account_button_confirm_deleted_title": {
+      "description": "Title for the delete account confirmation modal"
+    },
+    "delete_account_button_confirm_deleted_description": "Your account has been deleted.",
+    "@delete_account_button_confirm_deleted_description": {
+      "description": "Description for the delete account confirmation modal"
+    },
+    "setting_item_profile_title": "Profile",
+    "@setting_item_profile_title": {
+      "description": "Title for the profile setting item"
+    },
+    "setting_item_profile_description": "Edit your profile",
+    "@setting_item_profile_description": {
+      "description": "Description for the profile setting item"
+    },
+    "setting_item_about_title": "About",
+    "@setting_item_about_title": {
+      "description": "Title for the about setting item"
+    },
+    "setting_item_about_description": "About this app",
+    "@setting_item_about_description": {
+      "description": "Description for the about setting item"
+    },
+    "setting_item_logout_title": "Logout",
+    "@setting_item_logout_title": {
+      "description": "Title for the logout setting item"
+    },
+    "setting_item_logout_description": "Logout from this app",
+    "@setting_item_logout_description": {
+      "description": "Description for the logout setting item"
+    },
+    "setting_item_code_title": "Invite",
+    "@setting_item_code_title": {
+      "description": "Title for the invite setting item"
+    },
+    "setting_item_code_description": "Invite your friends or contacts",
+    "@setting_item_code_description": {
+      "description": "Description for the logout setting item"
+    },
+    "upload_file_error_title": "Error",
+    "@upload_file_error_title": {
+      "description": "Title for the upload file error"
+    },
+    "upload_file_error_description": "Failed to upload file",
+    "@upload_file_error_description": {
+      "description": "Description for the avatar upload file error"
+    },
+    "avatar_image_update_success_title": "Updated",
+    "@avatar_image_update_success_title": {
+      "description": "Title for the avatar update success message"
+    },
+    "avatar_image_update_success_description": "Your avatar has been updated.",
+    "@avatar_image_update_success_description": {
+      "description": "Description for the avatar update success message"
+    },
+    "share_text": "Share this code to invite your friends or contacts to join you on app.",
+    "@share_text": {
+      "description": "Text to share"
+    },
+    "share_text_title": "Share",
+    "@share_text_title": {
+      "description": "Title for the share text"
+    },
+    "share_text_button": "Share",
+    "@share_text": {
+      "description": "Text to share button"
+    },
+    "share_code_copied_title": "Code copied",
+    "@share_code_copied_title": {
+      "description": "Title for the share code copied message"
+    },
+    "share_code_copied_description": "You can share this code to invite your friends or contacts.",
+    "@share_code_copied_description": {
+      "description": "Description for the share code copied message"
+    },
+    "share_label_button_copy": "Copy",
+    "@share_label_button_copy": {
+      "description": "Label for the copy button"
+    },
+    "share_label_button_sms": "SMS",
+    "@share_label_button_sms": {
+      "description": "Label for the sms button"
+    },
+    "share_label_button_email": "E-mail",
+    "@share_label_button_email": {
+      "description": "Label for the e-mail button"
+    }
+}

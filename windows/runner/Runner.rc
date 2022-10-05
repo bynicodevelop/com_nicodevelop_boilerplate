@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "com_nicodevelop_dotmessenger" "\0"
+            VALUE "CompanyName", "com.nicodevelop" "\0"
+            VALUE "FileDescription", "com_nicodevelop_boilerplate" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "com_nicodevelop_dotmessenger" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "com_nicodevelop_dotmessenger.exe" "\0"
-            VALUE "ProductName", "com_nicodevelop_dotmessenger" "\0"
+            VALUE "InternalName", "com_nicodevelop_boilerplate" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022 com.nicodevelop. All rights reserved." "\0"
+            VALUE "OriginalFilename", "com_nicodevelop_boilerplate.exe" "\0"
+            VALUE "ProductName", "com_nicodevelop_boilerplate" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

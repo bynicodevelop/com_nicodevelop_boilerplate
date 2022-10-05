@@ -1,7 +1,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.com_nicodevelop_dotmessenger">
-   <application
-        android:label="com_nicodevelop_dotmessenger"
+    package="com.nicodevelop.boilerplate">
+    <queries>
+        <!-- If your app checks for SMS support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="sms" />
+        </intent>
+        <!-- If your app checks for call support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="mailto" />
+        </intent>
+    </queries>
+    <application
+        android:label="com_nicodevelop_boilerplate"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,6 +1,6 @@
 {
-    "name": "com_nicodevelop_dotmessenger",
-    "short_name": "com_nicodevelop_dotmessenger",
+    "name": "com_nicodevelop_boilerplate",
+    "short_name": "com_nicodevelop_boilerplate",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
