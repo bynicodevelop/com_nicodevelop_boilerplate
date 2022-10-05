@@ -12,11 +12,8 @@ import "package:flutter_bloc/flutter_bloc.dart";
 import "package:validators/validators.dart";
 
 class SignUpScreen extends StatefulWidget {
-  final String affiliateCode;
-
   const SignUpScreen({
     super.key,
-    required this.affiliateCode,
   });
 
   @override
@@ -140,7 +137,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   displayName: _displayNameController.text,
                                   email: _emailController.text,
                                   password: _passwordController.text,
-                                  affiliateCode: widget.affiliateCode,
                                 ),
                               );
                         }

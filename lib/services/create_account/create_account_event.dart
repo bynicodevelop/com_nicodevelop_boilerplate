@@ -11,13 +11,11 @@ class OnCreateAccountEvent extends CreateAccountEvent {
   final String displayName;
   final String email;
   final String password;
-  final String affiliateCode;
 
   const OnCreateAccountEvent({
     required this.displayName,
     required this.email,
     required this.password,
-    required this.affiliateCode,
   });
 
   @override
@@ -25,6 +23,5 @@ class OnCreateAccountEvent extends CreateAccountEvent {
         displayName,
         email,
         password,
-        affiliateCode,
       ];
 }

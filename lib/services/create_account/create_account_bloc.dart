@@ -22,7 +22,6 @@ class CreateAccountBloc extends Bloc<CreateAccountEvent, CreateAccountState> {
           "displayName": event.displayName,
           "email": event.email,
           "password": event.password,
-          "affiliateCode": event.affiliateCode,
         });
 
         info(
@@ -30,7 +29,6 @@ class CreateAccountBloc extends Bloc<CreateAccountEvent, CreateAccountState> {
           data: {
             "displayName": event.displayName,
             "email": event.email,
-            "affiliateCode": event.affiliateCode,
           },
         );
 

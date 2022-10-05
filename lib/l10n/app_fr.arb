@@ -55,22 +55,6 @@
     "@got_to_signin_label_button": {
       "description": "Label for the got to sign in button"
     },
-    "affiliate_code_invalid_title": "Code d'invitation invalide",
-    "@affiliate_code_invalid_title": {
-      "description": "Error message for the invalid invitation code"
-    },
-    "affiliate_code_invalid_message": "Le code d'invitation que vous avez entré est invalide.",
-    "@affiliate_code_invalid_message": {
-      "description": "Error message for the invalid invitation code"
-    },
-    "affiliate_code_required_field_title": "Code d'invitation invalide",
-    "@affiliate_code_required_field_title": {
-      "description": "Error message for the invalid invitation code"
-    },
-    "affiliate_code_required_field_message": "Merci d'entrer un code d'invitation pour continuer.",
-    "@affiliate_code_required_field_message": {
-      "description": "Error message for the invalid invitation code"
-    },
     "sign_up_email_already_in_use": "Un compte avec cette adresse e-mail existe déjà.",
     "@sign_up_email_already_in_use": {
       "description": "Error message for the email already in use"

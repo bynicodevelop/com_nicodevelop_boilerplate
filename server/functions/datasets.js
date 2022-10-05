@@ -1,13 +1,11 @@
 const admin = require('firebase-admin');
 const {info} = require('firebase-functions/logger');
 const {faker} = require('@faker-js/faker');
-const {setAffiliateCodeForUserId} = require('./utils/firestore_request');
 
 const userFactory = async (number) => {
   const usersRecords = [];
 
   for (let i = 0; i < number; i++) {
-    const affiliateCode = `000${i}`;
     const uid = `123456789${i}`;
     const displayName = faker.name.firstName();
     const email = `john${i}@domain.tld`;
@@ -31,9 +29,6 @@ const userFactory = async (number) => {
         photoURL,
       });
 
-      console.log('setAffiliateCodeForUserId');
-      await setAffiliateCodeForUserId(affiliateCode, uid);
-
       info('Successfully created new user:', userRecord.uid);
     } catch (error) {
       info('Error creating new user:', error);
@@ -43,5 +38,4 @@ const userFactory = async (number) => {
   return usersRecords;
 };
 
-exports.createChat = createChat;
 exports.userFactory = userFactory;
