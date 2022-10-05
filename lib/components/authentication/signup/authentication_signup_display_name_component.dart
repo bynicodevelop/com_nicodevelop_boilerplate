@@ -19,8 +19,9 @@ class AuthenticationSignupDisplayNameComponent extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              t(context)!.sign_up_title,
+              t(context)!.sign_up_set_username,
               style: Theme.of(context).textTheme.headlineLarge,
+              textAlign: TextAlign.center,
             ),
             TextInputComponent(
               isRequire: true,
